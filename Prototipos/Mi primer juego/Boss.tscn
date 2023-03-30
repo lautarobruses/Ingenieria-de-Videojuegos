@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://art/nave nodriza.png" type="Texture" id=1]
+[ext_resource path="res://Boss.gd" type="Script" id=2]
+[ext_resource path="res://Bad_Projectile.tscn" type="PackedScene" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="RigidBody2D" type="KinematicBody2D"]
+position = Vector2( 1280, 360 )
+rotation = -1.5708
+collision_mask = 0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+bad_projectile_scene = ExtResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -255, -45, -244, -64, -51, -168, -29, -228, 31, -227, 51, -168, 245, -64, 255, -47, 255, 131, 233, 157, 62, 229, -63, 228, -233, 158, -255, 132 )
+disabled = true
+
+[node name="CanonPosition1" type="Position2D" parent="." groups=["Canons"]]
+position = Vector2( -178, -103 )
+
+[node name="CanonPosition2" type="Position2D" parent="." groups=["Canons"]]
+position = Vector2( -90, -149 )
+
+[node name="CanonPosition3" type="Position2D" parent="." groups=["Canons"]]
+position = Vector2( 91, -151 )
+
+[node name="CanonPosition4" type="Position2D" parent="." groups=["Canons"]]
+position = Vector2( 177, -103.999 )
+
+[node name="ShootTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="CharginTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="CharginTimer" to="." method="_on_CharginTimer_timeout"]

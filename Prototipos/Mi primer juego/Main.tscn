@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://Asteroid.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://art/night-pixel-art-space-sky-stars-moonlight-293364-wallhere.com.png" type="Texture" id=5]
+[ext_resource path="res://art/Retro_Platforming - David_Fesliyan.mp3" type="AudioStream" id=6]
+[ext_resource path="res://art/gameover.wav" type="AudioStream" id=7]
+[ext_resource path="res://art/Boss_Time.mp3" type="AudioStream" id=8]
+[ext_resource path="res://Boss.tscn" type="PackedScene" id=9]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1280, 0, 0, 0, 0, 0, 1280, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0 )
+}
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 1 )
+asteroid_scene = ExtResource( 2 )
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_left = -0.133
+anchor_right = 0.984
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 5 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 640, 254 )
+rotation = 1.5708
+
+[node name="Boss" parent="." instance=ExtResource( 9 )]
+
+[node name="AsteroidTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="BossTimer" type="Timer" parent="."]
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="StartPosition" type="Position2D" parent="."]
+position = Vector2( 640, 256 )
+
+[node name="AsteroidPath" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="AsteroidSpawnLocation" type="PathFollow2D" parent="AsteroidPath"]
+
+[node name="BossPosition" type="Position2D" parent="."]
+position = Vector2( 1280, 360 )
+
+[node name="HUD" parent="." instance=ExtResource( 4 )]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="BossMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[connection signal="hit" from="Player" to="." method="game_over"]
+[connection signal="timeout" from="AsteroidTimer" to="." method="_on_AsteroidTimer_timeout"]
+[connection signal="timeout" from="BossTimer" to="." method="_on_BossTimer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="boss_round" from="HUD" to="." method="start_boss_round"]
+[connection signal="start_game" from="HUD" to="." method="start_normal_round"]
