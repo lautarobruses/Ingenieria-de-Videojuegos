@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-signal hit
-
 export(PackedScene) var projectile_scene
+export (int) var health = 100
+
 
 var screen_size # Size of the game window.
 
@@ -28,6 +28,12 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
+
+func damage_player(damage):
+	health -= damage
+	$ImmunityTimer.start()
+	$AnimatedSprite.visible = false
+	$AnimatedDamageSprite.visible = true
 
 func move(delta):
 	direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
@@ -57,22 +63,36 @@ func move(delta):
 		
 	move_and_collide(motion)
 	
+	position.x = clamp(position.x, 0, screen_size.x)
+	position.y = clamp(position.y, 0, screen_size.y)
+	
 	if motion != Vector2():
 		target_angle = atan2(motion.x, motion.y) + PI/2
 		rotation = -target_angle
 
 func shoot():
 	var projectile = projectile_scene.instance()
-	projectile.start($Position2D.global_position, rotation)
+	projectile.start($ProjectilePosition.global_position, rotation)
 	get_parent().add_child(projectile)
 
 func start(pos):
 	position = pos
 	show()
 	$CollisionPolygon2D.disabled = false
+	$Hitbox/HitboxArea.set_deferred("disabled", false)
 
-func on_player_get_hit():
-	hide() # Player disappears after being hit.
-	emit_signal("hit")
-	# Must be deferred as we can't change physics properties on a physics callback.
+func dead():
+	hide()
 	$CollisionPolygon2D.disabled = true
+#	queue_free()
+
+func _on_Hitbox_area_entered(area):
+#	damage_player(20)
+#	if area.get_parent().is_in_group("Enemy"):
+	damage_player(area.get_parent().damage)
+	$Hitbox/HitboxArea.set_deferred("disabled", true)
+
+func _on_ImmunityTimer_timeout():
+	$Hitbox/HitboxArea.set_deferred("disabled", false)
+	$AnimatedSprite.visible = true
+	$AnimatedDamageSprite.visible = false

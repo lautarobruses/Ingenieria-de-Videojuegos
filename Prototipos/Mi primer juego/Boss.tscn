@@ -1,8 +1,125 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://art/nave nodriza.png" type="Texture" id=1]
 [ext_resource path="res://Boss.gd" type="Script" id=2]
 [ext_resource path="res://Bad_Projectile.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=5]
+resource_name = "Aparicion"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1550, 360 ), Vector2( 1280, 360 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -90.0, -90.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Cambiar lado"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1280, 360 ), Vector2( 0, 360 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 6, 9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -90.0, -90.0, 90.0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Embestir"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 3, 5, 6, 7, 9, 11, 12, 13 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1280, 360 ), Vector2( 1280, 260 ), Vector2( 1380, 260 ), Vector2( -300, 260 ), Vector2( -300, 460 ), Vector2( 0, 460 ), Vector2( -200, 460 ), Vector2( 1550, 460 ), Vector2( 1550, 360 ), Vector2( 1280, 360 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5, 6, 11, 13 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ -90.0, -90.0, 90.0, -90.0, -90.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Shoot fase"
+length = 30.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 30 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1280, 360 ), Vector2( 1280, 360 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("ShootTimer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 30 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ -1 ],
+"method": "start"
+}, {
+"args": [  ],
+"method": "stop"
+} ]
+}
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -12,8 +129,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="RigidBody2D" type="KinematicBody2D"]
-position = Vector2( 1280, 360 )
+[node name="Boss" type="KinematicBody2D"]
+position = Vector2( 1550, 360 )
 rotation = -1.5708
 collision_mask = 0
 script = ExtResource( 2 )
@@ -22,10 +139,18 @@ __meta__ = {
 }
 bad_projectile_scene = ExtResource( 3 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+anims/Aparicion = SubResource( 5 )
+"anims/Cambiar lado" = SubResource( 7 )
+anims/Embestir = SubResource( 8 )
+"anims/Shoot fase" = SubResource( 6 )
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 2, -1 )
 polygon = PoolVector2Array( -255, -45, -244, -64, -51, -168, -29, -228, 31, -227, 51, -168, 245, -64, 255, -47, 255, 131, 233, 157, 62, 229, -63, 228, -233, 158, -255, 132 )
 disabled = true
 
@@ -42,9 +167,13 @@ position = Vector2( 91, -151 )
 position = Vector2( 177, -103.999 )
 
 [node name="ShootTimer" type="Timer" parent="."]
-autostart = true
+wait_time = 0.5
 
-[node name="CharginTimer" type="Timer" parent="."]
-wait_time = 5.0
+[node name="Hitbox" type="Area2D" parent="."]
 
-[connection signal="timeout" from="CharginTimer" to="." method="_on_CharginTimer_timeout"]
+[node name="HitboxArea" type="CollisionPolygon2D" parent="Hitbox"]
+position = Vector2( 2, -1 )
+polygon = PoolVector2Array( -255, -45, -244, -64, -51, -168, -29, -228, 31, -227, 51, -168, 245, -64, 255, -47, 255, 131, 233, 157, 62, 229, -63, 228, -233, 158, -255, 132 )
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]

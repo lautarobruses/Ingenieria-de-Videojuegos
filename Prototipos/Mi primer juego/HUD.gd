@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-signal start_game
+signal start_normal_round
 signal boss_round
 
 func show_message(text):
@@ -26,7 +26,7 @@ func update_score(score):
 func _on_StartButton_pressed():
 	$BossButton.hide()
 	$StartButton.hide()
-	emit_signal("start_game")
+	emit_signal("start_normal_round")
 
 func _on_BossButton_pressed():
 	$StartButton.hide()

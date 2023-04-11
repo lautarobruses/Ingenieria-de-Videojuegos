@@ -7,8 +7,11 @@ func _ready():
 	randomize()
 
 func game_over():
+	$Player.dead()
+	$HealthBar.stop()
 	$ScoreTimer.stop()
 	$AsteroidTimer.stop()
+	stop_boss_round()
 	
 	$HUD.show_game_over()
 	
@@ -20,6 +23,7 @@ func start_normal_round():
 	score = 0
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
+	$HealthBar.start()
 	
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
@@ -30,12 +34,16 @@ func start_normal_round():
 
 func start_boss_round():
 	$Player.start($StartPosition.position)
-	$Boss.start($BossPosition.position)
+	$Boss.start()
+	$HealthBar.start()
+	$HealthBossBar.start()
 	
 	$HUD.update_score("")
 	$HUD.show_message("Boss\nTime!")
 	
 	$BossMusic.play()
+	
+	get_tree().call_group("bad_projectiles", "queue_free")
 
 func _on_AsteroidTimer_timeout():
 	# Create a new instance of the Mob scene.
@@ -57,7 +65,6 @@ func _on_AsteroidTimer_timeout():
 
 	# Choose the velocity for the asteroid.
 	var velocity = Vector2(rand_range(150.0, 250.0), 0.0)
-#	asteroid.linear_velocity = velocity.rotated(direction)
 	asteroid.setVelocity(velocity.rotated(direction))
 
 	# Spawn the mob by adding it to the Main scene.
@@ -71,5 +78,6 @@ func _on_StartTimer_timeout():
 	$AsteroidTimer.start()
 	$ScoreTimer.start()
 
-func _on_BossTimer_timeout():
-	pass
+func stop_boss_round():
+	$Boss.stop()
+	$HealthBossBar.stop()

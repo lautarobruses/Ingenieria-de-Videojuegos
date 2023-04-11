@@ -41,7 +41,7 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=2]
 radius = 13.0384
 
-[node name="Asteroid" type="KinematicBody2D"]
+[node name="Asteroid" type="KinematicBody2D" groups=["Enemy", "asteroids"]]
 collision_mask = 0
 script = ExtResource( 5 )
 
