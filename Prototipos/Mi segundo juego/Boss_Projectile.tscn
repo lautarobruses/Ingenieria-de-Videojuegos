@@ -1,0 +1,56 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://art/Explosion01_Frame_05_png_processed.png" type="Texture" id=1]
+[ext_resource path="res://art/Explosion01_Frame_04_png_processed.png" type="Texture" id=2]
+[ext_resource path="res://art/Explosion01_Frame_03_png_processed.png" type="Texture" id=3]
+[ext_resource path="res://art/Explosion01_Frame_02_png_processed.png" type="Texture" id=4]
+[ext_resource path="res://art/Explosion01_Frame_07_png_processed.png" type="Texture" id=5]
+[ext_resource path="res://art/Explosion01_Frame_06_png_processed.png" type="Texture" id=6]
+[ext_resource path="res://art/Explosion01_Frame_01_png_processed.png" type="Texture" id=7]
+[ext_resource path="res://scripts/Boss_Projectile.gd" type="Script" id=8]
+[ext_resource path="res://art/Explosion01_Frame_09_png_processed.png" type="Texture" id=9]
+[ext_resource path="res://art/Explosion01_Frame_08_png_processed.png" type="Texture" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 9 ), null ],
+"loop": true,
+"name": "blow",
+"speed": 20.0
+}, {
+"frames": [ null, ExtResource( 7 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": false,
+"name": "charging",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 6 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "shooted",
+"speed": 12.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+
+[node name="Boss_Projectile" type="KinematicBody2D"]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource( 8 )
+speed = 350
+damage = 20
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "blow"
+frame = 3
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="BlowTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="timeout" from="BlowTimer" to="." method="_on_BlowTimer_timeout"]
