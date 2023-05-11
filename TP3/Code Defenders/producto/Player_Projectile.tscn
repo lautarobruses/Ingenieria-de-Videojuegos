@@ -1,0 +1,68 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://scripts/Projectile.gd" type="Script" id=1]
+[ext_resource path="res://assets/img/Player Projectile/shot5_1.png" type="Texture" id=2]
+[ext_resource path="res://assets/img/Player Projectile/shot5_2.png" type="Texture" id=3]
+[ext_resource path="res://assets/img/Player Projectile/shot5_3.png" type="Texture" id=4]
+[ext_resource path="res://assets/img/Player Projectile/shot5_4.png" type="Texture" id=5]
+[ext_resource path="res://assets/img/Player Projectile/shot5_5.png" type="Texture" id=6]
+[ext_resource path="res://assets/img/Player Projectile/shot5_asset.png" type="Texture" id=7]
+[ext_resource path="res://assets/img/Player Projectile/shot5_exp1.png" type="Texture" id=8]
+[ext_resource path="res://assets/img/Player Projectile/shot5_exp2.png" type="Texture" id=9]
+[ext_resource path="res://assets/img/Player Projectile/shot5_exp3.png" type="Texture" id=10]
+[ext_resource path="res://assets/img/Player Projectile/shot5_exp4.png" type="Texture" id=11]
+[ext_resource path="res://assets/img/Player Projectile/shot5_exp5.png" type="Texture" id=12]
+[ext_resource path="res://assets/img/Player Projectile/shot5_exp6.png" type="Texture" id=13]
+[ext_resource path="res://assets/img/Player Projectile/shot5_exp7.png" type="Texture" id=14]
+[ext_resource path="res://assets/img/Player Projectile/shot5_exp8.png" type="Texture" id=15]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": false,
+"name": "blow",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 9.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "shoot",
+"speed": 16.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 10.0499
+
+[node name="Player_Projectile" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 10
+script = ExtResource( 1 )
+speed = 750
+damage = 10
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+rotation = -3.14159
+scale = Vector2( 0.75, 0.75 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="BlowTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
+[connection signal="timeout" from="BlowTimer" to="." method="_on_BlowTimer_timeout"]
