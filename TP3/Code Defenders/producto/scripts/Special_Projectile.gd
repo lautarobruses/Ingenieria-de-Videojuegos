@@ -32,8 +32,6 @@ func _physics_process(delta):
 	$Component5.rotation += ROTATION_SPEED * delta
 	$Component6.rotation += ROTATION_SPEED * delta
 
-
-
 func set_components(configuration):
 	$Core.visible = true
 	for component in configuration:

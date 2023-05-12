@@ -361,11 +361,8 @@ speed = 750
 shape = SubResource( 2 )
 
 [node name="Core" type="Sprite" parent="." groups=["Components"]]
-position = Vector2( 70, 16 )
 scale = Vector2( 0.1, 0.1 )
-z_index = -1
 texture = ExtResource( 9 )
-offset = Vector2( -710, -168.423 )
 
 [node name="Component1" type="Sprite" parent="." groups=["Components"]]
 visible = false

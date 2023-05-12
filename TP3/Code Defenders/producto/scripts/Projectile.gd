@@ -21,7 +21,7 @@ func _physics_process(delta):
 
 func blow():
 	velocity = Vector2()
-	$AnimatedSprite.set_scale(Vector2(0.15, 0.15))
+#	$AnimatedSprite.set_scale(Vector2(0.15, 0.15))
 	$AnimatedSprite.animation = "blow"
 	$CollisionShape2D.set_deferred("disabled", true)
 	$BlowTimer.start()
