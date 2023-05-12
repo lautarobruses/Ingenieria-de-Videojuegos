@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export (int) var health = 100
+export (int) var health = 110
 
 const MASS = 1
 const MAX_SPEED = 750

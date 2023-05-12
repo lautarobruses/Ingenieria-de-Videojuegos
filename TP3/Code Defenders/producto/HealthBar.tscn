@@ -9,6 +9,7 @@ layer = 10
 scale = Vector2( 0.75, 0.75 )
 transform = Transform2D( 0.75, 0, 0, 0.75, 0, 0 )
 script = ExtResource( 1 )
+max_value = 110
 
 [node name="TextureProgress" type="TextureProgress" parent="."]
 margin_left = 85.3333

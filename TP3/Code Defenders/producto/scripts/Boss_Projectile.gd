@@ -7,10 +7,14 @@ func charging(pos):
 	rotation = 0
 	$AnimatedSprite.animation = "charging"
 
-func shoot():
-	print("pow")
-	look_at(target.position)
+func shoot_target():
+	print(target.global_position)
+	look_at(target.global_position)
 	velocity = Vector2(speed, 0).rotated(rotation)
+	$AnimatedSprite.animation = "shooted"
+
+func shoot_h():
+	velocity = Vector2(-speed, 0).rotated(rotation)
 	$AnimatedSprite.animation = "shooted"
 
 func blow():

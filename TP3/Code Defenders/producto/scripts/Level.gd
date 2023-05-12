@@ -10,17 +10,17 @@ func _ready():
 func start_level():
 	set_player()
 	set_boss()
-	
+	$AnimationPlayer.play("main")
+	pass
+
 func set_player():
-	var new_player = player.instance()
-	add_child(new_player)
-	new_player.start(Vector2(640,360))
+	$Player.start(Vector2(960,540))
 
 func set_boss():
-	var boss = boss1.instance()
-	add_child(boss)
+	$Boss1.start()
 
 func game_over():
+	get_tree().quit()
 	pass
 
 func fase_esbirros():

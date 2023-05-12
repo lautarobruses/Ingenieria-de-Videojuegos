@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/img/Bosses/boss1.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Boss1.gd" type="Script" id=2]
@@ -8,51 +8,87 @@
 [ext_resource path="res://animations/Shoot fase.tres" type="Animation" id=6]
 [ext_resource path="res://Shield.tscn" type="PackedScene" id=7]
 
-[sub_resource type="AnimationNodeAnimation" id=1]
-animation = "Aparicion"
+[sub_resource type="Animation" id=16]
+resource_name = "Charge"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1920, 540 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
 
-[sub_resource type="AnimationNodeAnimation" id=2]
-animation = "Cambiar lado"
-
-[sub_resource type="AnimationNodeAnimation" id=3]
-animation = "Embestir"
-
-[sub_resource type="AnimationNodeAnimation" id=4]
-animation = "Shoot fase"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=11]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=12]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=13]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=14]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachine" id=9]
-states/Aparicion/node = SubResource( 1 )
-states/Aparicion/position = Vector2( 172, 61 )
-"states/Cambiar lado/node" = SubResource( 2 )
-"states/Cambiar lado/position" = Vector2( 540, 171 )
-states/Embestir/node = SubResource( 3 )
-states/Embestir/position = Vector2( 666, 61 )
-"states/Shoot fase/node" = SubResource( 4 )
-"states/Shoot fase/position" = Vector2( 414, 61 )
-transitions = [ "Aparicion", "Shoot fase", SubResource( 11 ), "Shoot fase", "Embestir", SubResource( 12 ), "Embestir", "Cambiar lado", SubResource( 13 ), "Cambiar lado", "Shoot fase", SubResource( 14 ) ]
-start_node = "Aparicion"
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=10]
+[sub_resource type="Animation" id=15]
+resource_name = "Shoot Horizontal"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2320, 340 ), Vector2( 2270, 760 ), Vector2( 2220, 340 ), Vector2( 2170, 760 ), Vector2( 2120, 340 ), Vector2( 2070, 760 ), Vector2( 2020, 340 ), Vector2( 1970, 760 ), Vector2( 1920, 340 ), Vector2( 1920, 540 ), Vector2( 2320, 540 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("ShootTimer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ -1 ],
+"method": "start"
+}, {
+"args": [  ],
+"method": "stop"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "waiting" ],
+"method": "change_shoot"
+}, {
+"args": [ "horizontal" ],
+"method": "change_shoot"
+} ]
+}
 
 [node name="Boss1" type="KinematicBody2D"]
-position = Vector2( 1496.91, 360 )
+position = Vector2( -1000, 540 )
 rotation = -1.5708
+scale = Vector2( 1.5, 1.5 )
 z_index = 1
 collision_layer = 2
 collision_mask = 5
@@ -60,22 +96,22 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 9 )
-anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/playback = SubResource( 10 )
+health = 200
+damage = 50
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Aparicion = ExtResource( 3 )
 "anims/Cambiar lado" = ExtResource( 4 )
+anims/Charge = SubResource( 16 )
 anims/Embestir = ExtResource( 5 )
-"anims/Shoot fase" = ExtResource( 6 )
+anims/Emerge = ExtResource( 3 )
+"anims/Shoot Horizontal" = SubResource( 15 )
+"anims/Shoot Target" = ExtResource( 6 )
 
 [node name="Shield" parent="." instance=ExtResource( 7 )]
+scale = Vector2( 2.47923, 1.93522 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 rotation = 0.261799
 build_mode = 1
 polygon = PoolVector2Array( -85.0908, -213.243, -33.8967, -226.96, 4.03823, -178.114, 220.346, -124.264, 234.664, -109.466, 280.475, 61.5034, 265.954, 92.3115, 218.504, 112.273, 197.942, 101.218, 182.085, 38.1738, 147.658, 68.1039, 131.931, 113.729, 126.556, 197.991, 119.157, 205.15, 88.2473, 213.432, 81.6753, 212.088, 70.9622, 195.288, 36.1889, 204.605, 36.018, 223.286, 30.2918, 228.962, -0.61784, 237.244, -9.38052, 235.451, -56.8732, 166.389, -93.5647, 133.775, -137.119, 125.775, -131.42, 204.999, -183.201, 212.662, -207.696, 198.52, -212.147, 193.501, -257.699, 23.4981, -254.63, 4.0409, -91.3296, -151.525 )
@@ -96,5 +132,6 @@ position = Vector2( -90, -151 )
 position = Vector2( -177, -104 )
 
 [node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.25
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

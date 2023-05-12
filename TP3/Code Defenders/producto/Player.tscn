@@ -31,7 +31,7 @@ rotation = -1.5708
 scale = Vector2( 0.2, 0.2 )
 z_index = 1
 frames = SubResource( 1 )
-animation = "invulnerable"
+playing = true
 
 [node name="ProjectilePosition" type="Position2D" parent="."]
 position = Vector2( -16, 0 )

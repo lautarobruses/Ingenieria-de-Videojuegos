@@ -4,14 +4,14 @@ signal dead
 
 export (NodePath) var player_node
 export (int) var max_value
-var player = preload("res://Player.tscn")
+onready var player = get_node(player_node)
 
 func _ready():
 #	hide()
 	pass
 
 func _process(_delta):
-#	$TextureProgress.value = player.health
+	$TextureProgress.value = player.health
 	if ($TextureProgress.value == $TextureProgress.min_value):
 		emit_signal("dead")
 		stop()
