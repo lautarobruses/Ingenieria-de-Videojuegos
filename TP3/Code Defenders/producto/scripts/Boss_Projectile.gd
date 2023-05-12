@@ -8,6 +8,7 @@ func charging(pos):
 	$AnimatedSprite.animation = "charging"
 
 func shoot():
+	print("pow")
 	look_at(target.position)
 	velocity = Vector2(speed, 0).rotated(rotation)
 	$AnimatedSprite.animation = "shooted"

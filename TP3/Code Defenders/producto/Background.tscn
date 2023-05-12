@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/img/Backgrounds/Level1/bd_space_seamless_fl1.png" type="Texture" id=1]
+[ext_resource path="res://assets/img/Backgrounds/Level1/bg_space_seamless_fl2.png" type="Texture" id=2]
+[ext_resource path="res://assets/img/Backgrounds/Level1/bg_space_seamless.png" type="Texture" id=3]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float scroll_speed = 0;
+
+void fragment(){
+    vec2 shifteduv = UV;
+    shifteduv.x += TIME * scroll_speed;
+    vec4 color = textureLod(TEXTURE, shifteduv, 0.0);
+    COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/scroll_speed = 0.05
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 1 )
+shader_param/scroll_speed = 0.07
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 1 )
+shader_param/scroll_speed = 0.1
+
+[node name="Background" type="Node2D"]
+
+[node name="bg0" type="Sprite" parent="."]
+material = SubResource( 2 )
+position = Vector2( -1.19209e-07, 0 )
+scale = Vector2( 2.00156, 2 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="bg1" type="Sprite" parent="."]
+material = SubResource( 3 )
+scale = Vector2( 1.99999, 2 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="bg2" type="Sprite" parent="."]
+material = SubResource( 4 )
+scale = Vector2( 1.99999, 2 )
+texture = ExtResource( 2 )
+centered = false

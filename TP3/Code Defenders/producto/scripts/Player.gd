@@ -2,10 +2,10 @@ extends KinematicBody2D
 
 export (int) var health = 100
 
-const MASS = 2
-const MAX_SPEED = 500
-const ACCELERATION = 2000
-const DECCELERATION = 2000
+const MASS = 1
+const MAX_SPEED = 750
+const ACCELERATION = 1500
+const DECCELERATION = 1500
 
 var projectile = preload("res://Player_Projectile.tscn")
 var special_projectile = preload("res://Special_Projectile.tscn")
