@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Boss_Time.mp3-04b5954fb106654c3eb43a0a8e49a9b2.mp3str"
+
+[deps]
+
+source_file="res://art/Boss_Time.mp3"
+dest_files=[ "res://.import/Boss_Time.mp3-04b5954fb106654c3eb43a0a8e49a9b2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
