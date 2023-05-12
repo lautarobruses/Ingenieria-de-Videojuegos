@@ -21,7 +21,7 @@ animations = [ {
 "frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
 "loop": false,
 "name": "blow",
-"speed": 8.0
+"speed": 16.0
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
@@ -48,7 +48,6 @@ damage = 10
 rotation = -3.14159
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -62,6 +61,7 @@ one_shot = true
 autostart = true
 
 [node name="BlowTimer" type="Timer" parent="."]
+wait_time = 0.45
 one_shot = true
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
