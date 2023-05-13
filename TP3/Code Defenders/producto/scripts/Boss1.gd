@@ -1,18 +1,23 @@
 extends KinematicBody2D
 
 var projectile = preload("res://Boss_Projectile.tscn")
+onready var player = get_node("../Player")
 export (int) var health = 1000
 export (int) var damage = 45
 
 var canons = null
 var projectile_positions = []
 var shot_type: String
+var follow_target = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide()
-#	start()
-#	position = Vector2(1550, 360)
+	
+func _physics_process(_delta):
+	if (follow_target):
+		print(player.global_position)
+		look_at(player.global_position)
 
 func start():
 	show()
@@ -28,13 +33,23 @@ func stop():
 func change_shoot(type):
 	shot_type = type
 
+func set_target(t):
+	follow_target = t
+
 func emerge():
 	$AnimationPlayer.play("Emerge")
-#	$AnimationPlayer.queue("Shoot Target")
-	$AnimationPlayer.queue("Shoot Horizontal")
+	$AnimationPlayer.queue("Shoot Waiting-Horizontal")
 
 func first_phase():
-	$AnimationPlayer.play("Shoot Target")
+	$AnimationPlayer.play("Shoot Target-Horizontal")
+	$AnimationPlayer.queue("Charge R-L")
+
+func second_phase():
+	$AnimationPlayer.play("Shoot Horizontal-Waiting-Target")
+	
+func third_phase():
+	$AnimationPlayer.play("Change side")
+	$AnimationPlayer.queue("Assault")
 
 func shoot():
 	#find a random free canon
@@ -45,19 +60,14 @@ func shoot():
 	get_parent().add_child(new_projectile)
 	
 	projectile_positions.append(free_canon)
-	print(shot_type)
 	
-	print("0")
 	if (shot_type == "waiting"):
 		new_projectile.add_to_group("Waiting Shots")
 	else:
-		print("1")
 		yield(get_tree().create_timer(0.25), "timeout")
-		print("2")
 		if (shot_type == "horizontal"):
 			new_projectile.shoot_h()
 		elif (shot_type == "target"):
-			print("3")
 			new_projectile.shoot_target()
 
 	projectile_positions.remove(projectile_positions.find(free_canon))
@@ -74,8 +84,7 @@ func find_a_free_canon():
 
 func shoot_everything():
 	var shots = get_tree().get_nodes_in_group("Waiting Shots")
-	print("shoot_everything")
-	print(shot_type)
+	
 	if (shot_type == "horizontal"):
 		for shot in shots:
 			shot.shoot_h()

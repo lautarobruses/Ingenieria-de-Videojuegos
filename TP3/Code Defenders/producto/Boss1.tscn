@@ -1,26 +1,26 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/img/Bosses/boss1.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Boss1.gd" type="Script" id=2]
 [ext_resource path="res://animations/Aparicion.tres" type="Animation" id=3]
-[ext_resource path="res://animations/Cambiar lado.tres" type="Animation" id=4]
-[ext_resource path="res://animations/Embestir.tres" type="Animation" id=5]
+[ext_resource path="res://assets/music/623104_Bossfight---Milky-Ways.mp3" type="AudioStream" id=4]
 [ext_resource path="res://animations/Shoot fase.tres" type="Animation" id=6]
 [ext_resource path="res://Shield.tscn" type="PackedScene" id=7]
 
-[sub_resource type="Animation" id=16]
-resource_name = "Charge"
+[sub_resource type="Animation" id=20]
+resource_name = "Assault"
+length = 12.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 3.5, 4, 4.5, 5, 5.1, 6.5, 7, 8, 9.4, 10.6, 11 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1920, 540 ) ]
+"values": [ Vector2( -400, 360 ), Vector2( 0, 360 ), Vector2( -100, 360 ), Vector2( 2500, 360 ), Vector2( 2500, 760 ), Vector2( 1920, 760 ), Vector2( 2020, 760 ), Vector2( -500, 760 ), Vector2( -400, 360 ), Vector2( 0, 360 ), Vector2( -100, 360 ), Vector2( 2500, 360 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:rotation_degrees")
@@ -29,15 +29,29 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"update": 0,
-"values": [  ]
+"times": PoolRealArray( 0, 5, 7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 90.0, -90.0, 90.0 ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("Music")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 135.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=15]
-resource_name = "Shoot Horizontal"
-length = 10.0
+[sub_resource type="Animation" id=17]
+resource_name = "Change side"
+length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 2
@@ -45,10 +59,142 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 2320, 340 ), Vector2( 2270, 760 ), Vector2( 2220, 340 ), Vector2( 2170, 760 ), Vector2( 2120, 340 ), Vector2( 2070, 760 ), Vector2( 2020, 340 ), Vector2( 1970, 760 ), Vector2( 1920, 340 ), Vector2( 1920, 540 ), Vector2( 2320, 540 ) ]
+"values": [ Vector2( 2320, 760 ), Vector2( -400, 760 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -90.0, 90.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0.3, 0.3 ), Vector2( 1.5, 1.5 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 0.556863, 0.556863, 0.556863, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Shield:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CollisionPolygon2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "audio"
+tracks/6/path = NodePath("Music")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = false
+tracks/6/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 132.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "Charge R-L"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4, 3.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1920, 540 ), Vector2( 2120, 540 ), Vector2( 1000, 540 ), Vector2( 1000, 540 ), Vector2( 2500, 540 ) ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("Music")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 62.0,
+"start_offset": 57.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -90.0 ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "Shoot Horizontal-Waiting-Target"
+length = 22.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12.1, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2350, 340 ), Vector2( 2300, 760 ), Vector2( 2250, 340 ), Vector2( 2200, 760 ), Vector2( 2150, 340 ), Vector2( 2100, 760 ), Vector2( 2050, 340 ), Vector2( 2000, 760 ), Vector2( 1950, 340 ), Vector2( 1900, 760 ), Vector2( 1850, 340 ), Vector2( 1800, 540 ), Vector2( 1800, 540 ), Vector2( 1850, 760 ), Vector2( 1950, 760 ), Vector2( 1900, 340 ), Vector2( 2000, 340 ), Vector2( 2050, 760 ), Vector2( 2150, 760 ), Vector2( 2100, 340 ), Vector2( 2200, 340 ), Vector2( 2250, 540 ), Vector2( 2350, 540 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("ShootTimer")
@@ -57,7 +203,95 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 9 ),
+"times": PoolRealArray( 0, 11, 12.1, 20 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [ -1 ],
+"method": "start"
+}, {
+"args": [  ],
+"method": "stop"
+}, {
+"args": [ -1 ],
+"method": "start"
+}, {
+"args": [  ],
+"method": "stop"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 12.1, 20, 21.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [ "horizontal" ],
+"method": "change_shoot"
+}, {
+"args": [ "waiting" ],
+"method": "change_shoot"
+}, {
+"args": [ "horizontal" ],
+"method": "change_shoot"
+}, {
+"args": [  ],
+"method": "shoot_everything"
+} ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("Music")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 80.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0.3 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -90.0 ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "Shoot Waiting-Horizontal"
+length = 11.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2320, 340 ), Vector2( 2250, 760 ), Vector2( 2180, 340 ), Vector2( 2110, 760 ), Vector2( 2060, 340 ), Vector2( 1990, 760 ), Vector2( 1920, 340 ), Vector2( 1850, 760 ), Vector2( 1780, 340 ), Vector2( 1710, 540 ), Vector2( 1920, 540 ), Vector2( 2320, 540 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("ShootTimer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 11 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [ -1 ],
@@ -74,20 +308,37 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 9 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 11, 11.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "values": [ {
 "args": [ "waiting" ],
 "method": "change_shoot"
 }, {
 "args": [ "horizontal" ],
 "method": "change_shoot"
+}, {
+"args": [  ],
+"method": "shoot_everything"
 } ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("Music")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 5.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [node name="Boss1" type="KinematicBody2D"]
-position = Vector2( -1000, 540 )
-rotation = -1.5708
+position = Vector2( 2500, 360 )
+rotation = 1.5708
 scale = Vector2( 1.5, 1.5 )
 z_index = 1
 collision_layer = 2
@@ -100,12 +351,13 @@ health = 200
 damage = 50
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-"anims/Cambiar lado" = ExtResource( 4 )
-anims/Charge = SubResource( 16 )
-anims/Embestir = ExtResource( 5 )
+anims/Assault = SubResource( 20 )
+"anims/Change side" = SubResource( 17 )
+"anims/Charge R-L" = SubResource( 16 )
 anims/Emerge = ExtResource( 3 )
-"anims/Shoot Horizontal" = SubResource( 15 )
-"anims/Shoot Target" = ExtResource( 6 )
+"anims/Shoot Horizontal-Waiting-Target" = SubResource( 19 )
+"anims/Shoot Target-Horizontal" = ExtResource( 6 )
+"anims/Shoot Waiting-Horizontal" = SubResource( 15 )
 
 [node name="Shield" parent="." instance=ExtResource( 7 )]
 scale = Vector2( 2.47923, 1.93522 )
@@ -133,5 +385,8 @@ position = Vector2( -177, -104 )
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 0.25
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

@@ -32,7 +32,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 15.5, 34, 58.5, 80, 102, 133, 147, 158.5 ),
+"times": PoolRealArray( 16.5, 34, 58.5, 80, 102, 133, 147, 158.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -67,17 +67,20 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 16.5, 37 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 37, 80, 133 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "emerge"
 }, {
 "args": [  ],
-"method": "shoot_everything"
+"method": "first_phase"
 }, {
 "args": [  ],
-"method": "first_phase"
+"method": "second_phase"
+}, {
+"args": [  ],
+"method": "third_phase"
 } ]
 }
 
