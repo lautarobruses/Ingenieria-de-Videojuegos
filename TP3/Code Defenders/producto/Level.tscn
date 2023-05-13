@@ -32,8 +32,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 16.5, 34, 58.5, 80, 102, 133, 147, 158.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 16.5, 34, 58.5, 80, 102, 133, 147, 158.5, 184.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "fase_esbirros"
@@ -58,6 +58,9 @@ tracks/1/keys = {
 }, {
 "args": [  ],
 "method": "fin_fase_esbirros"
+}, {
+"args": [  ],
+"method": "game_over"
 } ]
 }
 tracks/2/type = "method"
@@ -67,8 +70,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 37, 80, 133 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 37, 80, 133, 159 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "emerge"
@@ -81,6 +84,9 @@ tracks/2/keys = {
 }, {
 "args": [  ],
 "method": "third_phase"
+}, {
+"args": [  ],
+"method": "final_phase"
 } ]
 }
 

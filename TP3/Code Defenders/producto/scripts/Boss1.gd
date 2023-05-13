@@ -50,6 +50,9 @@ func second_phase():
 func third_phase():
 	$AnimationPlayer.play("Change side")
 	$AnimationPlayer.queue("Assault")
+	
+func final_phase():
+	$AnimationPlayer.play("Shoot Waiting-Target-Everything")
 
 func shoot():
 	#find a random free canon
