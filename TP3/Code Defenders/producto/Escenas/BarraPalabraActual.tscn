@@ -1,9 +1,10 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Escenas/BarraPalabraActual.gd" type="Script" id=1]
-[ext_resource path="res://Escenas/Slot.gd" type="Script" id=2]
-[ext_resource path="res://Barra y slot/item_slot_default_background.png" type="Texture" id=3]
-[ext_resource path="res://Barra y slot/hotbar_background.png" type="Texture" id=4]
+[ext_resource path="res://scripts/BarraPalabraActual.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Slot.gd" type="Script" id=2]
+[ext_resource path="res://assets/img/Barra y slot/item_slot_default_background.png" type="Texture" id=3]
+[ext_resource path="res://assets/img/Barra y slot/hotbar_background.png" type="Texture" id=4]
+
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
