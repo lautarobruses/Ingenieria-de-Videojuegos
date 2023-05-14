@@ -22,8 +22,8 @@ func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		blow(true)
-		if collision.collider.has_method("special_hitted"):
-			collision.collider.special_hitted(configuration)
+		if collision.collider.has_method("special_condition"):
+			collision.collider.special_condition(configuration)
 	
 	$Component1.rotation += ROTATION_SPEED * delta
 	$Component2.rotation += ROTATION_SPEED * delta

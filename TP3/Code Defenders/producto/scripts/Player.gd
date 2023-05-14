@@ -10,7 +10,6 @@ const DECCELERATION = 1500
 var projectile = preload("res://Player_Projectile.tscn")
 var special_projectile = preload("res://Special_Projectile.tscn")
 var screen_size # Size of the game window.
-var invulnerability: bool = false
 var current_components = [1,2,3,4,5,6]
 
 var speed: float = 0
@@ -21,21 +20,23 @@ var motion = Vector2()
 var steering = Vector2()
 var direction = Vector2()
 
+var invulnerability: bool = false
+var isFrozen = true
+
 func _ready():
 	screen_size = get_viewport_rect().size
-#	hide()
 
 func _physics_process(delta):
-	move(delta)
+	if (!isFrozen):
+		move(delta)
+		if Input.is_action_just_pressed("shoot"):
+			shoot()
+		if Input.is_action_just_pressed("special_shoot"):
+			shoot_power()
 
-	if Input.is_action_just_pressed("shoot"):
-		shoot()
-	if Input.is_action_just_pressed("special_shoot"):
-		shoot_power()
-
-func start(pos):
-	position = pos
+func start():
 	show()
+	$AnimationPlayer.play("Start")
 
 func move(delta):
 	direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
@@ -100,6 +101,12 @@ func damage_player(damage):
 func hitted(damage):
 	damage_player(damage)
 	$CollisionPolygon2D.set_deferred("disabled", true)
+
+func freeze():
+	isFrozen = true
+
+func unfreeze():
+	isFrozen = false
 
 func _on_InvulnerableTimer_timeout():
 	$CollisionPolygon2D.set_deferred("disabled", false)

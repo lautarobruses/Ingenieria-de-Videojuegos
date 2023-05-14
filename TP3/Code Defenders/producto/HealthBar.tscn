@@ -1,8 +1,40 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/HealthBar.gd" type="Script" id=1]
 [ext_resource path="res://assets/img/Health Bar/Healt_Bar_Under.png" type="Texture" id=2]
 [ext_resource path="res://assets/img/Health Bar/Healt_Bar_Progress.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "disable"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureProgress:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 85.333, 85.333 ), Vector2( 85.333, -85.333 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "enable"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureProgress:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 85.333, -85.333 ), Vector2( 85.333, 85.333 ) ]
+}
 
 [node name="HealthBar" type="CanvasLayer"]
 layer = 10
@@ -11,11 +43,16 @@ transform = Transform2D( 0.75, 0, 0, 0.75, 0, 0 )
 script = ExtResource( 1 )
 max_value = 110
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/disable = SubResource( 1 )
+anims/enable = SubResource( 2 )
+
 [node name="TextureProgress" type="TextureProgress" parent="."]
-margin_left = 85.3333
-margin_top = 85.3333
+margin_left = 85.333
+margin_top = 85.333
 margin_right = 427.333
 margin_bottom = 155.333
+rect_scale = Vector2( 1.2002, 1.2002 )
 max_value = 110.0
 step = 10.0
 value = 60.0

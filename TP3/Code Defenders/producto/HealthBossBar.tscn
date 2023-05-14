@@ -1,0 +1,114 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/img/Boss Health Bar/Boss_HP_Bar.png" type="Texture" id=1]
+[ext_resource path="res://assets/img/Boss Health Bar/Boss_Name_Table.png" type="Texture" id=2]
+[ext_resource path="res://assets/img/Boss Health Bar/Boss_HP_Table.png" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/Roboto_Condensed/RobotoCondensed-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://scripts/HealthBar.gd" type="Script" id=5]
+
+[sub_resource type="Animation" id=2]
+resource_name = "disable"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 810, 75 ), Vector2( 810, -100 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureProgress:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 440, 50 ), Vector2( 440, -100 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "enable"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 810, -100 ), Vector2( 810, 75 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureProgress:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 440, -125 ), Vector2( 440, 50 ) ]
+}
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+use_filter = true
+font_data = ExtResource( 4 )
+
+[node name="HealthBossBar" type="CanvasLayer"]
+layer = 10
+script = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/disable = SubResource( 2 )
+anims/enable = SubResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -150.0
+margin_top = 75.0
+margin_right = 150.0
+margin_bottom = 125.001
+texture = ExtResource( 2 )
+
+[node name="BossName" type="Label" parent="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 6.0
+margin_right = -7.0
+margin_bottom = -8.0
+custom_fonts/font = SubResource( 1 )
+text = "BOSS BLOCK"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -520.0
+margin_top = 50.0
+margin_right = 520.0
+margin_bottom = 80.0
+step = 10.0
+value = 100.0
+rounded = true
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 1 )
+fill_mode = 6

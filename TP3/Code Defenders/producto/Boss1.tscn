@@ -34,13 +34,25 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 90.0, -90.0, 90.0 ]
 }
-tracks/2/type = "audio"
-tracks/2/path = NodePath("Music")
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionPolygon2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = false
+tracks/2/enabled = true
 tracks/2/keys = {
+"times": PoolRealArray( 0, 12 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("Music")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 136.0,
@@ -138,6 +150,35 @@ tracks/6/keys = {
 } ],
 "times": PoolRealArray( 0 )
 }
+tracks/7/type = "method"
+tracks/7/path = NodePath("Shield")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "disable"
+}, {
+"args": [  ],
+"method": "enable"
+} ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath(".:z_index")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
 
 [sub_resource type="Animation" id=16]
 resource_name = "Charge R-L"
@@ -166,13 +207,25 @@ tracks/1/keys = {
 "update": 0,
 "values": [ -90.0 ]
 }
-tracks/2/type = "audio"
-tracks/2/path = NodePath("Music")
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionPolygon2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = false
+tracks/2/enabled = true
 tracks/2/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("Music")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
 "clips": [ {
 "end_offset": 62.0,
 "start_offset": 57.0,
@@ -254,13 +307,25 @@ tracks/3/keys = {
 "update": 0,
 "values": [ -90.0 ]
 }
-tracks/4/type = "audio"
-tracks/4/path = NodePath("Music")
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionPolygon2D:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = false
+tracks/4/enabled = true
 tracks/4/keys = {
+"times": PoolRealArray( 0, 22 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("Music")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 80.0,
@@ -321,13 +386,25 @@ tracks/2/keys = {
 "method": "shoot_everything"
 } ]
 }
-tracks/3/type = "audio"
-tracks/3/path = NodePath("Music")
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionPolygon2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = false
+tracks/3/enabled = true
 tracks/3/keys = {
+"times": PoolRealArray( 0, 11.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "audio"
+tracks/4/path = NodePath("Music")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 5.0,
@@ -409,13 +486,25 @@ tracks/3/keys = {
 "update": 0,
 "values": [ -90.0 ]
 }
-tracks/4/type = "audio"
-tracks/4/path = NodePath("Music")
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionPolygon2D:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = false
+tracks/4/enabled = true
 tracks/4/keys = {
+"times": PoolRealArray( 0, 25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("Music")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 159.0,
@@ -425,17 +514,16 @@ tracks/4/keys = {
 }
 
 [node name="Boss1" type="KinematicBody2D"]
-position = Vector2( -1000, 540 )
+modulate = Color( 0.556863, 0.556863, 0.556863, 1 )
+position = Vector2( 2500, 540 )
 rotation = -1.5708
-scale = Vector2( 1.5, 1.5 )
-z_index = 1
+scale = Vector2( 0.3, 0.3 )
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
-health = 200
 damage = 50
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -449,6 +537,7 @@ anims/Emerge = ExtResource( 3 )
 "anims/Shoot Waiting-Target-Everything" = SubResource( 21 )
 
 [node name="Shield" parent="." instance=ExtResource( 7 )]
+visible = false
 scale = Vector2( 2.47923, 1.93522 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
@@ -456,6 +545,7 @@ visible = false
 rotation = 0.261799
 build_mode = 1
 polygon = PoolVector2Array( -85.0908, -213.243, -33.8967, -226.96, 4.03823, -178.114, 220.346, -124.264, 234.664, -109.466, 280.475, 61.5034, 265.954, 92.3115, 218.504, 112.273, 197.942, 101.218, 182.085, 38.1738, 147.658, 68.1039, 131.931, 113.729, 126.556, 197.991, 119.157, 205.15, 88.2473, 213.432, 81.6753, 212.088, 70.9622, 195.288, 36.1889, 204.605, 36.018, 223.286, 30.2918, 228.962, -0.61784, 237.244, -9.38052, 235.451, -56.8732, 166.389, -93.5647, 133.775, -137.119, 125.775, -131.42, 204.999, -183.201, 212.662, -207.696, 198.52, -212.147, 193.501, -257.699, 23.4981, -254.63, 4.0409, -91.3296, -151.525 )
+disabled = true
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -478,4 +568,5 @@ wait_time = 0.25
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 
+[connection signal="broken" from="Shield" to="." method="_on_Shield_broken"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

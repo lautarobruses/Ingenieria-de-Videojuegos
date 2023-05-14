@@ -1,8 +1,10 @@
 extends KinematicBody2D
 
+signal broken_shield
+
 var projectile = preload("res://Boss_Projectile.tscn")
 onready var player = get_node("../Player")
-export (int) var health = 1000
+export (int) var health = 200
 export (int) var damage = 45
 
 var canons = null
@@ -104,3 +106,6 @@ func damage_boss(damage_hitted):
 
 func _on_ShootTimer_timeout():
 	shoot()
+
+func _on_Shield_broken():
+	emit_signal("broken_shield")

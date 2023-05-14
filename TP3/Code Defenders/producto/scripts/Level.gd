@@ -15,7 +15,7 @@ func start_level():
 	pass
 
 func set_player():
-	$Player.start(Vector2(960,540))
+	$Player.start()
 
 func set_boss():
 	$Boss1.start()
@@ -29,3 +29,10 @@ func fase_esbirros():
 	
 func fin_fase_esbirros():
 	pass
+
+func by_defeating_boss():
+	get_tree().quit()
+	pass 
+	
+func _on_Boss_broken_shield():
+	$BossHealthBar.start()
