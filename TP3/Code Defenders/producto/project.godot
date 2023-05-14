@@ -8,6 +8,28 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "TipoNaveDisparo",
+"language": "GDScript",
+"path": "res://scripts/TipoNaveDisparo.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "TipoNaveSimple",
+"language": "GDScript",
+"path": "res://scripts/TipoNave.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "disparo",
+"language": "GDScript",
+"path": "res://scripts/misilJugador.gd"
+} ]
+_global_script_class_icons={
+"TipoNaveDisparo": "",
+"TipoNaveSimple": "",
+"disparo": ""
+}
+
 [application]
 
 config/name="Code Defenders"

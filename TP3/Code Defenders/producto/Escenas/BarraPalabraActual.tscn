@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Escenas/BarraPalabraActual.gd" type="Script" id=1]
+[ext_resource path="res://Escenas/Slot.gd" type="Script" id=2]
+[ext_resource path="res://Barra y slot/item_slot_default_background.png" type="Texture" id=3]
+[ext_resource path="res://Barra y slot/hotbar_background.png" type="Texture" id=4]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 18, 18 )
+
+[node name="Barra" type="Node2D"]
+position = Vector2( 479, 531 )
+script = ExtResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 160.0
+margin_bottom = 42.0
+custom_constants/hseparation = 2
+columns = 8
+
+[node name="Slot1" type="Panel" parent="GridContainer"]
+material = SubResource( 1 )
+margin_right = 18.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 2 )
+script = ExtResource( 2 )
+
+[node name="Slot2" type="Panel" parent="GridContainer"]
+material = SubResource( 1 )
+margin_left = 20.0
+margin_right = 38.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 2 )
+script = ExtResource( 2 )
+
+[node name="Slot3" type="Panel" parent="GridContainer"]
+material = SubResource( 1 )
+margin_left = 40.0
+margin_right = 58.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 2 )
+script = ExtResource( 2 )
+
+[node name="Slot4" type="Panel" parent="GridContainer"]
+material = SubResource( 1 )
+margin_left = 60.0
+margin_right = 78.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 2 )
+script = ExtResource( 2 )
+
+[node name="Slot5" type="Panel" parent="GridContainer"]
+material = SubResource( 1 )
+margin_left = 80.0
+margin_right = 98.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 2 )
+script = ExtResource( 2 )
+
+[node name="Slot6" type="Panel" parent="GridContainer"]
+material = SubResource( 1 )
+margin_left = 100.0
+margin_right = 118.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 2 )
+script = ExtResource( 2 )
+
+[node name="Slot7" type="Panel" parent="GridContainer"]
+material = SubResource( 1 )
+margin_left = 120.0
+margin_right = 138.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 2 )
+script = ExtResource( 2 )
+
+[node name="Slot8" type="Panel" parent="GridContainer"]
+material = SubResource( 1 )
+margin_left = 140.0
+margin_right = 158.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 2 )
+script = ExtResource( 2 )

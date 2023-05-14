@@ -1,0 +1,102 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://fuegoN2/exhaust4.png" type="Texture" id=1]
+[ext_resource path="res://fuegoN2/exhaust3.png" type="Texture" id=2]
+[ext_resource path="res://EnemigosT1.gd" type="Script" id=3]
+[ext_resource path="res://fuegoN2/exhaust2.png" type="Texture" id=4]
+[ext_resource path="res://fuegoN2/exhaust1.png" type="Texture" id=5]
+[ext_resource path="res://Naves/Ship2.png" type="Texture" id=6]
+[ext_resource path="res://fuegoN1/exhaust1.png" type="Texture" id=7]
+[ext_resource path="res://fuegoN1/exhaust2.png" type="Texture" id=8]
+[ext_resource path="res://Ship1.png" type="Texture" id=9]
+[ext_resource path="res://fuegoN1/exhaust3.png" type="Texture" id=10]
+[ext_resource path="res://fuegoN1/exhaust4.png" type="Texture" id=11]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "Explocion",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "normal",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "fuego",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 11.0
+height = 40.0
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "Explosion",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "Normal",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 16.0
+height = 40.0
+
+[node name="Main" type="Node2D"]
+
+[node name="EnemigosT1" type="KinematicBody2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="NaveUno" type="KinematicBody2D" parent="EnemigosT1"]
+
+[node name="nave" type="AnimatedSprite" parent="EnemigosT1/NaveUno"]
+position = Vector2( 529, 74 )
+frames = SubResource( 1 )
+animation = "normal"
+
+[node name="turbo" type="AnimatedSprite" parent="EnemigosT1/NaveUno"]
+position = Vector2( 480, 73 )
+scale = Vector2( 0.796875, 0.859375 )
+frames = SubResource( 2 )
+animation = "fuego"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemigosT1/NaveUno"]
+position = Vector2( 529, 73 )
+rotation = 1.5708
+shape = SubResource( 3 )
+
+[node name="NaveDos" type="KinematicBody2D" parent="EnemigosT1"]
+position = Vector2( 138, 67 )
+
+[node name="nave" type="AnimatedSprite" parent="EnemigosT1/NaveDos"]
+frames = SubResource( 4 )
+animation = "Normal"
+
+[node name="turbo" type="AnimatedSprite" parent="EnemigosT1/NaveDos"]
+position = Vector2( -58, 0 )
+frames = SubResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemigosT1/NaveDos"]
+position = Vector2( -3, 0 )
+rotation = 1.5708
+shape = SubResource( 6 )
