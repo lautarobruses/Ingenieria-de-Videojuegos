@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 signal broken
 
+onready var historial = get_parent().get_parent().get_node("Historial")
+
 const COLOR_COMPONENT_1 = "233705"
 const COLOR_COMPONENT_2 = "25121f"
 const COLOR_COMPONENT_3 = "bd3629"
@@ -101,6 +103,7 @@ func break_shield():
 func special_condition(configuration):
 	var same_configuration = true
 	
+	#historial.setGolpe()
 	if !configuration.empty():
 		for component in configuration:
 			if !current_configuration.has(component):

@@ -113,10 +113,10 @@ func _on_TiempoParado_timeout():
 	
 func salirDeLaPantalla():
 	salirDeLaPantalla=1
-	if (position.distance_to(Vector2(1125,-75)) < position.distance_to(Vector2(1125, 650))):
-		objetivo = Vector2(1125,-75)
+	if (position.distance_to(Vector2(2000,-40)) < position.distance_to(Vector2(2000,1080))):
+		objetivo = Vector2(2000,-40)
 	else:
-		objetivo = Vector2(1125, 650)
+		objetivo = Vector2(2000,1080)
 
 
 func _on_VisibilityNotifier2D_screen_exited():

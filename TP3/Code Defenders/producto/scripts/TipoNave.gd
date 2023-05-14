@@ -41,7 +41,7 @@ func play(animacion):
 	
 func salirDeLaPantalla():
 	salirDeLaPantalla=1
-	if (position.distance_to(Vector2(1300,-75)) < position.distance_to(Vector2(1300,795))):
-		objetivo = Vector2(1300,-75)
+	if (position.distance_to(Vector2(2000,-40)) < position.distance_to(Vector2(2000,1080))):
+		objetivo = Vector2(2000,-40)
 	else:
-		objetivo = Vector2(1300, 795)
+		objetivo = Vector2(2000,1080)

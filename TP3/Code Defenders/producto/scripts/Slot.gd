@@ -4,15 +4,15 @@ extends Panel
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var default_tex = preload("res://Barra y slot/item_slot_default_background.png")
+var default_tex = preload("res://assets/img/Barra y slot/item_slot_default_background.png")
 var default_style: StyleBoxTexture = null
 
-var texturaNaveUno = preload("res://TexturasPrueba/NaveUno_FlatStyle.tres")
-var texturaNaveDos = preload("res://TexturasPrueba/NaveDos_FlatStyle.tres")
-var texturaNaveTres = preload("res://TexturasPrueba/Tes_Style.tres")
-var texturaNaveCuatro = preload("res://TexturasPrueba/NaveCuatro_FlatStyle.tres")
-var texturaNaveCinco = preload("res://TexturasPrueba/NaveCinco_FlatStyle.tres")
-var texturaNaveSeis = preload("res://TexturasPrueba/NaveSeis_FlatStyle.tres")
+var texturaNaveUno = preload("res://assets/img/TexturasPrueba/NaveUno_FlatStyle.tres")
+var texturaNaveDos = preload("res://assets/img/TexturasPrueba/NaveDos_FlatStyle.tres")
+var texturaNaveTres = preload("res://assets/img/TexturasPrueba/Tes_Style.tres")
+var texturaNaveCuatro = preload("res://assets/img/TexturasPrueba/NaveCuatro_FlatStyle.tres")
+var texturaNaveCinco = preload("res://assets/img/TexturasPrueba/NaveCinco_FlatStyle.tres")
+var texturaNaveSeis = preload("res://assets/img/TexturasPrueba/NaveSeis_FlatStyle.tres")
 
 enum TipoNave {
 	UNO,
