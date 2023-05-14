@@ -1,8 +1,10 @@
-[gd_resource type="Animation" format=2]
+[gd_resource type="Animation" load_steps=2 format=2]
+
+[ext_resource path="res://assets/music/623104_Bossfight---Milky-Ways.mp3" type="AudioStream" id=1]
 
 [resource]
-resource_name = "Shoot fase"
-length = 30.0
+resource_name = "Shoot Target-Horizontal"
+length = 20.0
 tracks/0/type = "method"
 tracks/0/path = NodePath("ShootTimer")
 tracks/0/interp = 1
@@ -10,7 +12,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 29.5 ),
+"times": PoolRealArray( 0.5, 19 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [ -1 ],
@@ -19,4 +21,71 @@ tracks/0/keys = {
 "args": [  ],
 "method": "stop"
 } ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5, 11.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "target" ],
+"method": "change_shoot"
+}, {
+"args": [ "horizontal" ],
+"method": "change_shoot"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 10.1, 11.5, 12.1, 12.8, 14, 14.7, 15.4, 16.5, 17.3, 18, 19, 20 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2320, 540 ), Vector2( 1920, 540 ), Vector2( 1500, 540 ), Vector2( 1920, 540 ), Vector2( 1920, 760 ), Vector2( 1920, 340 ), Vector2( 1920, 760 ), Vector2( 1920, 340 ), Vector2( 1920, 740 ), Vector2( 1920, 340 ), Vector2( 1920, 740 ), Vector2( 1920, 340 ), Vector2( 1920, 740 ), Vector2( 1920, 540 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -90.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionPolygon2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 20 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("Music")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 37.0,
+"stream": ExtResource( 1 )
+} ],
+"times": PoolRealArray( 0 )
 }

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/deflector_shield.mp3-557ffc2bb8502fdc4c791c9b60107c37.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Shield/deflector_shield.mp3"
+dest_files=[ "res://.import/deflector_shield.mp3-557ffc2bb8502fdc4c791c9b60107c37.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

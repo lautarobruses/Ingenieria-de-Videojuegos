@@ -11,13 +11,13 @@ config_version=4
 [application]
 
 config/name="Code Defenders"
+run/main_scene="res://Level.tscn"
 config/icon="res://assets/img/Ship_Main_Icon.png"
 
 [display]
 
 window/size/width=1920
 window/size/height=1080
-window/size/fullscreen=true
 
 [gui]
 

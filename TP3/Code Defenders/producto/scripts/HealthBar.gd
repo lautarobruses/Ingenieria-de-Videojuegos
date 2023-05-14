@@ -2,24 +2,38 @@ extends CanvasLayer
 
 signal dead
 
-export (NodePath) var player_node
+export (NodePath) var target_node
 export (int) var max_value
-var player = preload("res://Player.tscn")
+onready var target = get_node(target_node)
+
+export (bool) var isEnable
 
 func _ready():
 #	hide()
 	pass
 
 func _process(_delta):
-#	$TextureProgress.value = player.health
-	if ($TextureProgress.value == $TextureProgress.min_value):
-		emit_signal("dead")
-		stop()
+	if (isEnable):
+		$TextureProgress.value = target.health
+		if ($TextureProgress.value <= $TextureProgress.min_value):
+			stop()
 
 func start():
-	$TextureProgress.value = max_value
 	visible = true
+	$TextureProgress.max_value = max_value
+	$AnimationPlayer.play("enable")
+	if (!isEnable):
+		isEnable = true
 
 func stop():
-	visible = false
+	isEnable = false
+	$AnimationPlayer.play("disable")
+	yield(get_tree().create_timer(2.0), "timeout")
+	emit_signal("dead")
 	queue_free()
+
+func show():
+	$AnimationPlayer.play("enable")
+	
+func hide():
+	$AnimationPlayer.play("disable")

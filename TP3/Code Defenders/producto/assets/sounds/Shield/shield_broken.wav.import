@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/deflector_shield.wav-584765cd80f6cf082e1f7a89c6df583b.sample"
+path="res://.import/shield_broken.wav-374582e9b9dfbf6205d0e7809b5d9192.sample"
 
 [deps]
 
-source_file="res://assets/sounds/Shield/deflector_shield.wav"
-dest_files=[ "res://.import/deflector_shield.wav-584765cd80f6cf082e1f7a89c6df583b.sample" ]
+source_file="res://assets/sounds/Shield/shield_broken.wav"
+dest_files=[ "res://.import/shield_broken.wav-374582e9b9dfbf6205d0e7809b5d9192.sample" ]
 
 [params]
 

@@ -20,7 +20,7 @@ animations = [ {
 "frames": [ null, ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 7 ) ],
 "loop": false,
 "name": "charging",
-"speed": 6.0
+"speed": 10.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 9 ) ],
 "loop": true,
@@ -35,13 +35,14 @@ z_index = 1
 collision_layer = 8
 collision_mask = 5
 script = ExtResource( 8 )
-speed = 500
-damage = 20
+speed = 750
+damage = 10
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "blow"
-frame = 4
+frame = 1
+speed_scale = 2.0
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
