@@ -1,6 +1,71 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/img/Main Menu/background.jpg" type="Texture" id=1]
+[ext_resource path="res://assets/img/Level Menu/Forward_BTN.png" type="Texture" id=2]
+[ext_resource path="res://assets/img/Level Menu/Window.png" type="Texture" id=3]
+[ext_resource path="res://assets/img/Level Menu/Backward_BTN.png" type="Texture" id=4]
+[ext_resource path="res://assets/img/Level Menu/Star_01.png" type="Texture" id=5]
+[ext_resource path="res://assets/img/Level Menu/Star_03.png" type="Texture" id=6]
+[ext_resource path="res://assets/img/Level Menu/Play_BTN.png" type="Texture" id=7]
+[ext_resource path="res://assets/img/Level Menu/Close_BTN.png" type="Texture" id=8]
+[ext_resource path="res://assets/img/Level Menu/Info_BTN.png" type="Texture" id=9]
+[ext_resource path="res://assets/fonts/ethnocentric/ethnocentric rg.otf" type="DynamicFontData" id=10]
+[ext_resource path="res://LevelMenu.gd" type="Script" id=11]
+[ext_resource path="res://Transition.tscn" type="PackedScene" id=13]
+
+[sub_resource type="Animation" id=7]
+resource_name = "Slide Window Backward"
+tracks/0/type = "value"
+tracks/0/path = NodePath("PreviousWindow:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1920, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("NextWindow:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -1920, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Slide Window Forward"
+tracks/0/type = "value"
+tracks/0/path = NodePath("PreviousWindow:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1920, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("NextWindow:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( -1920, 0 ), Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -18,12 +83,230 @@ void fragment(){
 shader = SubResource( 1 )
 shader_param/scroll_speed = 0.01
 
+[sub_resource type="DynamicFont" id=8]
+size = 48
+font_data = ExtResource( 10 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "achived",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "empty",
+"speed": 5.0
+} ]
+
 [node name="LevelMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 11 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/Slide Window Backward" = SubResource( 7 )
+"anims/Slide Window Forward" = SubResource( 9 )
 
 [node name="Background" type="Sprite" parent="."]
 material = SubResource( 2 )
 scale = Vector2( 0.426667, 0.24 )
 texture = ExtResource( 1 )
 centered = false
+
+[node name="PreviousWindow" type="Control" parent="."]
+margin_right = 1919.97
+margin_bottom = 1080.0
+
+[node name="PreviousWindow" type="Sprite" parent="PreviousWindow"]
+position = Vector2( 960, 540 )
+scale = Vector2( 1, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="PreviousLevelName" type="Label" parent="PreviousWindow"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -400.0
+margin_top = 128.0
+margin_right = 392.0
+margin_bottom = 206.0
+custom_fonts/font = SubResource( 8 )
+text = "Codigos Bloque"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="PStar1" type="AnimatedSprite" parent="PreviousWindow"]
+position = Vector2( 728, 496 )
+scale = Vector2( 0.8, 0.8 )
+frames = SubResource( 3 )
+animation = "empty"
+
+[node name="PStar2" type="AnimatedSprite" parent="PreviousWindow"]
+position = Vector2( 960, 376 )
+scale = Vector2( 0.8, 0.8 )
+frames = SubResource( 3 )
+animation = "empty"
+
+[node name="PStar3" type="AnimatedSprite" parent="PreviousWindow"]
+position = Vector2( 1192, 496 )
+scale = Vector2( 0.8, 0.8 )
+frames = SubResource( 3 )
+animation = "empty"
+
+[node name="PInfoSprite" type="Sprite" parent="PreviousWindow"]
+visible = false
+position = Vector2( 644, 715 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="PPlaySprite" type="Sprite" parent="PreviousWindow"]
+visible = false
+position = Vector2( 877, 715 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="PCloseSprite" type="Sprite" parent="PreviousWindow"]
+visible = false
+position = Vector2( 1109, 714 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 8 )
+centered = false
+
+[node name="NextWindow" type="Control" parent="."]
+margin_left = -1920.0
+margin_bottom = 1080.0
+
+[node name="NextWindow" type="Sprite" parent="NextWindow"]
+position = Vector2( 966, 540 )
+scale = Vector2( 1, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="NextLevelName" type="Label" parent="NextWindow"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -394.0
+margin_top = 128.0
+margin_right = 398.005
+margin_bottom = 206.0
+custom_fonts/font = SubResource( 8 )
+text = "Codigos Bloque"
+align = 1
+valign = 1
+
+[node name="NStar1" type="AnimatedSprite" parent="NextWindow"]
+position = Vector2( 730.8, 496 )
+scale = Vector2( 0.8, 0.8 )
+frames = SubResource( 3 )
+animation = "empty"
+
+[node name="NStar2" type="AnimatedSprite" parent="NextWindow"]
+position = Vector2( 962.8, 376 )
+scale = Vector2( 0.8, 0.8 )
+frames = SubResource( 3 )
+animation = "empty"
+
+[node name="NStar3" type="AnimatedSprite" parent="NextWindow"]
+position = Vector2( 1194.8, 496 )
+scale = Vector2( 0.8, 0.8 )
+frames = SubResource( 3 )
+animation = "empty"
+
+[node name="NInfoSprite" type="Sprite" parent="NextWindow"]
+visible = false
+position = Vector2( 644, 715 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="NPlaySprite" type="Sprite" parent="NextWindow"]
+visible = false
+position = Vector2( 877, 715 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="NCloseSprite" type="Sprite" parent="NextWindow"]
+visible = false
+position = Vector2( 1109, 714 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 8 )
+centered = false
+
+[node name="ForwardButton" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -448.0
+margin_top = -108.0
+margin_right = -226.0
+margin_bottom = 108.0
+rect_scale = Vector2( 0.8, 0.8 )
+focus_mode = 0
+icon = ExtResource( 2 )
+flat = true
+icon_align = 1
+
+[node name="BackwardButton" type="Button" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 272.0
+margin_top = -108.0
+margin_right = 494.0
+margin_bottom = 108.0
+rect_scale = Vector2( 0.8, 0.8 )
+focus_mode = 0
+icon = ExtResource( 4 )
+flat = true
+
+[node name="InfoButton" type="Button" parent="."]
+margin_left = 640.0
+margin_top = 712.0
+margin_right = 862.0
+margin_bottom = 928.0
+rect_scale = Vector2( 0.8, 0.8 )
+focus_mode = 0
+icon = ExtResource( 9 )
+flat = true
+
+[node name="PlayButton" type="Button" parent="."]
+margin_left = 872.0
+margin_top = 712.0
+margin_right = 1094.0
+margin_bottom = 928.0
+rect_scale = Vector2( 0.8, 0.8 )
+focus_mode = 0
+icon = ExtResource( 7 )
+flat = true
+
+[node name="CloseButton" type="Button" parent="."]
+margin_left = 1104.0
+margin_top = 712.0
+margin_right = 1326.0
+margin_bottom = 928.0
+rect_scale = Vector2( 0.8, 0.8 )
+focus_mode = 0
+icon = ExtResource( 8 )
+flat = true
+
+[node name="HSlider" type="HSlider" parent="."]
+visible = false
+margin_right = 16.0
+margin_bottom = 16.0
+min_value = 1.0
+max_value = 4.0
+value = 1.0
+rounded = true
+scrollable = false
+
+[node name="Transition" parent="." instance=ExtResource( 13 )]
+
+[connection signal="pressed" from="ForwardButton" to="." method="_on_ForwardButton_pressed"]
+[connection signal="pressed" from="BackwardButton" to="." method="_on_BackwardButton_pressed"]
+[connection signal="pressed" from="InfoButton" to="." method="_on_InfoButton_pressed"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_CloseButton_pressed"]
