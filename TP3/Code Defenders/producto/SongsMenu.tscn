@@ -1,0 +1,365 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://assets/img/Main Menu/background.jpg" type="Texture" id=1]
+[ext_resource path="res://assets/img/Controls Menu/Back_BTN.png" type="Texture" id=2]
+[ext_resource path="res://assets/img/Controls Menu/Back_BTN_active.png" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/ethnocentric/ethnocentric rg.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/img/Songs Menu/Window_2.png" type="Texture" id=5]
+[ext_resource path="res://scripts/SongsMenu.gd" type="Script" id=6]
+[ext_resource path="res://assets/img/Songs Menu/Music_BTN.png" type="Texture" id=7]
+[ext_resource path="res://assets/img/Songs Menu/Music_BTN_active.png" type="Texture" id=8]
+[ext_resource path="res://assets/img/Songs Menu/Info_BTN.png" type="Texture" id=9]
+[ext_resource path="res://assets/img/Songs Menu/Info_BTN_active.png" type="Texture" id=10]
+
+[sub_resource type="Shader" id=5]
+code = "shader_type canvas_item;
+
+uniform float scroll_speed = 0;
+
+void fragment(){
+    vec2 shifteduv = UV;
+    shifteduv.x += TIME * scroll_speed;
+    vec4 color = textureLod(TEXTURE, shifteduv, 0.0);
+    COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 5 )
+shader_param/scroll_speed = 0.01
+
+[sub_resource type="DynamicFont" id=7]
+size = 64
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 32
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=9]
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="ButtonGroup" id=10]
+resource_name = "PlayButtons"
+
+[node name="SongsMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -312, -16 )
+script = ExtResource( 6 )
+
+[node name="Background" type="Sprite" parent="."]
+material = SubResource( 6 )
+scale = Vector2( 0.426667, 0.24 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Window" type="Sprite" parent="."]
+position = Vector2( 960, 540 )
+scale = Vector2( 0.75, 0.7 )
+texture = ExtResource( 5 )
+
+[node name="Controls" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -400.0
+margin_top = 64.0
+margin_right = 392.0
+margin_bottom = 142.0
+custom_colors/font_color = Color( 0.929412, 0.960784, 0.972549, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = SubResource( 7 )
+text = "Songs"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="BackButton" type="TextureButton" parent="."]
+margin_left = 1688.0
+margin_top = 64.0
+margin_right = 1910.0
+margin_bottom = 280.0
+rect_scale = Vector2( 0.75, 0.75 )
+texture_normal = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
+
+[node name="Container" type="Control" parent="."]
+margin_left = 615.0
+margin_top = 155.0
+margin_right = 1305.0
+margin_bottom = 1009.0
+
+[node name="main_song" type="Control" parent="Container"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="MainSongTitle" type="Label" parent="Container/main_song"]
+margin_left = 33.0
+margin_top = 40.0
+margin_right = 323.0
+margin_bottom = 123.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = SubResource( 8 )
+text = "Starship 
+Showdown"
+valign = 1
+
+[node name="MainAuthor" type="Label" parent="Container/main_song"]
+margin_left = 33.0
+margin_top = 123.0
+margin_right = 194.0
+margin_bottom = 144.0
+custom_colors/font_color = Color( 1, 0.815686, 0.305882, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = SubResource( 9 )
+text = "by Bossfight"
+
+[node name="MainPlayButton" type="TextureButton" parent="Container/main_song"]
+margin_left = 545.0
+margin_top = 53.0
+margin_right = 755.0
+margin_bottom = 263.0
+rect_scale = Vector2( 0.4, 0.4 )
+focus_mode = 0
+toggle_mode = true
+pressed = true
+enabled_focus_mode = 0
+group = SubResource( 10 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 8 )
+
+[node name="MainInfoButton" type="TextureButton" parent="Container/main_song"]
+margin_left = 449.0
+margin_top = 53.0
+margin_right = 659.0
+margin_bottom = 263.0
+rect_scale = Vector2( 0.4, 0.4 )
+texture_normal = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
+
+[node name="Song1" type="Control" parent="Container"]
+margin_left = 1.0
+margin_top = 157.0
+margin_right = 41.0
+margin_bottom = 197.0
+
+[node name="SongTitle1" type="Label" parent="Container/Song1"]
+margin_left = 33.0
+margin_top = 61.0
+margin_right = 323.0
+margin_bottom = 101.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = SubResource( 8 )
+text = "Milky Ways"
+valign = 1
+
+[node name="Author1" type="Label" parent="Container/Song1"]
+margin_left = 33.0
+margin_top = 101.0
+margin_right = 194.0
+margin_bottom = 122.0
+custom_colors/font_color = Color( 1, 0.815686, 0.305882, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = SubResource( 9 )
+text = "by Bossfight"
+
+[node name="PlayButton1" type="TextureButton" parent="Container/Song1"]
+margin_left = 545.0
+margin_top = 53.0
+margin_right = 755.0
+margin_bottom = 263.0
+rect_scale = Vector2( 0.4, 0.4 )
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+group = SubResource( 10 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 8 )
+
+[node name="InfoButton1" type="TextureButton" parent="Container/Song1"]
+margin_left = 449.0
+margin_top = 53.0
+margin_right = 659.0
+margin_bottom = 263.0
+rect_scale = Vector2( 0.4, 0.4 )
+texture_normal = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
+
+[node name="Song2" type="Control" parent="Container"]
+margin_left = 1.0
+margin_top = 157.0
+margin_right = 41.0
+margin_bottom = 197.0
+
+[node name="SongTitle2" type="Label" parent="Container/Song2"]
+margin_left = 33.0
+margin_top = 221.0
+margin_right = 331.0
+margin_bottom = 261.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = SubResource( 8 )
+text = "Bitsplosion"
+valign = 1
+
+[node name="Author2" type="Label" parent="Container/Song2"]
+margin_left = 33.0
+margin_top = 261.0
+margin_right = 201.0
+margin_bottom = 282.0
+custom_colors/font_color = Color( 1, 0.815686, 0.305882, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = SubResource( 9 )
+text = "by JACK-Zer0!"
+
+[node name="PlayButton2" type="TextureButton" parent="Container/Song2"]
+margin_left = 545.0
+margin_top = 213.0
+margin_right = 755.0
+margin_bottom = 423.0
+rect_scale = Vector2( 0.4, 0.4 )
+toggle_mode = true
+group = SubResource( 10 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 8 )
+
+[node name="InfoButton2" type="TextureButton" parent="Container/Song2"]
+margin_left = 449.0
+margin_top = 213.0
+margin_right = 659.0
+margin_bottom = 423.0
+rect_scale = Vector2( 0.4, 0.4 )
+texture_normal = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
+
+[node name="Song3" type="Control" parent="Container"]
+margin_left = 1.0
+margin_top = 157.0
+margin_right = 41.0
+margin_bottom = 197.0
+
+[node name="SongTitle3" type="Label" parent="Container/Song3"]
+margin_left = 33.0
+margin_top = 381.0
+margin_right = 323.0
+margin_bottom = 421.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = SubResource( 8 )
+text = "Milky Ways"
+valign = 1
+
+[node name="Author3" type="Label" parent="Container/Song3"]
+margin_left = 33.0
+margin_top = 421.0
+margin_right = 194.0
+margin_bottom = 442.0
+custom_colors/font_color = Color( 1, 0.815686, 0.305882, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = SubResource( 9 )
+text = "by Bossfight"
+
+[node name="PlayButton3" type="TextureButton" parent="Container/Song3"]
+margin_left = 545.0
+margin_top = 373.0
+margin_right = 755.0
+margin_bottom = 583.0
+rect_scale = Vector2( 0.4, 0.4 )
+toggle_mode = true
+group = SubResource( 10 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 8 )
+
+[node name="InfoButton3" type="TextureButton" parent="Container/Song3"]
+margin_left = 449.0
+margin_top = 373.0
+margin_right = 659.0
+margin_bottom = 583.0
+rect_scale = Vector2( 0.4, 0.4 )
+texture_normal = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
+
+[node name="Song4" type="Control" parent="Container"]
+margin_left = 1.0
+margin_top = 157.0
+margin_right = 41.0
+margin_bottom = 197.0
+
+[node name="SongTitle4" type="Label" parent="Container/Song4"]
+margin_left = 33.0
+margin_top = 549.0
+margin_right = 323.0
+margin_bottom = 589.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = SubResource( 8 )
+text = "Milky Ways"
+valign = 1
+
+[node name="Author4" type="Label" parent="Container/Song4"]
+margin_left = 33.0
+margin_top = 589.0
+margin_right = 194.0
+margin_bottom = 610.0
+custom_colors/font_color = Color( 1, 0.815686, 0.305882, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = SubResource( 9 )
+text = "by Bossfight"
+
+[node name="PlayButton4" type="TextureButton" parent="Container/Song4"]
+margin_left = 545.0
+margin_top = 533.0
+margin_right = 755.0
+margin_bottom = 743.0
+rect_scale = Vector2( 0.4, 0.4 )
+toggle_mode = true
+group = SubResource( 10 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 8 )
+
+[node name="InfoButton4" type="TextureButton" parent="Container/Song4"]
+margin_left = 449.0
+margin_top = 533.0
+margin_right = 659.0
+margin_bottom = 743.0
+rect_scale = Vector2( 0.4, 0.4 )
+texture_normal = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
+
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="Container/main_song/MainPlayButton" to="." method="_on_MainPlayButton_pressed"]
+[connection signal="pressed" from="Container/main_song/MainInfoButton" to="." method="_on_MainInfoButton_pressed"]
+[connection signal="pressed" from="Container/Song1/PlayButton1" to="." method="_on_PlayButton1_pressed"]
+[connection signal="pressed" from="Container/Song1/InfoButton1" to="." method="_on_InfoButton1_pressed"]
+[connection signal="pressed" from="Container/Song2/PlayButton2" to="." method="_on_PlayButton2_pressed"]
+[connection signal="pressed" from="Container/Song2/InfoButton2" to="." method="_on_InfoButton2_pressed"]
+[connection signal="pressed" from="Container/Song3/PlayButton3" to="." method="_on_PlayButton3_pressed"]
+[connection signal="pressed" from="Container/Song3/InfoButton3" to="." method="_on_InfoButton3_pressed"]
+[connection signal="pressed" from="Container/Song4/PlayButton4" to="." method="_on_PlayButton4_pressed"]
+[connection signal="pressed" from="Container/Song4/InfoButton4" to="." method="_on_InfoButton4_pressed"]

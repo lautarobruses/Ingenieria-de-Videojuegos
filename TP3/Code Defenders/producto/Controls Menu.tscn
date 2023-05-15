@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/img/Main Menu/background.jpg" type="Texture" id=1]
 [ext_resource path="res://assets/img/Level Menu/Window.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://assets/img/Controls Menu/Teclas de Direcciones.png" type="Texture" id=5]
 [ext_resource path="res://assets/img/Controls Menu/Tecla Vacia.png" type="Texture" id=6]
 [ext_resource path="res://assets/img/Controls Menu/Ship_Main_Icon.png" type="Texture" id=7]
+[ext_resource path="res://assets/img/Controls Menu/Back_BTN_active.png" type="Texture" id=8]
+[ext_resource path="res://scripts/BasicMenu.gd" type="Script" id=9]
 
 [sub_resource type="Shader" id=5]
 code = "shader_type canvas_item;
@@ -39,10 +41,11 @@ size = 32
 use_filter = true
 font_data = ExtResource( 3 )
 
-[node name="Controls Menu" type="Control"]
+[node name="ControlsMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( -480, 8 )
+script = ExtResource( 9 )
 
 [node name="Background" type="Sprite" parent="."]
 material = SubResource( 6 )
@@ -72,28 +75,28 @@ align = 1
 valign = 1
 clip_text = true
 
-[node name="BackButton" type="Button" parent="."]
+[node name="BackButton" type="TextureButton" parent="."]
 margin_left = 1688.0
 margin_top = 64.0
 margin_right = 1910.0
 margin_bottom = 280.0
 rect_scale = Vector2( 0.75, 0.75 )
 focus_mode = 0
-icon = ExtResource( 4 )
-flat = true
+texture_normal = ExtResource( 4 )
+texture_hover = ExtResource( 8 )
 
-[node name="Control" type="Control" parent="."]
+[node name="Container" type="Control" parent="."]
 margin_left = 500.0
 margin_top = 228.0
 margin_right = 1420.0
 margin_bottom = 948.0
 
-[node name="KeyCap1" type="Sprite" parent="Control"]
+[node name="KeyCap1" type="Sprite" parent="Container"]
 position = Vector2( 100.8, 156.4 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 6 )
 
-[node name="Z" type="Label" parent="Control"]
+[node name="Z" type="Label" parent="Container"]
 margin_left = 73.8
 margin_top = 117.4
 margin_right = 137.8
@@ -102,12 +105,12 @@ custom_colors/font_color = Color( 0.137255, 0.121569, 0.12549, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "Z"
 
-[node name="KeyCap2" type="Sprite" parent="Control"]
+[node name="KeyCap2" type="Sprite" parent="Container"]
 position = Vector2( 100.8, 348.4 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 6 )
 
-[node name="X" type="Label" parent="Control"]
+[node name="X" type="Label" parent="Container"]
 margin_left = 70.8
 margin_top = 308.4
 margin_right = 113.8
@@ -117,12 +120,12 @@ custom_fonts/font = SubResource( 8 )
 text = "X
 "
 
-[node name="KeyCap3" type="Sprite" parent="Control"]
+[node name="KeyCap3" type="Sprite" parent="Container"]
 position = Vector2( 100.8, 540.4 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 6 )
 
-[node name="C" type="Label" parent="Control"]
+[node name="C" type="Label" parent="Container"]
 margin_left = 70.8
 margin_top = 500.4
 margin_right = 134.8
@@ -131,12 +134,12 @@ custom_colors/font_color = Color( 0.137255, 0.121569, 0.12549, 1 )
 custom_fonts/font = SubResource( 8 )
 text = "C"
 
-[node name="ArrowsCaps" type="Sprite" parent="Control"]
+[node name="ArrowsCaps" type="Sprite" parent="Container"]
 position = Vector2( 652, 484 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 5 )
 
-[node name="Shot" type="Label" parent="Control"]
+[node name="Shot" type="Label" parent="Container"]
 margin_left = 180.8
 margin_top = 132.4
 margin_right = 338.8
@@ -149,7 +152,7 @@ custom_constants/shadow_offset_y = 5
 custom_fonts/font = SubResource( 11 )
 text = "Shot"
 
-[node name="Movement" type="Label" parent="Control"]
+[node name="Movement" type="Label" parent="Container"]
 margin_left = 524.0
 margin_top = 324.0
 margin_right = 786.0
@@ -161,7 +164,7 @@ custom_constants/shadow_offset_y = 5
 custom_fonts/font = SubResource( 11 )
 text = "Movement"
 
-[node name="Special shot" type="Label" parent="Control"]
+[node name="Special shot" type="Label" parent="Container"]
 margin_left = 180.8
 margin_top = 308.4
 margin_right = 508.8
@@ -175,7 +178,7 @@ custom_fonts/font = SubResource( 11 )
 text = "Special 
 shot"
 
-[node name="Special shot2" type="Label" parent="Control"]
+[node name="Special shot2" type="Label" parent="Container"]
 margin_left = 180.8
 margin_top = 492.4
 margin_right = 508.8
@@ -189,7 +192,9 @@ custom_fonts/font = SubResource( 11 )
 text = "Discard
 component"
 
-[node name="Ship" type="Sprite" parent="Control"]
+[node name="Ship" type="Sprite" parent="Container"]
 position = Vector2( 652, 156 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 7 )
+
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]

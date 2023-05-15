@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Code Defenders"
-run/main_scene="res://MainMenu.tscn"
+run/main_scene="res://Main.tscn"
 config/icon="res://assets/img/Ship_Main_Icon.png"
 
 [display]

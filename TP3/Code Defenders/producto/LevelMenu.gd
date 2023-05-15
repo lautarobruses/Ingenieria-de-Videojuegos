@@ -1,5 +1,7 @@
 extends Control
 
+signal main_menu
+
 var carousel_items = [1,2,3,4,5]
 var current_index = 0
 
@@ -112,4 +114,5 @@ func _on_PlayButton_pressed():
 		pass
 
 func _on_CloseButton_pressed():
-	$Transition.next("res://MainMenu.tscn")
+	self.visible = false
+	emit_signal("main_menu")

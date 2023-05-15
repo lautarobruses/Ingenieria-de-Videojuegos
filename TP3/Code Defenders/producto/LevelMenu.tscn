@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/img/Main Menu/background.jpg" type="Texture" id=1]
 [ext_resource path="res://assets/img/Level Menu/Forward_BTN.png" type="Texture" id=2]
@@ -11,7 +11,12 @@
 [ext_resource path="res://assets/img/Level Menu/Info_BTN.png" type="Texture" id=9]
 [ext_resource path="res://assets/fonts/ethnocentric/ethnocentric rg.otf" type="DynamicFontData" id=10]
 [ext_resource path="res://LevelMenu.gd" type="Script" id=11]
+[ext_resource path="res://assets/img/Level Menu/Play_BTN_active.png" type="Texture" id=12]
 [ext_resource path="res://Transition.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/img/Level Menu/Info_BTN_active.png" type="Texture" id=14]
+[ext_resource path="res://assets/img/Level Menu/Backward_BTN_active.png" type="Texture" id=15]
+[ext_resource path="res://assets/img/Level Menu/Forward_BTN_active.png" type="Texture" id=16]
+[ext_resource path="res://assets/img/Level Menu/Close_BTN_active.png" type="Texture" id=17]
 
 [sub_resource type="Animation" id=7]
 resource_name = "Slide Window Backward"
@@ -117,7 +122,7 @@ centered = false
 
 [node name="PreviousWindow" type="Control" parent="."]
 margin_left = 1920.0
-margin_right = 3839.97
+margin_right = 3839.96
 margin_bottom = 1080.0
 
 [node name="PreviousWindow" type="Sprite" parent="PreviousWindow"]
@@ -162,21 +167,21 @@ animation = "empty"
 
 [node name="PInfoSprite" type="Sprite" parent="PreviousWindow"]
 visible = false
-position = Vector2( 644, 715 )
+position = Vector2( 640, 712 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 9 )
 centered = false
 
 [node name="PPlaySprite" type="Sprite" parent="PreviousWindow"]
 visible = false
-position = Vector2( 877, 715 )
+position = Vector2( 872, 712 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 7 )
 centered = false
 
 [node name="PCloseSprite" type="Sprite" parent="PreviousWindow"]
 visible = false
-position = Vector2( 1109, 714 )
+position = Vector2( 1104, 712 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 8 )
 centered = false
@@ -226,26 +231,26 @@ animation = "empty"
 
 [node name="NInfoSprite" type="Sprite" parent="NextWindow"]
 visible = false
-position = Vector2( 644, 715 )
+position = Vector2( 641, 712 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 9 )
 centered = false
 
 [node name="NPlaySprite" type="Sprite" parent="NextWindow"]
 visible = false
-position = Vector2( 877, 715 )
+position = Vector2( 872, 712 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 7 )
 centered = false
 
 [node name="NCloseSprite" type="Sprite" parent="NextWindow"]
 visible = false
-position = Vector2( 1109, 714 )
+position = Vector2( 1104, 712 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 8 )
 centered = false
 
-[node name="ForwardButton" type="Button" parent="."]
+[node name="ForwardButton" type="TextureButton" parent="."]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -256,11 +261,10 @@ margin_right = -226.0
 margin_bottom = 108.0
 rect_scale = Vector2( 0.8, 0.8 )
 focus_mode = 0
-icon = ExtResource( 2 )
-flat = true
-icon_align = 1
+texture_normal = ExtResource( 2 )
+texture_hover = ExtResource( 16 )
 
-[node name="BackwardButton" type="Button" parent="."]
+[node name="BackwardButton" type="TextureButton" parent="."]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 272.0
@@ -269,38 +273,38 @@ margin_right = 494.0
 margin_bottom = 108.0
 rect_scale = Vector2( 0.8, 0.8 )
 focus_mode = 0
-icon = ExtResource( 4 )
-flat = true
+texture_normal = ExtResource( 4 )
+texture_hover = ExtResource( 15 )
 
-[node name="InfoButton" type="Button" parent="."]
+[node name="InfoButton" type="TextureButton" parent="."]
 margin_left = 640.0
 margin_top = 712.0
 margin_right = 862.0
 margin_bottom = 928.0
 rect_scale = Vector2( 0.8, 0.8 )
 focus_mode = 0
-icon = ExtResource( 9 )
-flat = true
+texture_normal = ExtResource( 9 )
+texture_hover = ExtResource( 14 )
 
-[node name="PlayButton" type="Button" parent="."]
+[node name="PlayButton" type="TextureButton" parent="."]
 margin_left = 872.0
 margin_top = 712.0
 margin_right = 1094.0
 margin_bottom = 928.0
 rect_scale = Vector2( 0.8, 0.8 )
 focus_mode = 0
-icon = ExtResource( 7 )
-flat = true
+texture_normal = ExtResource( 7 )
+texture_hover = ExtResource( 12 )
 
-[node name="CloseButton" type="Button" parent="."]
+[node name="CloseButton" type="TextureButton" parent="."]
 margin_left = 1104.0
 margin_top = 712.0
 margin_right = 1326.0
 margin_bottom = 928.0
 rect_scale = Vector2( 0.8, 0.8 )
 focus_mode = 0
-icon = ExtResource( 8 )
-flat = true
+texture_normal = ExtResource( 8 )
+texture_hover = ExtResource( 17 )
 
 [node name="HSlider" type="HSlider" parent="."]
 visible = false

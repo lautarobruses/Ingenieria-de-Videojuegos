@@ -1,19 +1,24 @@
 extends Control
 
+signal level_menu
+signal controls_menu
+signal settings_menu
+signal songs_menu
+
 func _ready():
-	$Music.play(55.0)
+	pass
 
 func _on_StartButton_pressed():
-	$Transition.next("res://LevelMenu.tscn")
+	emit_signal("level_menu")
 
 func _on_ControlsButton_pressed():
-	pass # Replace with function body.
+	emit_signal("controls_menu")
 
 func _on_SettingsButton_pressed():
 	pass # Replace with function body.
 
 func _on_SongsButton_pressed():
-	pass # Replace with function body.
+	emit_signal("songs_menu")
 	
 func _on_QuitButton_pressed():
 	get_tree().quit()
