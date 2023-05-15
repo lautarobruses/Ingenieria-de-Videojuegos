@@ -62,7 +62,7 @@ height = 66.0
 
 [node name="naveCuatro" type="KinematicBody2D"]
 collision_layer = 2
-collision_mask = 9
+collision_mask = 5
 script = ExtResource( 34 )
 
 [node name="nave" type="AnimatedSprite" parent="."]

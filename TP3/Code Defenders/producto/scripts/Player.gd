@@ -23,6 +23,9 @@ var direction = Vector2()
 var invulnerability: bool = false
 var isFrozen = true
 
+signal sueltaPieza
+signal disparoEspecial
+
 func _ready():
 	screen_size = get_viewport_rect().size
 
@@ -32,7 +35,9 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("shoot"):
 			shoot()
 		if Input.is_action_just_pressed("special_shoot"):
-			shoot_power()
+			emit_signal("disparoEspecial")
+		if Input.is_action_just_pressed("delete_component"):
+			emit_signal("sueltaPieza")
 
 func start():
 	show()
@@ -111,3 +116,7 @@ func unfreeze():
 func _on_InvulnerableTimer_timeout():
 	$CollisionPolygon2D.set_deferred("disabled", false)
 	invulnerability = false
+
+func setComponents(palabra):
+	current_components = palabra
+	shoot_power()
