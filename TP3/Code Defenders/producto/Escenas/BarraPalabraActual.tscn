@@ -5,7 +5,6 @@
 [ext_resource path="res://assets/img/Barra y slot/item_slot_default_background.png" type="Texture" id=3]
 [ext_resource path="res://assets/img/Barra y slot/hotbar_background.png" type="Texture" id=4]
 
-
 [sub_resource type="CanvasItemMaterial" id=1]
 
 [sub_resource type="StyleBoxTexture" id=2]

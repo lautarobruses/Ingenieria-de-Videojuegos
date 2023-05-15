@@ -51,6 +51,7 @@ func fase_esbirros():
 		nuevoEnemigo.position = posicionRandom()
 		add_child(nuevoEnemigo)
 	for i in cantNaveUno:
+		yield(get_tree().create_timer(1), "timeout")
 		var nuevoEnemigo = naveUno.instance()
 		nuevoEnemigo.position = posicionRandom()
 		add_child(nuevoEnemigo)

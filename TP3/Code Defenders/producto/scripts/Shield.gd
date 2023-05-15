@@ -22,7 +22,7 @@ var is_broken = false
 var is_over = false
 
 func _ready():
-	current_configuration = [1,2,3,4,5,6]
+	current_configuration = [1,2,3,4,5,6,0,0]
 	color_configuration = [1,2,3,6]
 #	init_configuration(3)
 	pass
@@ -81,13 +81,10 @@ func enable():
 func disable():
 	$CollisionShape2D.set_deferred("disabled", true)
 
-func calculate_damage(same_configuration):
-	if same_configuration:
-		energy -= 1
-		$ShieldHitted.play()
-		is_hitted = true
-	else:
-		$ProjectileReflected.play()
+func calculate_damage():
+	energy -= 1
+	$ShieldHitted.play()
+	is_hitted = true
 	
 	if (energy == 0):
 		is_broken = true
@@ -103,10 +100,13 @@ func break_shield():
 func special_condition(configuration):
 	var same_configuration = true
 	
-	#historial.setGolpe()
 	if !configuration.empty():
 		for component in configuration:
 			if !current_configuration.has(component):
 				same_configuration = false
-			
-		calculate_damage(same_configuration)	
+	
+	if same_configuration:
+		historial.setGolpe(configuration)
+		calculate_damage()
+	else:
+		$ProjectileReflected.play()

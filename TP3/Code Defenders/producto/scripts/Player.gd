@@ -10,7 +10,7 @@ const DECCELERATION = 1500
 var projectile = preload("res://Player_Projectile.tscn")
 var special_projectile = preload("res://Special_Projectile.tscn")
 var screen_size # Size of the game window.
-var current_components = [1,2,3,4,5,6]
+var current_components = [1,2,3,4,5,6,0,0]
 
 var speed: float = 0
 var target_angle: float = 0
@@ -35,7 +35,8 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("shoot"):
 			shoot()
 		if Input.is_action_just_pressed("special_shoot"):
-			emit_signal("disparoEspecial")
+			shoot_power()
+			#emit_signal("disparoEspecial")
 		if Input.is_action_just_pressed("delete_component"):
 			emit_signal("sueltaPieza")
 

@@ -21,16 +21,11 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
 
 func buscaPrimerNodoLibre():
 	var j = 0
 	var encontre=0
-	while(!encontre and j<7):
+	while(!encontre and j<8):
 		if palabra[j]==0:
 			encontre = 1
 		else:
@@ -40,7 +35,7 @@ func buscaPrimerNodoLibre():
 func borraUltimoSlot():
 	var j = 0
 	var encontre=1
-	while(encontre and j<7):
+	while(encontre and j<8):
 		if palabra[j]==0:
 			encontre = 0
 		else:
@@ -51,7 +46,7 @@ func borraUltimoSlot():
 		
 func limpiaBarra():
 	var j = 0
-	while(j<7):
+	while(j<8):
 		palabra[j]=0
 		eliminaNodo(j)
 		j+=1
@@ -113,14 +108,14 @@ func seteaNodo(j,tipo):
 
 func _on_ParteNaveUno_levantaSimbolo():
 	var j = buscaPrimerNodoLibre()
-	if j<7:
+	if j<8:
 		seteaNodo(j,TipoNave.UNO)
 		palabra[j]=1
 	pass # Replace with function body.
 
 func _on_ParteNaveDos_levantaSimbolo():
 	var j = buscaPrimerNodoLibre()
-	if j<7:
+	if j<8:
 		seteaNodo(j,TipoNave.DOS)
 		palabra[j]=2
 	pass # Replace with function body.
@@ -128,7 +123,7 @@ func _on_ParteNaveDos_levantaSimbolo():
 
 func _on_ParteNaveTres_levantaSimbolo():
 	var j = buscaPrimerNodoLibre()
-	if j<7:
+	if j<8:
 		seteaNodo(j,TipoNave.TRES)
 		palabra[j]=3
 	pass # Replace with function body.
@@ -137,7 +132,7 @@ func _on_ParteNaveTres_levantaSimbolo():
 func _on_ParteNaveCuatro_levantaSimbolo():
 	print("busco slot")
 	var j = buscaPrimerNodoLibre()
-	if j<7:
+	if j<8:
 		seteaNodo(j,TipoNave.CUATRO)
 		palabra[j]=4
 	pass # Replace with function body.
@@ -145,7 +140,7 @@ func _on_ParteNaveCuatro_levantaSimbolo():
 
 func _on_ParteNaveCinco_levantaSimbolo():
 	var j = buscaPrimerNodoLibre()
-	if j<7:
+	if j<8:
 		seteaNodo(j,TipoNave.CINCO)
 		palabra[j]=5
 	pass # Replace with function body.
@@ -153,7 +148,7 @@ func _on_ParteNaveCinco_levantaSimbolo():
 
 func _on_ParteNaveSeis_levantaSimbolo():
 	var j = buscaPrimerNodoLibre()
-	if j<7:
+	if j<8:
 		seteaNodo(j,TipoNave.SEIS)
 		palabra[j]=6
 	pass # Replace with function body.
