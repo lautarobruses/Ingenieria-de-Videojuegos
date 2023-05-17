@@ -31,7 +31,6 @@ func _ready():
 	pass # Replace with function body.
 
 func agregaSimbolo(tipo):
-	print("meto textura")
 	match tipo:
 		TipoNave.UNO:
 			set('custom_styles/panel', texturaNaveUno)

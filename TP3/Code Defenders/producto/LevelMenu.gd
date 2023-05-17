@@ -28,7 +28,6 @@ func set_configuration_level(action):
 	
 	#ACA TENGO QUE ESTABLECER LA INFORMACION DE LAS ESTRELLAS Y
 	#LOS LINKS DE INFOBUTTON Y PLAYBUTTON
-	
 	if current_index == 0:
 		if action == "Forward":
 			pass

@@ -1,9 +1,9 @@
 extends Node2D
 
 
-var palabra1 = Vector2()
-var palabra2 = Vector2()
-var palabra3 = Vector2()
+var palabra1 = [0,0,0,0,0,0,0,0]
+var palabra2 = [0,0,0,0,0,0,0,0]
+var palabra3 = [0,0,0,0,0,0,0,0]
 
 enum TipoNave {
 	UNO,
@@ -19,7 +19,7 @@ func setGolpe(palabra):
 	if (palabra1[0]==0):
 		palabra1=palabra
 		seteaPalabra(palabra,1)
-	elif(palabra1[0]==0):
+	elif(palabra2[0]==0):
 		palabra2 = palabra
 		seteaPalabra(palabra,2)
 	else:
@@ -30,15 +30,15 @@ func seteaPalabra(palabra,NroDePalabra):
 	var i=0
 	if (NroDePalabra==1):
 		while(i<8 and palabra[i]!=0):
-			seteaNodoPalabra1(i,buscaTipo(i))
+			seteaNodoPalabra1(i,buscaTipo(palabra[i]))
 			i+=1
 	elif(NroDePalabra==2):
 		while(i<8 and palabra[i]!=0):
-			seteaNodoPalabra2(i,buscaTipo(i))
+			seteaNodoPalabra2(i,buscaTipo(palabra[i]))
 			i+=1
 	else:
 		while(i<8 and palabra[i]!=0):
-			seteaNodoPalabra3(i,buscaTipo(i))
+			seteaNodoPalabra3(i,buscaTipo(palabra[i]))
 			i+=1
 
 func seteaNodoPalabra1(j,tipo):

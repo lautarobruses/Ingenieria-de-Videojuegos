@@ -27,7 +27,6 @@ func posicionRandom():
 func start_level():
 	set_player()
 	set_boss()
-	#creaEnemigos()
 	$AnimationPlayer.play("main")
 	pass
 
