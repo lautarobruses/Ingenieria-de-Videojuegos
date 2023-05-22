@@ -36,6 +36,10 @@ config/name="Code Defenders"
 run/main_scene="res://Main.tscn"
 config/icon="res://assets/img/Ship_Main_Icon.png"
 
+[autoload]
+
+Persistencia="*res://scripts/Persistencia.gd"
+
 [display]
 
 window/size/width=1920

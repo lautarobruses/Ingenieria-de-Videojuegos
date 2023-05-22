@@ -22,8 +22,8 @@ var is_broken = false
 var is_over = false
 
 func _ready():
-	current_configuration = [1,2,3,4,5,6,0,0]
-	color_configuration = [1,2,3,6]
+	current_configuration = [1]
+	color_configuration = [1]
 #	init_configuration(3)
 	pass
 
@@ -97,13 +97,16 @@ func break_shield():
 	yield(get_tree().create_timer(2.0), "timeout")
 	queue_free()
 
-func special_condition(configuration):
-	var same_configuration = true
+func special_condition(configuration, nivel):
+	var same_configuration = false
 	
 	if !configuration.empty():
-		for component in configuration:
-			if !current_configuration.has(component):
-				same_configuration = false
+		var j = 0
+		while(j<8 and configuration[j]!=0 and same_configuration==false):
+			if current_configuration.has(configuration[j]):
+				print("le pegue al escudo")
+				same_configuration = true
+		j=+1
 	
 	if same_configuration:
 		historial.setGolpe(configuration)

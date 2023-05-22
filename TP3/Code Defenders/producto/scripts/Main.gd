@@ -3,6 +3,7 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$MainMenu.visible = true
+	#Persistencia.load_game()
 
 func _on_main_menu():
 	$MainMenu.visible = true
@@ -49,3 +50,7 @@ func _on_ControlsMenu_main_menu():
 
 func _on_play_song(song):
 	$MainSong.set_current_song(song)
+
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+		Persistencia.save_game()
