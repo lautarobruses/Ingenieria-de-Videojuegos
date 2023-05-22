@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal pause
+
 export var music_name: String
 export var author_name: String
 
@@ -8,9 +10,7 @@ func _ready():
 	$MusicName.text = music_name
 	$AuthorName.text = "by" + author_name
 	$AnimationPlayer.play("Present Song")
-	
+	$AnimationPlayer.queue("Enable Pause Button")
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_PauseButton_pressed():
+	emit_signal("pause")

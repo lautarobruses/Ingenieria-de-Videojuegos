@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://LevelUI.tscn" type="PackedScene" id=1]
+[ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Background.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/Level.gd" type="Script" id=4]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=5]
@@ -19,8 +20,13 @@ script = ExtResource( 4 )
 
 [node name="Background" parent="." instance=ExtResource( 3 )]
 
+[node name="PauseMenu" parent="." instance=ExtResource( 2 )]
+pause_mode = 2
+visible = false
+
 [node name="Player" parent="." instance=ExtResource( 5 )]
 visible = false
+z_as_relative = false
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -29,7 +35,6 @@ visible = false
 [node name="LevelUI" parent="." instance=ExtResource( 1 )]
 
 [node name="HealthBar" parent="." instance=ExtResource( 6 )]
-visible = false
 target_node = NodePath("../Player")
 isEnable = true
 
@@ -45,18 +50,20 @@ position = Vector2( 1856, 1024 )
 rotation = -1.5708
 
 [node name="Barra" parent="." instance=ExtResource( 10 )]
-position = Vector2( 848, 944 )
+position = Vector2( 880, 1008 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Historial" parent="." instance=ExtResource( 9 )]
-position = Vector2( 512, 976 )
+position = Vector2( 528, 1024 )
 __meta__ = {
 "_edit_group_": true
 }
 
+[connection signal="play" from="PauseMenu" to="." method="_on_PauseMenu_play"]
 [connection signal="disparoEspecial" from="Player" to="Barra" method="_on_Player_disparoEspecial"]
 [connection signal="sueltaPieza" from="Player" to="Barra" method="_on_Player_sueltaPieza"]
+[connection signal="pause" from="LevelUI" to="." method="_on_pause"]
 [connection signal="dead" from="HealthBar" to="." method="game_over"]
 [connection signal="dead" from="BossHealthBar" to="." method="by_defeating_boss"]

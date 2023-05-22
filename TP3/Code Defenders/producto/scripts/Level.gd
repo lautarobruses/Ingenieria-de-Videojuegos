@@ -57,3 +57,11 @@ func by_defeating_boss():
 	
 func _on_Boss_broken_shield():
 	$BossHealthBar.start()
+
+func _on_pause():
+	$PauseMenu.show()
+	get_tree().paused = true
+
+func _on_PauseMenu_play():
+	$PauseMenu.hide()
+	get_tree().paused = false

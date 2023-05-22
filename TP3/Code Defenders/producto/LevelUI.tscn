@@ -1,7 +1,89 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/fonts/ethnocentric/ethnocentric rg.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/img/Pause Menu/Pause_BTN.png" type="Texture" id=2]
+[ext_resource path="res://assets/img/Pause Menu/Pause_BTN_Active.png" type="Texture" id=3]
 [ext_resource path="res://scripts/LevelUI.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=5]
+resource_name = "Disable Pause Button"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("PauseButton:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1784, 32 ), Vector2( 1784, -104 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PauseButton:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PauseButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Enable Pause Button"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("PauseButton:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1784, -104 ), Vector2( 1784, 32 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PauseButton:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PauseButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Present Song"
@@ -94,7 +176,21 @@ layer = 2
 script = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/Disable Pause Button" = SubResource( 5 )
+"anims/Enable Pause Button" = SubResource( 4 )
 "anims/Present Song" = SubResource( 3 )
+
+[node name="PauseButton" type="TextureButton" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.686275 )
+margin_left = 1784.0
+margin_top = -104.0
+margin_right = 1994.0
+margin_bottom = 106.0
+rect_scale = Vector2( 0.5, 0.5 )
+disabled = true
+texture_normal = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
 
 [node name="MusicName" type="Label" parent="."]
 anchor_left = 1.0
@@ -106,6 +202,7 @@ margin_right = 729.0
 margin_bottom = -207.0
 custom_fonts/font = SubResource( 1 )
 text = "Milky Ways"
+align = 2
 
 [node name="AuthorName" type="Label" parent="."]
 modulate = Color( 1, 0.815686, 0.305882, 1 )
@@ -119,3 +216,6 @@ margin_right = 730.001
 margin_bottom = -167.0
 custom_fonts/font = SubResource( 2 )
 text = "by Bossfight"
+align = 2
+
+[connection signal="pressed" from="PauseButton" to="." method="_on_PauseButton_pressed"]
