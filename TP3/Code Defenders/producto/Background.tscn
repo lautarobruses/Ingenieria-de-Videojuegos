@@ -28,7 +28,8 @@ shader_param/scroll_speed = 0.07
 shader = SubResource( 1 )
 shader_param/scroll_speed = 0.1
 
-[node name="Background" type="Node2D"]
+[node name="Background" type="CanvasLayer"]
+layer = -1
 
 [node name="bg0" type="Sprite" parent="."]
 material = SubResource( 2 )

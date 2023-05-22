@@ -90,6 +90,7 @@ shader_param/scroll_speed = 0.01
 
 [sub_resource type="DynamicFont" id=10]
 size = 48
+use_filter = true
 font_data = ExtResource( 10 )
 
 [sub_resource type="SpriteFrames" id=3]
@@ -121,8 +122,7 @@ texture = ExtResource( 1 )
 centered = false
 
 [node name="PreviousWindow" type="Control" parent="."]
-margin_left = 1920.0
-margin_right = 3839.96
+margin_right = 1919.96
 margin_bottom = 1080.0
 
 [node name="PreviousWindow" type="Sprite" parent="PreviousWindow"]
@@ -187,7 +187,7 @@ texture = ExtResource( 8 )
 centered = false
 
 [node name="NextWindow" type="Control" parent="."]
-margin_right = 1920.0
+margin_left = -1920.0
 margin_bottom = 1080.0
 
 [node name="NextWindow" type="Sprite" parent="NextWindow"]

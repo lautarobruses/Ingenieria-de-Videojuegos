@@ -105,7 +105,7 @@ func _on_InfoButton_pressed():
 
 func _on_PlayButton_pressed():
 	if current_index == 0:
-		get_tree().change_scene("res://Level.tscn")
+		get_tree().change_scene("res://Level1.tscn")
 	elif current_index == 1:
 		pass
 	elif current_index == 2:

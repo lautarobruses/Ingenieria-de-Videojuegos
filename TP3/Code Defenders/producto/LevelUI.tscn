@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/fonts/Roboto_Condensed/RobotoCondensed-Bold.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://assets/fonts/Roboto_Condensed/RobotoCondensed-Italic.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/fonts/ethnocentric/ethnocentric rg.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/LevelUI.gd" type="Script" id=4]
 
 [sub_resource type="Animation" id=3]
@@ -17,7 +16,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1, 4.5, 5 ),
 "transitions": PoolRealArray( 1, 1.5, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1920, 704 ), Vector2( 1280, 704 ), Vector2( 1230, 704 ), Vector2( 1230, 720 ) ]
+"values": [ Vector2( 1920, 776 ), Vector2( 1128, 776 ), Vector2( 1078, 776 ), Vector2( 1078, 826 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("AuthorName:rect_position")
@@ -29,7 +28,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1, 4.5, 5 ),
 "transitions": PoolRealArray( 1, 1.5, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 2184, 856 ), Vector2( 1544, 848 ), Vector2( 1494, 848 ), Vector2( 1494, 870 ) ]
+"values": [ Vector2( 2320, 873 ), Vector2( 1528, 873 ), Vector2( 1478, 873 ), Vector2( 1478, 923 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("MusicName:modulate")
@@ -53,7 +52,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 4.5, 5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0.470588, 0.0745098, 0.0745098, 1 ), Color( 0.470588, 0.0745098, 0.0745098, 1 ), Color( 0.470588, 0.0745098, 0.0745098, 0 ) ]
+"values": [ Color( 1, 0.815686, 0.305882, 1 ), Color( 1, 0.815686, 0.305882, 1 ), Color( 0.470588, 0.0745098, 0.0745098, 0 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("MusicName:visible")
@@ -81,12 +80,14 @@ tracks/5/keys = {
 }
 
 [sub_resource type="DynamicFont" id=1]
-size = 128
-font_data = ExtResource( 2 )
+size = 80
+use_filter = true
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 64
-font_data = ExtResource( 3 )
+size = 32
+use_filter = true
+font_data = ExtResource( 1 )
 
 [node name="LevelUI" type="CanvasLayer"]
 layer = 2
@@ -100,21 +101,21 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -376.0
-margin_right = 640.002
-margin_bottom = -0.0147705
+margin_top = -304.0
+margin_right = 729.0
+margin_bottom = -207.0
 custom_fonts/font = SubResource( 1 )
 text = "Milky Ways"
 
 [node name="AuthorName" type="Label" parent="."]
-modulate = Color( 0.470588, 0.0745098, 0.0745098, 1 )
+modulate = Color( 1, 0.815686, 0.305882, 1 )
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 264.0
-margin_top = -224.0
-margin_right = 576.0
-margin_bottom = 8.00024
+margin_left = 400.0
+margin_top = -207.0
+margin_right = 730.001
+margin_bottom = -167.0
 custom_fonts/font = SubResource( 2 )
 text = "by Bossfight"

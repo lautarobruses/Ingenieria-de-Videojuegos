@@ -1,8 +1,6 @@
 extends Node2D
 
 var player = preload("res://Player.tscn")
-var boss1 = preload("res://Boss1.tscn")
-var proyectil = preload("res://Escenas/misilJugador.tscn")
 var naveUno = preload("res://Escenas/NaveUno.tscn")
 var naveDos = preload("res://Escenas/NaveDos.tscn")
 var naveTres = preload("res://Escenas/NaveTres.tscn")
@@ -10,32 +8,21 @@ var naveTres = preload("res://Escenas/NaveTres.tscn")
 var cantNaveUno = 10
 var cantNaveDos = 0
 var cantNaveTres = 0
+
 onready var posicionSalida = get_node("Path2D/PathFollow2D")
-
-
-func _ready():
-	randomize()
-	start_level()
-
 
 func posicionRandom():
 	randomize()
 	posicionSalida.offset = randi()
 	return posicionSalida.position	
 
-
-func start_level():
-	set_player()
-	set_boss()
-	#creaEnemigos()
-	$AnimationPlayer.play("main")
-	pass
-
 func set_player():
 	$Player.start()
+	$HealthBar.start()
 
-func set_boss():
-	$Boss1.start()
+func set_music(song):
+	$Music.stream = song
+	$Music.play()
 
 func game_over():
 	get_tree().quit()
