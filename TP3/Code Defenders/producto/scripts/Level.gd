@@ -51,6 +51,7 @@ func fin_fase_esbirros():
 	pass
 
 func by_defeating_boss():
+	yield(get_tree().create_timer(1), "timeout")
 	get_tree().quit()
 	pass 
 	
