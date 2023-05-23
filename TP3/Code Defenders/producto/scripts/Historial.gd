@@ -17,13 +17,13 @@ enum TipoNave {
 func setGolpe(palabra):
 	
 	if (palabra1[0]==0):
-		palabra1=palabra
+		palabra1=palabra.duplicate()
 		seteaPalabra(palabra,1)
 	elif(palabra2[0]==0):
-		palabra2 = palabra
+		palabra2 = palabra.duplicate()
 		seteaPalabra(palabra,2)
 	else:
-		palabra3 = palabra
+		palabra3 = palabra.duplicate()
 		seteaPalabra(palabra,3)
 
 func seteaPalabra(palabra,NroDePalabra):

@@ -104,3 +104,5 @@ author_name = "Bossfight"
 
 [node name="BossHealthBar" parent="." index="9"]
 target_node = NodePath("../Boss1")
+
+[connection signal="broken_shield" from="Boss1" to="." method="_on_Boss1_broken_shield"]

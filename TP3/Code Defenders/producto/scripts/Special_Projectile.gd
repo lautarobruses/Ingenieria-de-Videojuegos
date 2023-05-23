@@ -5,25 +5,28 @@ extends KinematicBody2D
 const ROTATION_SPEED = 10.0
 
 export (int) var speed
-var configuration = []
+var configuration 
 var velocity = Vector2()
 
-func start(pos, dir, config):
+func start(pos, dir):
 	rotation = dir
 	position = pos
 	velocity = Vector2(-speed, 0).rotated(dir)
 	
-	configuration.clear()
-	configuration = config
-	set_components(configuration)
+
 	$CollisionShape2D.set_deferred("disabled", false)
+
+func setConfiguration(config):
+	configuration = config.duplicate()
+	set_components(configuration)
+
 
 func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		blow(true)
 		if collision.collider.has_method("special_condition"):
-			collision.collider.special_condition(configuration)
+			collision.collider.special_condition(configuration,1)
 	
 	$Component1.rotation += ROTATION_SPEED * delta
 	$Component2.rotation += ROTATION_SPEED * delta
@@ -32,9 +35,9 @@ func _physics_process(delta):
 	$Component5.rotation += ROTATION_SPEED * delta
 	$Component6.rotation += ROTATION_SPEED * delta
 
-func set_components(configuration):
+func set_components(config):
 	$Core.visible = true
-	for component in configuration:
+	for component in config:
 		if component == 1:
 			$Component1.visible = true
 		elif component == 2:
@@ -48,13 +51,13 @@ func set_components(configuration):
 		elif component == 6:
 			$Component6.visible = true
 
-func add_component(new_component):
-	configuration.append(new_component)
-	pass
+#func add_component(new_component):
+#	configuration.append(new_component)
+#	pass
 
-func delete_component(component):
-	configuration.pop_back(component)
-	pass
+#func delete_component(component):
+#	configuration.pop_back(component)
+#	pass
 
 func hit(shield_configuration):
 	for components in configuration:

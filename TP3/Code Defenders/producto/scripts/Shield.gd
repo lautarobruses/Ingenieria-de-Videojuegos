@@ -23,7 +23,7 @@ var is_over = false
 
 func _ready():
 	current_configuration = [1]
-	color_configuration = [1]
+	color_configuration = [1,3,6]
 #	init_configuration(3)
 	pass
 
@@ -102,11 +102,12 @@ func special_condition(configuration, nivel):
 	
 	if !configuration.empty():
 		var j = 0
+		print("configuracion en special condition =", configuration)
 		while(j<8 and configuration[j]!=0 and same_configuration==false):
-			if current_configuration.has(configuration[j]):
+			if (configuration[j]==1):
 				print("le pegue al escudo")
 				same_configuration = true
-		j=+1
+			j=+1
 	
 	if same_configuration:
 		historial.setGolpe(configuration)

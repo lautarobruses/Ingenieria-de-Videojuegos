@@ -54,9 +54,7 @@ func by_defeating_boss():
 	yield(get_tree().create_timer(1), "timeout")
 	get_tree().quit()
 	pass 
-	
-func _on_Boss_broken_shield():
-	$BossHealthBar.start()
+
 
 func _on_pause():
 	$PauseMenu.show()
