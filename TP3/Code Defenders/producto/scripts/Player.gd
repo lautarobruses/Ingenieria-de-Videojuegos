@@ -23,6 +23,8 @@ var direction = Vector2()
 var invulnerability: bool = false
 var isFrozen = true
 
+var fase #fase=0 en fase esbirros ; fase=1 en fase nave madre
+
 signal sueltaPieza
 signal disparoEspecial
 

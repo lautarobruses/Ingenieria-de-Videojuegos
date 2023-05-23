@@ -29,6 +29,7 @@ func game_over():
 	pass
 
 func fase_esbirros():
+	$Player.fase = 0
 	for i in cantNaveTres:
 		var nuevoEnemigo = naveTres.instance()
 		nuevoEnemigo.position = posicionRandom()
@@ -45,6 +46,7 @@ func fase_esbirros():
 	pass
 	
 func fin_fase_esbirros():
+	$Player.fase = 1
 	for i in self.get_children():
 		if(i.has_method("salirDeLaPantalla")):
 			i.salirDeLaPantalla()

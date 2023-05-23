@@ -1,11 +1,18 @@
 extends Area2D
 
+var timer
 signal levantaSimbolo
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayer.play("rebote")
 	self.connect("body_entered",self,"bodyEntered")
+	timer = Timer.new()
+	add_child(timer)
+	timer.wait_time = 4.0
+	timer.one_shot = true
+	timer.start()
+	timer.connect("timeout", self, "_on_timer_timeout")
 	pass # Replace with function body.
 
 func init(posicion_nave,tipo):
@@ -33,4 +40,13 @@ func init(posicion_nave,tipo):
 func bodyEntered(body):
 	emit_signal("levantaSimbolo")
 	queue_free()
+	pass # Replace with function body.
+
+func _on_timer_timeout():
+	$AnimationPlayer.play("salida")
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if (anim_name == "salida"):
+		queue_free()
 	pass # Replace with function body.
