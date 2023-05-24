@@ -10,22 +10,22 @@ texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 18, 18 )
 
 [node name="Historial" type="Node2D"]
-position = Vector2( 245, 662 )
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 560, 1016 )
+scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 155.0
-margin_top = 15.0
-margin_right = 1235.0
-margin_bottom = 95.0
+margin_right = 1080.0
+margin_bottom = 80.0
 rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
 
 [node name="palabra1" type="GridContainer" parent="."]
-margin_left = 168.0
-margin_top = 24.0
-margin_right = 340.0
-margin_bottom = 43.0
+margin_left = 13.0
+margin_top = 9.0
+margin_right = 185.0
+margin_bottom = 28.0
 custom_constants/hseparation = 2
 columns = 8
 __meta__ = {
@@ -96,10 +96,10 @@ custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
 
 [node name="palabra2" type="GridContainer" parent="."]
-margin_left = 345.0
-margin_top = 24.0
-margin_right = 517.0
-margin_bottom = 43.0
+margin_left = 190.0
+margin_top = 9.0
+margin_right = 362.0
+margin_bottom = 28.0
 custom_constants/hseparation = 2
 columns = 8
 __meta__ = {
@@ -170,10 +170,10 @@ custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
 
 [node name="palabra3" type="GridContainer" parent="."]
-margin_left = 524.0
-margin_top = 24.0
-margin_right = 696.0
-margin_bottom = 43.0
+margin_left = 369.0
+margin_top = 9.0
+margin_right = 541.0
+margin_bottom = 28.0
 custom_constants/hseparation = 2
 columns = 8
 __meta__ = {

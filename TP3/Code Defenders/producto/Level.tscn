@@ -50,13 +50,13 @@ position = Vector2( 1856, 1024 )
 rotation = -1.5708
 
 [node name="Barra" parent="." instance=ExtResource( 10 )]
-position = Vector2( 880, 1008 )
+position = Vector2( 840, 928 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Historial" parent="." instance=ExtResource( 9 )]
-position = Vector2( 528, 1024 )
+position = Vector2( 544, 1021 )
 __meta__ = {
 "_edit_group_": true
 }

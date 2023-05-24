@@ -12,7 +12,8 @@ texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 18, 18 )
 
 [node name="Barra" type="Node2D"]
-position = Vector2( 479, 531 )
+position = Vector2( 840, 928 )
+scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 1 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
