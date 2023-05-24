@@ -18,7 +18,6 @@ func start_level():
 func set_boss():
 	$Boss1.start()
 
-
 func _on_Boss1_broken_shield():
 	$BossHealthBar.start()
 	pass # Replace with function body.

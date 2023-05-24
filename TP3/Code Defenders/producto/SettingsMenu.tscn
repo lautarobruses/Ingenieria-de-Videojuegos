@@ -62,13 +62,12 @@ font_data = ExtResource( 2 )
 texture = ExtResource( 14 )
 region_rect = Rect2( 0, 0, 460, 30 )
 axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
 
 [sub_resource type="StyleBoxTexture" id=12]
 texture = ExtResource( 15 )
 region_rect = Rect2( 0, 0, 460, 30 )
-axis_stretch_horizontal = 2
-axis_stretch_vertical = 2
+margin_left = 50.0
+margin_right = 50.0
 
 [sub_resource type="ButtonGroup" id=9]
 resource_name = "Languages"
@@ -145,8 +144,9 @@ text = "Music"
 [node name="MusicSlider" type="HSlider" parent="Container"]
 margin_left = 398.0
 margin_top = 116.0
-margin_right = 848.0
+margin_right = 858.0
 margin_bottom = 181.0
+rect_pivot_offset = Vector2( 24, 35 )
 custom_icons/grabber_disabled = ExtResource( 1 )
 custom_icons/grabber_highlight = ExtResource( 1 )
 custom_icons/grabber = ExtResource( 1 )

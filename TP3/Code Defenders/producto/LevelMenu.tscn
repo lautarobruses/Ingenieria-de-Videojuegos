@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://assets/img/Main Menu/background.jpg" type="Texture" id=1]
 [ext_resource path="res://assets/img/Level Menu/Forward_BTN.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://assets/img/Level Menu/Backward_BTN_active.png" type="Texture" id=15]
 [ext_resource path="res://assets/img/Level Menu/Forward_BTN_active.png" type="Texture" id=16]
 [ext_resource path="res://assets/img/Level Menu/Close_BTN_active.png" type="Texture" id=17]
+[ext_resource path="res://assets/img/Level Menu/Star_02.png" type="Texture" id=18]
 
 [sub_resource type="Animation" id=7]
 resource_name = "Slide Window Backward"
@@ -95,14 +96,19 @@ font_data = ExtResource( 10 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "achived",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "empty",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "gold",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": true,
+"name": "silver",
 "speed": 5.0
 } ]
 

@@ -70,9 +70,6 @@ func animate_buttons():
 		$InfoButton.disabled = false
 		$PlayButton.disabled = false
 
-func slide_forward_buttons():
-	pass
-
 func _on_BackwardButton_pressed():
 	current_index -= 1
 	if current_index < 0:
@@ -106,7 +103,7 @@ func _on_PlayButton_pressed():
 	if current_index == 0:
 		get_tree().change_scene("res://Level1.tscn")
 	elif current_index == 1:
-		pass
+		get_tree().change_scene("res://Level2.tscn")
 	elif current_index == 2:
 		pass
 	elif current_index == 3:

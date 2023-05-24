@@ -98,6 +98,9 @@ anims/main = SubResource( 1 )
 visible = false
 position = Vector2( 1280, 350 )
 
+[node name="Music" parent="." index="6"]
+stream = ExtResource( 2 )
+
 [node name="LevelUI" parent="." index="7"]
 music_name = "Milky Ways"
 author_name = "Bossfight"
