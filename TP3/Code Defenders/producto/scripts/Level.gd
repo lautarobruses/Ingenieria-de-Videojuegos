@@ -5,9 +5,13 @@ var naveUno = preload("res://Escenas/NaveUno.tscn")
 var naveDos = preload("res://Escenas/NaveDos.tscn")
 var naveTres = preload("res://Escenas/NaveTres.tscn")
 
-var cantNaveUno = 10
+var cantNaveUno = 15
 var cantNaveDos = 0
 var cantNaveTres = 0
+
+var puntajeTotal = 0
+
+var nivel
 
 onready var posicionSalida = get_node("Path2D/PathFollow2D")
 
@@ -25,6 +29,8 @@ func set_music(song):
 	$Music.play()
 
 func game_over():
+	puntajeTotal -= (110 - $Player.health)
+	print(puntajeTotal)
 	get_tree().quit()
 	pass
 
@@ -54,9 +60,10 @@ func fin_fase_esbirros():
 
 func by_defeating_boss():
 	yield(get_tree().create_timer(1), "timeout")
+	puntajeTotal -= (110 - $Player.health)
+	print(puntajeTotal)
 	get_tree().quit()
 	pass 
-
 
 func _on_pause():
 	$PauseMenu.show()
@@ -65,3 +72,6 @@ func _on_pause():
 func _on_PauseMenu_play():
 	$PauseMenu.hide()
 	get_tree().paused = false
+	
+func sumaPuntaje(puntaje):
+	puntajeTotal+=puntaje

@@ -13,6 +13,8 @@ const COLOR_COMPONENT_6 = "ff59ff"
 const SHIP_COMPONENTS = [1,2,3,4,5,6]
 
 export (int) var energy
+export (int) var nivel
+
 
 var current_configuration = [] #Controla las mecanicas del escudo
 var color_configuration = [] #Controla los colores del escudo
@@ -20,6 +22,10 @@ var is_animated = false
 var is_hitted = false
 var is_broken = false
 var is_over = false
+
+var palabra1 = [0,0,0,0,0,0,0,0]
+var palabra2 = [0,0,0,0,0,0,0,0]
+var palabra3 = [0,0,0,0,0,0,0,0]
 
 func _ready():
 	current_configuration = [1]
@@ -97,20 +103,62 @@ func break_shield():
 	yield(get_tree().create_timer(2.0), "timeout")
 	queue_free()
 
-func special_condition(configuration, nivel):
-	var same_configuration = false
+func special_condition(configuration):
+	var cumpleCondicion = false
 	
-	if !configuration.empty():
-		var j = 0
-		print("configuracion en special condition =", configuration)
-		while(j<8 and configuration[j]!=0 and same_configuration==false):
-			if (configuration[j]==1):
-				print("le pegue al escudo")
-				same_configuration = true
-			j=+1
+	if(nivel==1):  
+		cumpleCondicion = esCodigoBloque(configuration)
+	elif(nivel==2):  
+		cumpleCondicion = esNoSingular(configuration)
+	elif(nivel==3):
+		pass
+	else:
+		pass
 	
-	if same_configuration:
+	if cumpleCondicion:
 		historial.setGolpe(configuration)
 		calculate_damage()
 	else:
 		$ProjectileReflected.play()
+
+func esCodigoBloque(configuration):
+	var salida = false
+	if !configuration.empty():
+			var j = 0
+			while(j<8 and configuration[j]!=0 and salida==false):
+				if (configuration[j]==1):
+					salida = true
+				j=+1
+	return
+	
+func esNoSingular(configuration):
+	var salida = false
+	if(palabra1[0]==0):
+		salida = true
+		palabra1 = configuration.duplicate()
+	elif(palabra2==[0]):
+		if(configuration!=palabra1):
+			salida = true
+			palabra2 = configuration.duplicate()
+	elif (palabra3[0]==0):
+		if(configuration!=palabra1 and configuration!=palabra2):
+			salida = true
+			palabra2 = configuration.duplicate()
+	return salida
+	
+func esUnivocamenteDecodificable(configuration):
+	var salida = false
+	
+	if(esCodigoBloque(configuration)):
+		if(palabra1[0]==0):
+			salida = true
+			palabra1 = configuration.duplicate()
+		elif(palabra2==[0]):
+			if(configuration!=palabra1):
+				salida = true
+				palabra2 = configuration.duplicate()
+		elif (palabra3[0]==0):
+			if(configuration!=palabra1 and configuration!=palabra2):
+				salida = true
+				palabra2 = configuration.duplicate()
+		return salida

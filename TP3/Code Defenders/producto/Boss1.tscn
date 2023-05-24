@@ -730,6 +730,7 @@ anims/Emerge = SubResource( 4 )
 [node name="Shield" parent="." instance=ExtResource( 7 )]
 visible = false
 scale = Vector2( 2.47923, 1.93522 )
+nivel = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false

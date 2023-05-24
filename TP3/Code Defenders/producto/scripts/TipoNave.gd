@@ -2,6 +2,7 @@ extends KinematicBody2D
 class_name TipoNaveSimple
 
 #register_class<TipoNave>
+var puntaje = 100
 
 var velocidad = 1
 var vidas
@@ -21,6 +22,8 @@ var target_position
 func _physics_process(delta):
 	if (salirDeLaPantalla == 0):
 		objetivo = player.position
+	else:
+		velocidad = 7
 	target_position = (objetivo - position).normalized()
 	look_at(objetivo)
 	var collision = move_and_collide(target_position * velocidad)
@@ -31,6 +34,7 @@ func _physics_process(delta):
 func hitted(damage):
 	golpes += 1
 	if golpes == vidas:
+		get_parent().sumaPuntaje(puntaje)
 		$turbo.hide()
 		play("explosion")
 		$CollisionShape2D.disabled = true

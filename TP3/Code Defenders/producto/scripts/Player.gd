@@ -92,7 +92,6 @@ func shoot():
 
 func shoot_power():
 	var sp = special_projectile.instance()
-	print("current comoponentes en player al disparar =",current_components)
 	sp.setConfiguration(current_components)
 	sp.start($ProjectilePosition.global_position, rotation)
 	get_parent().add_child(sp)
@@ -103,7 +102,7 @@ func dead():
 #	queue_free()
 
 func damage_player(damage):
-	print(health)
+	#print(health)
 	health -= damage
 	$InvulnerableTimer.start()
 	invulnerability = true
@@ -123,6 +122,5 @@ func _on_InvulnerableTimer_timeout():
 	invulnerability = false
 
 func setComponents(palabra):
-	print("palabra que llega de la barra =",palabra)
 	current_components = palabra.duplicate()
 	shoot_power()
