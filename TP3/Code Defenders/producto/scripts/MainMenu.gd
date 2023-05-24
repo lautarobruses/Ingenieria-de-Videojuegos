@@ -15,7 +15,7 @@ func _on_ControlsButton_pressed():
 	emit_signal("controls_menu")
 
 func _on_SettingsButton_pressed():
-	pass # Replace with function body.
+	emit_signal("settings_menu")
 
 func _on_SongsButton_pressed():
 	emit_signal("songs_menu")

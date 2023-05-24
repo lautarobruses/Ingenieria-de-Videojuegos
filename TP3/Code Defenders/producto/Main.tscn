@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://LevelMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://SongsMenu.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scripts/MenuSongsPlayer.gd" type="Script" id=8]
 [ext_resource path="res://assets/music/623104_Bossfight---Milky-Ways.mp3" type="AudioStream" id=9]
 [ext_resource path="res://assets/music/1029200_Bitsplosion.mp3" type="AudioStream" id=10]
+[ext_resource path="res://SettingsMenu.tscn" type="PackedScene" id=11]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -19,13 +20,16 @@ script = ExtResource( 7 )
 [node name="MainMenu" parent="." instance=ExtResource( 3 )]
 visible = false
 
+[node name="LevelMenu" parent="." instance=ExtResource( 1 )]
+visible = false
+
 [node name="ControlsMenu" parent="." instance=ExtResource( 5 )]
 visible = false
 
-[node name="SongsMenu" parent="." instance=ExtResource( 2 )]
+[node name="SettingsMenu" parent="." instance=ExtResource( 11 )]
 visible = false
 
-[node name="LevelMenu" parent="." instance=ExtResource( 1 )]
+[node name="SongsMenu" parent="." instance=ExtResource( 2 )]
 visible = false
 
 [node name="Transition" parent="." instance=ExtResource( 4 )]
@@ -41,7 +45,8 @@ song2 = ExtResource( 10 )
 [connection signal="level_menu" from="MainMenu" to="." method="_on_level_menu"]
 [connection signal="settings_menu" from="MainMenu" to="." method="_on_settings_menu"]
 [connection signal="songs_menu" from="MainMenu" to="." method="_on_songs_menu"]
+[connection signal="main_menu" from="LevelMenu" to="." method="_on_LevelMenu_main_menu"]
 [connection signal="main_menu" from="ControlsMenu" to="." method="_on_ControlsMenu_main_menu"]
+[connection signal="main_menu" from="SettingsMenu" to="." method="_on_SettingsMenu_main_menu"]
 [connection signal="main_menu" from="SongsMenu" to="." method="_on_SongsMenu_main_menu"]
 [connection signal="play_song" from="SongsMenu" to="." method="_on_play_song"]
-[connection signal="main_menu" from="LevelMenu" to="." method="_on_LevelMenu_main_menu"]

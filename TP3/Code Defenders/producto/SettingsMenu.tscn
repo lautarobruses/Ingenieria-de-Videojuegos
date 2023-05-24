@@ -1,0 +1,234 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://assets/img/Settings Menu/Graber.png" type="Texture" id=1]
+[ext_resource path="res://assets/fonts/ethnocentric/ethnocentric rg.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/img/Main Menu/background.jpg" type="Texture" id=3]
+[ext_resource path="res://assets/img/Settings Menu/Sound_BTN.png" type="Texture" id=4]
+[ext_resource path="res://assets/img/Settings Menu/Music_BTN.png" type="Texture" id=5]
+[ext_resource path="res://assets/img/Level Menu/Window.png" type="Texture" id=6]
+[ext_resource path="res://assets/img/Settings Menu/Notifications_BTN.png" type="Texture" id=7]
+[ext_resource path="res://assets/img/Settings Menu/Back_BTN_active.png" type="Texture" id=8]
+[ext_resource path="res://assets/img/Settings Menu/Back_BTN.png" type="Texture" id=9]
+[ext_resource path="res://assets/img/Settings Menu/England_Button.png" type="Texture" id=10]
+[ext_resource path="res://assets/img/Settings Menu/England_Selected_Button.png" type="Texture" id=11]
+[ext_resource path="res://assets/img/Settings Menu/Spain_Selected_Button.png" type="Texture" id=12]
+[ext_resource path="res://assets/img/Settings Menu/Spain_Button.png" type="Texture" id=13]
+[ext_resource path="res://assets/img/Settings Menu/Slidebar.png" type="Texture" id=14]
+[ext_resource path="res://assets/img/Settings Menu/Grabber_Area.png" type="Texture" id=15]
+
+[sub_resource type="GDScript" id=10]
+script/source = "extends \"res://scripts/BasicMenu.gd\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+func _on_MusicSlider_value_changed(value):
+	var volume = value / 100.0
+	AudioServer.set_bus_volume_db(0, volume) # Ajusta el volumen de la música
+
+func _on_SoundSlider_value_changed(value):
+	var volume = value / 100.0
+	AudioServer.set_bus_volume_db(1, volume) # Ajusta el volumen del sonido
+"
+
+[sub_resource type="Shader" id=5]
+code = "shader_type canvas_item;
+
+uniform float scroll_speed = 0;
+
+void fragment(){
+    vec2 shifteduv = UV;
+    shifteduv.x += TIME * scroll_speed;
+    vec4 color = textureLod(TEXTURE, shifteduv, 0.0);
+    COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 5 )
+shader_param/scroll_speed = 0.01
+
+[sub_resource type="DynamicFont" id=8]
+size = 64
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 32
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 14 )
+region_rect = Rect2( 0, 0, 460, 30 )
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 460, 30 )
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="ButtonGroup" id=9]
+resource_name = "Languages"
+
+[node name="SettingsMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 10 )
+
+[node name="Background" type="Sprite" parent="."]
+material = SubResource( 6 )
+scale = Vector2( 0.426667, 0.24 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Window" type="TextureRect" parent="."]
+margin_left = 488.0
+margin_top = 104.0
+margin_right = 1428.0
+margin_bottom = 1184.0
+rect_scale = Vector2( 1, 0.8 )
+texture = ExtResource( 6 )
+
+[node name="Settings" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -400.0
+margin_top = 128.0
+margin_right = 392.0
+margin_bottom = 206.0
+custom_colors/font_color = Color( 0.929412, 0.960784, 0.972549, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = SubResource( 8 )
+text = "Settings"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="BackButton" type="TextureButton" parent="."]
+margin_left = 1688.0
+margin_top = 64.0
+margin_right = 1898.0
+margin_bottom = 274.0
+rect_scale = Vector2( 0.75, 0.75 )
+texture_normal = ExtResource( 9 )
+texture_hover = ExtResource( 8 )
+
+[node name="Container" type="Control" parent="."]
+margin_left = 498.0
+margin_top = 224.0
+margin_right = 1420.0
+margin_bottom = 948.0
+rect_pivot_offset = Vector2( 46, -296 )
+
+[node name="MusicIcon" type="Sprite" parent="Container"]
+position = Vector2( 142, 160 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="Music" type="Label" parent="Container"]
+margin_left = 222.0
+margin_top = 128.0
+margin_right = 366.0
+margin_bottom = 168.0
+custom_colors/font_color = Color( 0.929412, 0.960784, 0.972549, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = SubResource( 7 )
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="Container"]
+margin_left = 398.0
+margin_top = 116.0
+margin_right = 848.0
+margin_bottom = 181.0
+custom_icons/grabber_disabled = ExtResource( 1 )
+custom_icons/grabber_highlight = ExtResource( 1 )
+custom_icons/grabber = ExtResource( 1 )
+custom_styles/slider = SubResource( 11 )
+custom_styles/grabber_area_highlight = SubResource( 12 )
+custom_styles/grabber_area = SubResource( 12 )
+value = 100.0
+rounded = true
+
+[node name="Sound" type="Label" parent="Container"]
+margin_left = 222.0
+margin_top = 329.0
+margin_right = 379.0
+margin_bottom = 369.0
+rect_pivot_offset = Vector2( -757, -148 )
+custom_colors/font_color = Color( 0.929412, 0.960784, 0.972549, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = SubResource( 7 )
+text = "Sound"
+
+[node name="SoundSlider" type="HSlider" parent="Container"]
+margin_left = 398.0
+margin_top = 318.0
+margin_right = 848.0
+margin_bottom = 383.0
+custom_icons/grabber_disabled = ExtResource( 1 )
+custom_icons/grabber_highlight = ExtResource( 1 )
+custom_icons/grabber = ExtResource( 1 )
+custom_styles/slider = SubResource( 11 )
+custom_styles/grabber_area_highlight = SubResource( 12 )
+custom_styles/grabber_area = SubResource( 12 )
+value = 100.0
+rounded = true
+
+[node name="SoundIcon" type="Sprite" parent="Container"]
+position = Vector2( 142, 352 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="LanguageIcon" type="Sprite" parent="Container"]
+position = Vector2( 142, 541 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="Languages" type="Label" parent="Container"]
+margin_left = 222.0
+margin_top = 520.0
+margin_right = 500.0
+margin_bottom = 560.0
+rect_pivot_offset = Vector2( -757, -148 )
+custom_colors/font_color = Color( 0.929412, 0.960784, 0.972549, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = SubResource( 7 )
+text = "Languages"
+
+[node name="SpainButton" type="TextureButton" parent="Container"]
+margin_left = 542.0
+margin_top = 480.0
+margin_right = 743.0
+margin_bottom = 688.0
+rect_scale = Vector2( 0.6, 0.6 )
+toggle_mode = true
+group = SubResource( 9 )
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 12 )
+
+[node name="EnglandButton" type="TextureButton" parent="Container"]
+margin_left = 710.0
+margin_top = 480.0
+margin_right = 911.0
+margin_bottom = 688.0
+rect_scale = Vector2( 0.6, 0.6 )
+toggle_mode = true
+pressed = true
+group = SubResource( 9 )
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 11 )
+
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="value_changed" from="Container/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
+[connection signal="value_changed" from="Container/SoundSlider" to="." method="_on_SoundSlider_value_changed"]
