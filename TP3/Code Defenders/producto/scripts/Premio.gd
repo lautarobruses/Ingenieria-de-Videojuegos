@@ -1,5 +1,6 @@
 extends Area2D
 
+var puntajeDeLevantar = 300
 var timer
 signal levantaSimbolo
 
@@ -39,6 +40,7 @@ func init(posicion_nave,tipo):
 
 func bodyEntered(body):
 	emit_signal("levantaSimbolo")
+	get_parent().sumaPuntaje(puntajeDeLevantar)
 	queue_free()
 	pass # Replace with function body.
 

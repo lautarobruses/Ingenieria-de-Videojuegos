@@ -11,6 +11,7 @@ var laser = preload("res://Escenas/Laser.tscn")
 var laser1
 var parado=0
 var moviendo=0
+var puntaje = 500
 signal destruyeLaser
 var weight = 0.05
 var UltAnimacion
@@ -63,8 +64,8 @@ func se_mueve(delta):
 
 func hitted(damage):
 	golpes += 1
-	print ("me pegaron ", golpes)
 	if golpes == vidas:
+		get_parent().sumaPuntaje(puntaje)
 		exploto = 1
 		$turbo.hide()
 		get_parent().remove_child(laser1)

@@ -7,6 +7,7 @@ var velocidad = 1
 var vidas
 var golpes = 0
 
+var puntaje = 400
 
 var random_target_pos : Vector2 = Vector2(450,300)
 var disparo = preload("res://Escenas/disparoEnemigo.tscn")
@@ -78,12 +79,14 @@ func play(animacion):
 func hitted(damage):
 	golpes += 1
 	if golpes == vidas:
+		get_parent().sumaPuntaje(puntaje)
 		$turbo.hide()
 		play("explosion")
 		$CollisionShape2D.disabled = true
 		
 func salirDeLaPantalla():
 	salirDeLaPantalla=1
+	velocidad = 7
 	if (position.distance_to(Vector2(2000,-40)) < position.distance_to(Vector2(2000,1080))):
 		objetivo = Vector2(2000,-40)
 	else:
