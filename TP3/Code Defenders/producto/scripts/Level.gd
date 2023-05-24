@@ -11,6 +11,8 @@ var cantNaveTres = 0
 
 var puntajeTotal = 0
 
+var nivel
+
 onready var posicionSalida = get_node("Path2D/PathFollow2D")
 
 func posicionRandom():

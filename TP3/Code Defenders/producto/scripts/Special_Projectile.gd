@@ -7,12 +7,13 @@ const ROTATION_SPEED = 10.0
 export (int) var speed
 var configuration 
 var velocity = Vector2()
+var nivel
 
-func start(pos, dir):
+func start(pos, dir,niv):
 	rotation = dir
 	position = pos
 	velocity = Vector2(-speed, 0).rotated(dir)
-	
+	nivel = niv
 
 	$CollisionShape2D.set_deferred("disabled", false)
 
@@ -26,7 +27,7 @@ func _physics_process(delta):
 	if collision:
 		blow(true)
 		if collision.collider.has_method("special_condition"):
-			collision.collider.special_condition(configuration,1)
+			collision.collider.special_condition(configuration)
 	
 	$Component1.rotation += ROTATION_SPEED * delta
 	$Component2.rotation += ROTATION_SPEED * delta
