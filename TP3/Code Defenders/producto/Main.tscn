@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://LevelMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://SongsMenu.tscn" type="PackedScene" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://assets/music/623104_Bossfight---Milky-Ways.mp3" type="AudioStream" id=9]
 [ext_resource path="res://assets/music/1029200_Bitsplosion.mp3" type="AudioStream" id=10]
 [ext_resource path="res://SettingsMenu.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/music/547884_EnV---Pearlescent.mp3" type="AudioStream" id=12]
+[ext_resource path="res://assets/music/1204602_Teminite---Zero.mp3" type="AudioStream" id=13]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -40,6 +42,8 @@ script = ExtResource( 8 )
 main_song = ExtResource( 6 )
 song1 = ExtResource( 9 )
 song2 = ExtResource( 10 )
+song3 = ExtResource( 12 )
+song4 = ExtResource( 13 )
 
 [connection signal="controls_menu" from="MainMenu" to="." method="_on_controls_menu"]
 [connection signal="level_menu" from="MainMenu" to="." method="_on_level_menu"]

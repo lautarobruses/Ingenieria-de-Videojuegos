@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/547884_EnV---Pearlescent.mp3-73475dd22bce56d315ba31f1d914ed2d.mp3str"
+
+[deps]
+
+source_file="res://assets/music/547884_EnV---Pearlescent.mp3"
+dest_files=[ "res://.import/547884_EnV---Pearlescent.mp3-73475dd22bce56d315ba31f1d914ed2d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
