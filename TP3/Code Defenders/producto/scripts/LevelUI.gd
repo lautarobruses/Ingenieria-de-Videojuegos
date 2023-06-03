@@ -14,3 +14,6 @@ func _ready():
 
 func _on_PauseButton_pressed():
 	emit_signal("pause")
+	
+func game_over():
+	$AnimationPlayer.play("Game Over")

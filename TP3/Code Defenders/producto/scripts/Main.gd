@@ -57,8 +57,6 @@ func _on_SongsMenu_main_menu():
 	$MainMenu.visible = true
 	$Transition.fade_out()
 
-
-
 func _on_play_song(song):
 	$MainSong.set_current_song(song)
 

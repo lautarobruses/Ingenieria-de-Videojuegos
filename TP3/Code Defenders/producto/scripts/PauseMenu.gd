@@ -15,3 +15,6 @@ func _on_InfoButton_pressed():
 func _on_MenuButton_pressed():
 	get_tree().change_scene("res://Main.tscn")
 	get_tree().paused = false
+
+func _on_RetryButton_pressed():
+	pass # Replace with function body.

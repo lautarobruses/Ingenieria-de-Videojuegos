@@ -30,6 +30,7 @@ signal disparoEspecial
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	$AnimatedSprite.set_scale(Vector2(0.2, 0.2))
 
 func _physics_process(delta):
 	if (!isFrozen):
@@ -116,6 +117,13 @@ func freeze():
 
 func unfreeze():
 	isFrozen = false
+
+func blow():
+	$AnimatedSprite.set_scale(Vector2(0.4, 0.4))
+	$AnimatedSprite.play("blast")
+	yield(get_tree().create_timer(3.0), "timeout")
+	
+	dead()
 
 func _on_InvulnerableTimer_timeout():
 	$CollisionPolygon2D.set_deferred("disabled", false)

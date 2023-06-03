@@ -9,11 +9,10 @@ var configuration
 var velocity = Vector2()
 var nivel
 
-func start(pos, dir,niv):
+func start(pos, dir):
 	rotation = dir
 	position = pos
 	velocity = Vector2(-speed, 0).rotated(dir)
-	nivel = niv
 
 	$CollisionShape2D.set_deferred("disabled", false)
 
