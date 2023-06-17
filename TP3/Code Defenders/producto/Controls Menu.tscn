@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/img/Main Menu/background.jpg" type="Texture" id=1]
 [ext_resource path="res://assets/img/Level Menu/Window.png" type="Texture" id=2]
@@ -30,6 +30,12 @@ shader_param/scroll_speed = 0.01
 size = 64
 use_filter = true
 font_data = ExtResource( 3 )
+
+[sub_resource type="InputEventAction" id=10]
+action = "esc"
+
+[sub_resource type="ShortCut" id=9]
+shortcut = SubResource( 10 )
 
 [sub_resource type="DynamicFont" id=8]
 size = 32
@@ -85,6 +91,7 @@ margin_right = 1910.0
 margin_bottom = 280.0
 rect_scale = Vector2( 0.75, 0.75 )
 focus_mode = 0
+shortcut = SubResource( 9 )
 texture_normal = ExtResource( 4 )
 texture_hover = ExtResource( 8 )
 

@@ -11,8 +11,6 @@ var cantNaveTres = 0
 
 var puntajeTotal = 0
 
-var nivel
-
 onready var posicionSalida = get_node("Path2D/PathFollow2D")
 
 func posicionRandom():
@@ -31,9 +29,7 @@ func set_music(song):
 func game_over(): #gestionar game over de victoria
 	puntajeTotal -= (110 - $Player.health)
 	print(puntajeTotal)
-	$Player.blow()
 #	get_tree().quit()
-	pass
 
 func fase_esbirros():
 	$Player.fase = 0
@@ -50,29 +46,36 @@ func fase_esbirros():
 		var nuevoEnemigo = naveUno.instance()
 		nuevoEnemigo.position = posicionRandom()
 		add_child(nuevoEnemigo)
-	pass
 	
 func fin_fase_esbirros():
 	$Player.fase = 1
 	for i in self.get_children():
 		if(i.has_method("salirDeLaPantalla")):
 			i.salirDeLaPantalla()
-	pass
 
-func by_defeating_boss():
-	yield(get_tree().create_timer(1), "timeout")
-	puntajeTotal -= (110 - $Player.health)
-	print(puntajeTotal)
-	get_tree().quit()
-	pass 
+func sumaPuntaje(puntaje):
+	puntajeTotal+=puntaje
 
 func _on_pause():
-	$PauseMenu.show()
+	$PauseMenu.show_pause()
 	get_tree().paused = true
 
 func _on_PauseMenu_play():
 	$PauseMenu.hide()
 	get_tree().paused = false
-	
-func sumaPuntaje(puntaje):
-	puntajeTotal+=puntaje
+
+func _on_HealthBar_player_dead(): #DERROTA
+	$Player.blow()
+	$LevelUI.game_over()
+	yield(get_tree().create_timer(3), "timeout")
+	$PauseMenu.show_game_over()
+
+func _on_BossHealthBar_boss_dead(): #VICTORIA
+	yield(get_tree().create_timer(1), "timeout")
+	puntajeTotal -= (110 - $Player.health)
+	print(puntajeTotal)
+	$PauseMenu.show_you_win()
+	pass # Replace with function body.
+
+func _on_PauseMenu_retry():
+	get_tree().reload_current_scene()

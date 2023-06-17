@@ -30,7 +30,6 @@ signal disparoEspecial
 
 func _ready():
 	screen_size = get_viewport_rect().size
-	$AnimatedSprite.set_scale(Vector2(0.2, 0.2))
 
 func _physics_process(delta):
 	if (!isFrozen):
@@ -38,7 +37,6 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("shoot"):
 			shoot()
 		if Input.is_action_just_pressed("special_shoot"):
-			#shoot_power()
 			emit_signal("disparoEspecial")
 		if Input.is_action_just_pressed("delete_component"):
 			emit_signal("sueltaPieza")
@@ -90,20 +88,13 @@ func shoot():
 	p.start($ProjectilePosition.global_position, rotation)
 	get_parent().add_child(p)
 
-
 func shoot_power():
 	var sp = special_projectile.instance()
 	sp.setConfiguration(current_components)
 	sp.start($ProjectilePosition.global_position, rotation)
 	get_parent().add_child(sp)
 
-func dead():
-	hide()
-	$CollisionPolygon2D.disabled = true
-#	queue_free()
-
 func damage_player(damage):
-	#print(health)
 	health -= damage
 	$InvulnerableTimer.start()
 	invulnerability = true
@@ -119,11 +110,14 @@ func unfreeze():
 	isFrozen = false
 
 func blow():
-	$AnimatedSprite.set_scale(Vector2(0.4, 0.4))
-	$AnimatedSprite.play("blast")
-	yield(get_tree().create_timer(3.0), "timeout")
-	
-	dead()
+	freeze()
+	$CollisionPolygon2D.disabled = true
+	$AnimatedSprite.visible = false
+	$AnimatedBlast.visible = true
+	$AnimatedBlast.play("default")
+	yield(get_tree().create_timer(1.0), "timeout")
+	hide()
+	position = Vector2(-200, 540)
 
 func _on_InvulnerableTimer_timeout():
 	$CollisionPolygon2D.set_deferred("disabled", false)

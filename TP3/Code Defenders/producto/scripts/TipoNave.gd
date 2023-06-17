@@ -14,9 +14,6 @@ var salirDeLaPantalla = 0;
 onready var player = get_node("../Player")
 var objetivo
 var target_position
-#onready var misil = get_node("../Misilardo")
-
-# Called when the node enters the scene tree for the first time.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):

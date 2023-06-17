@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/fonts/ethnocentric/ethnocentric rg.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/img/Pause Menu/Pause_BTN.png" type="Texture" id=2]
@@ -87,7 +87,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=7]
 resource_name = "Game Over"
-length = 3.0
+length = 2.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("GameOver:rect_scale")
 tracks/0/interp = 2
@@ -107,7 +107,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2.5, 3 ),
+"times": PoolRealArray( 0, 2.2, 2.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 666.5, 384.5 ), Vector2( 666.5, 384.5 ), Vector2( 666.5, 500 ) ]
@@ -119,7 +119,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 2.5, 3 ),
+"times": PoolRealArray( 0, 2.2, 2.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -201,6 +201,12 @@ tracks/5/keys = {
 "values": [ true ]
 }
 
+[sub_resource type="InputEventAction" id=15]
+action = "esc"
+
+[sub_resource type="ShortCut" id=20]
+shortcut = SubResource( 15 )
+
 [sub_resource type="DynamicFont" id=1]
 size = 80
 use_filter = true
@@ -227,13 +233,14 @@ script = ExtResource( 4 )
 "anims/Present Song" = SubResource( 3 )
 
 [node name="PauseButton" type="TextureButton" parent="."]
-visible = false
 modulate = Color( 1, 1, 1, 0.686275 )
 margin_left = 1784.0
-margin_top = 32.0
+margin_top = -104.0
 margin_right = 1994.0
-margin_bottom = 242.0
+margin_bottom = 106.0
 rect_scale = Vector2( 0.5, 0.5 )
+disabled = true
+shortcut = SubResource( 20 )
 texture_normal = ExtResource( 2 )
 texture_hover = ExtResource( 3 )
 

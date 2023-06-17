@@ -61,8 +61,9 @@ __meta__ = {
 }
 
 [connection signal="play" from="PauseMenu" to="." method="_on_PauseMenu_play"]
+[connection signal="retry" from="PauseMenu" to="." method="_on_PauseMenu_retry"]
 [connection signal="disparoEspecial" from="Player" to="Barra" method="_on_Player_disparoEspecial"]
 [connection signal="sueltaPieza" from="Player" to="Barra" method="_on_Player_sueltaPieza"]
 [connection signal="pause" from="LevelUI" to="." method="_on_pause"]
-[connection signal="dead" from="HealthBar" to="." method="game_over"]
-[connection signal="dead" from="BossHealthBar" to="." method="by_defeating_boss"]
+[connection signal="dead" from="HealthBar" to="." method="_on_HealthBar_player_dead"]
+[connection signal="dead" from="BossHealthBar" to="." method="_on_BossHealthBar_boss_dead"]

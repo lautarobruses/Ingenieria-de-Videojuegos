@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://assets/img/Main Menu/background.jpg" type="Texture" id=1]
 [ext_resource path="res://assets/img/Level Menu/Forward_BTN.png" type="Texture" id=2]
@@ -111,6 +111,30 @@ animations = [ {
 "name": "silver",
 "speed": 5.0
 } ]
+
+[sub_resource type="InputEventAction" id=16]
+action = "right"
+
+[sub_resource type="ShortCut" id=17]
+shortcut = SubResource( 16 )
+
+[sub_resource type="InputEventAction" id=18]
+action = "left"
+
+[sub_resource type="ShortCut" id=19]
+shortcut = SubResource( 18 )
+
+[sub_resource type="InputEventAction" id=21]
+action = "enter"
+
+[sub_resource type="ShortCut" id=8]
+shortcut = SubResource( 21 )
+
+[sub_resource type="InputEventAction" id=15]
+action = "esc"
+
+[sub_resource type="ShortCut" id=20]
+shortcut = SubResource( 15 )
 
 [node name="LevelMenu" type="Control"]
 anchor_right = 1.0
@@ -267,6 +291,7 @@ margin_right = -226.0
 margin_bottom = 108.0
 rect_scale = Vector2( 0.8, 0.8 )
 focus_mode = 0
+shortcut = SubResource( 17 )
 texture_normal = ExtResource( 2 )
 texture_hover = ExtResource( 16 )
 
@@ -279,6 +304,7 @@ margin_right = 494.0
 margin_bottom = 108.0
 rect_scale = Vector2( 0.8, 0.8 )
 focus_mode = 0
+shortcut = SubResource( 19 )
 texture_normal = ExtResource( 4 )
 texture_hover = ExtResource( 15 )
 
@@ -299,6 +325,7 @@ margin_right = 1094.0
 margin_bottom = 928.0
 rect_scale = Vector2( 0.8, 0.8 )
 focus_mode = 0
+shortcut = SubResource( 8 )
 texture_normal = ExtResource( 7 )
 texture_hover = ExtResource( 12 )
 
@@ -309,6 +336,7 @@ margin_right = 1326.0
 margin_bottom = 928.0
 rect_scale = Vector2( 0.8, 0.8 )
 focus_mode = 0
+shortcut = SubResource( 20 )
 texture_normal = ExtResource( 8 )
 texture_hover = ExtResource( 17 )
 

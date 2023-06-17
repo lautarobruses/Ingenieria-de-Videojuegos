@@ -28,8 +28,8 @@ func start():
 func stop():
 	isEnable = false
 	$AnimationPlayer.play("disable")
-	yield(get_tree().create_timer(2.0), "timeout")
 	emit_signal("dead")
+	yield(get_tree().create_timer(2.0), "timeout")
 	queue_free()
 
 func show():

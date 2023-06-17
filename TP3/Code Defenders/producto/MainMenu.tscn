@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/fonts/ethnocentric/ethnocentric rg.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/img/Main Menu/background.jpg" type="Texture" id=2]
@@ -30,6 +30,18 @@ font_data = ExtResource( 1 )
 size = 64
 use_filter = true
 font_data = ExtResource( 1 )
+
+[sub_resource type="InputEventAction" id=7]
+action = "enter"
+
+[sub_resource type="ShortCut" id=8]
+shortcut = SubResource( 7 )
+
+[sub_resource type="InputEventAction" id=10]
+action = "esc"
+
+[sub_resource type="ShortCut" id=9]
+shortcut = SubResource( 10 )
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -70,6 +82,7 @@ focus_mode = 0
 custom_colors/font_color = Color( 0.929412, 0.960784, 0.972549, 1 )
 custom_colors/font_color_hover = Color( 1, 0.815686, 0.305882, 1 )
 custom_fonts/font = SubResource( 6 )
+shortcut = SubResource( 8 )
 text = "Start"
 icon = ExtResource( 3 )
 flat = true
@@ -140,6 +153,7 @@ focus_mode = 0
 custom_colors/font_color = Color( 0.929412, 0.960784, 0.972549, 1 )
 custom_colors/font_color_hover = Color( 1, 0.815686, 0.305882, 1 )
 custom_fonts/font = SubResource( 6 )
+shortcut = SubResource( 9 )
 text = "Quit"
 icon = ExtResource( 3 )
 flat = true
