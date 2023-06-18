@@ -311,7 +311,7 @@ animations = [ {
 } ]
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( -200, 540 )
+position = Vector2( 336.178, 540 )
 rotation = 3.14159
 scale = Vector2( 1.25, 1.25 )
 z_index = 1

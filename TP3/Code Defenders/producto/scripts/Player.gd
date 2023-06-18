@@ -105,9 +105,11 @@ func hitted(damage):
 
 func freeze():
 	isFrozen = true
+	$CollisionPolygon2D.disabled = true
 
 func unfreeze():
 	isFrozen = false
+	$CollisionPolygon2D.disabled = false
 
 func blow():
 	freeze()
