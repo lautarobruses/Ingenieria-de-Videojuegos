@@ -23,6 +23,23 @@ func show_you_win():
 	$PlayButton.hide()
 	$RetryButton.show()
 	show()
+	stars_condition()
+	
+func stars_condition(): 
+	var cant_estrellas = 1
+	
+	#Silver Stars
+	$AnimationPlayer.play("Silver Stars")
+	yield(get_tree().create_timer(1.5), "timeout")
+	#Golden Stars
+	if (cant_estrellas == 1):
+		$AnimationPlayer.play("1 Golden Star")
+	elif (cant_estrellas == 2):
+		$AnimationPlayer.play("2 Golden Star")
+	elif (cant_estrellas == 3):
+		$AnimationPlayer.play("3 Golden Star")
+	yield(get_tree().create_timer(2.5), "timeout") 
+	#COMPLETAR LOGICA DE ESTRELLAS DORADAS
 
 func _on_PlayButton_pressed():
 	emit_signal("play")
