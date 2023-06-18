@@ -41,7 +41,7 @@ damage = 10
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "blow"
-frame = 3
+frame = 1
 speed_scale = 2.0
 playing = true
 

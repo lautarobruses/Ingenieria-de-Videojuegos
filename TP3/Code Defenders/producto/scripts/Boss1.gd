@@ -3,8 +3,9 @@ extends KinematicBody2D
 signal broken_shield
 
 var projectile = preload("res://Boss_Projectile.tscn")
+var blast = preload("res://Blast.tscn")
 onready var player = get_node("../Player")
-export (int) var health = 200
+export (int) var health = 10
 export (int) var damage = 45
 
 var canons = null
@@ -12,7 +13,6 @@ var projectile_positions = []
 var shot_type: String
 var follow_target = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	hide()
 	
@@ -26,10 +26,14 @@ func start():
 	canons = get_tree().get_nodes_in_group("Canons")
 
 func stop():
-	hide()
 	if ($ShootTimer.is_stopped() != true):
 		$ShootTimer.one_shot = true
 	get_tree().call_group("bad_projectiles", "queue_free")
+	$AnimationPlayer.stop()
+	$AnimationPlayer.clear_queue()
+	$AnimationPlayer.play("Defeated")
+	defeated()
+	yield(get_tree().create_timer(5), "timeout")
 	queue_free()
 
 func change_shoot(type):
@@ -55,6 +59,19 @@ func third_phase():
 	
 func final_phase():
 	$AnimationPlayer.play("Shoot Waiting-Target-Everything")
+
+func defeated():
+	var rectangle_shape = $BlastSpawnArea/CollisionShape2D.get_shape()
+
+	while true:
+		var x = rand_range(rectangle_shape.extents.x * -1, rectangle_shape.extents.x)
+		var y = rand_range(rectangle_shape.extents.y * -1, rectangle_shape.extents.y)
+		var random_position = Vector2(x, y)
+		
+		var new_blast = blast.instance()
+		new_blast.global_position = random_position
+		add_child(new_blast)
+		yield(get_tree().create_timer(0.25), "timeout")
 
 func shoot():
 	#find a random free canon

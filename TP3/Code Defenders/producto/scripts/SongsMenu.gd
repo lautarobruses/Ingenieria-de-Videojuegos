@@ -53,6 +53,7 @@ func hide_dialog():
 
 func _on_AcceptButton_pressed():
 	OS.shell_open(url)
+	hide_dialog()
 
 func _on_CancelButton_pressed():
 	hide_dialog()

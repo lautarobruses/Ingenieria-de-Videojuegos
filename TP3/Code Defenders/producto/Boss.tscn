@@ -9,3 +9,5 @@
 [node name="Sprite" type="Sprite" parent="."]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+
+[node name="BlastSpawnArea" type="Area2D" parent="."]

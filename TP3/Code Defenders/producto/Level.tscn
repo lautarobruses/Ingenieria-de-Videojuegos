@@ -60,6 +60,8 @@ __meta__ = {
 "_edit_group_": true
 }
 
+[node name="Sounds" type="AudioStreamPlayer" parent="."]
+
 [connection signal="play" from="PauseMenu" to="." method="_on_PauseMenu_play"]
 [connection signal="retry" from="PauseMenu" to="." method="_on_PauseMenu_retry"]
 [connection signal="disparoEspecial" from="Player" to="Barra" method="_on_Player_disparoEspecial"]

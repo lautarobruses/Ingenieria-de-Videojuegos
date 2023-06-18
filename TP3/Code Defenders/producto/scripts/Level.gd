@@ -1,5 +1,9 @@
 extends Node2D
 
+onready var posicionSalida = get_node("Path2D/PathFollow2D")
+
+var jingle_win = preload("res://assets/sounds/Victory/jingle_win.wav")
+
 var player = preload("res://Player.tscn")
 var naveUno = preload("res://Escenas/NaveUno.tscn")
 var naveDos = preload("res://Escenas/NaveDos.tscn")
@@ -10,8 +14,6 @@ var cantNaveDos = 0
 var cantNaveTres = 0
 
 var puntajeTotal = 0
-
-onready var posicionSalida = get_node("Path2D/PathFollow2D")
 
 func posicionRandom():
 	randomize()
@@ -71,11 +73,22 @@ func _on_HealthBar_player_dead(): #DERROTA
 	$PauseMenu.show_game_over()
 
 func _on_BossHealthBar_boss_dead(): #VICTORIA
-	yield(get_tree().create_timer(1), "timeout")
+	#Puntaje
 	puntajeTotal -= (110 - $Player.health)
 	print(puntajeTotal)
+	#Musica
+	$Music.volume_db -= 25
+	$Sounds.stream = jingle_win
+	$Sounds.play()
+	#Musica
+	yield(get_tree().create_timer(3.0), "timeout")
+	#Menu
 	$PauseMenu.show_you_win()
-	pass # Replace with function body.
+	$Player.blow()
+	yield(get_tree().create_timer(2.0), "timeout")
+	$Music.volume_db += 25
+	
+	##GESTION DE ESTRELLAS
 
 func _on_PauseMenu_retry():
 	get_tree().reload_current_scene()

@@ -1,11 +1,8 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://assets/img/Ship_Main_Icon.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://assets/img/Player Blast/Blow.png" type="Texture" id=3]
-
-[sub_resource type="Animation" id=3]
-resource_name = "Game Over"
 
 [sub_resource type="Animation" id=2]
 resource_name = "Start"
@@ -322,7 +319,6 @@ collision_mask = 10
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-"anims/Game Over" = SubResource( 3 )
 anims/Start = SubResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

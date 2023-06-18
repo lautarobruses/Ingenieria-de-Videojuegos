@@ -29,9 +29,8 @@ var palabra3 = [0,0,0,0,0,0,0,0]
 
 func _ready():
 	current_configuration = [1]
-	color_configuration = [1,3,6]
+	color_configuration = [1,2]
 #	init_configuration(3)
-	pass
 
 func _physics_process(_delta):
 	if !is_over:
@@ -129,8 +128,8 @@ func esCodigoBloque(configuration):
 				if (configuration[j]==1):
 					salida = true
 				j=+1
-	return
-	
+	return salida
+
 func esNoSingular(configuration):
 	var salida = false
 	if(palabra1[0]==0):
@@ -145,7 +144,7 @@ func esNoSingular(configuration):
 			salida = true
 			palabra2 = configuration.duplicate()
 	return salida
-	
+
 func esUnivocamenteDecodificable(configuration):
 	var salida = false
 	

@@ -4,7 +4,6 @@ export var song: AudioStream
 
 var boss1 = preload("res://Boss1.tscn")
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
 	start_level()
@@ -20,4 +19,6 @@ func set_boss():
 
 func _on_Boss1_broken_shield():
 	$BossHealthBar.start()
-	pass # Replace with function body.
+
+func _on_BossHealthBar_dead():
+	$Boss1.stop()

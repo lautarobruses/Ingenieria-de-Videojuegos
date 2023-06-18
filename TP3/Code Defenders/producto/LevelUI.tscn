@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/fonts/ethnocentric/ethnocentric rg.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/img/Pause Menu/Pause_BTN.png" type="Texture" id=2]
@@ -44,6 +44,30 @@ tracks/2/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Score:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1528, 56 ), Vector2( 1528, -80 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Score:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "Enable Pause Button"
@@ -79,6 +103,30 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Score:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1528, -80 ), Vector2( 1528, 56 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Score:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
 "times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
@@ -222,6 +270,11 @@ size = 128
 use_filter = true
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=21]
+size = 48
+use_filter = true
+font_data = ExtResource( 1 )
+
 [node name="LevelUI" type="CanvasLayer"]
 layer = 2
 script = ExtResource( 4 )
@@ -233,6 +286,7 @@ script = ExtResource( 4 )
 "anims/Present Song" = SubResource( 3 )
 
 [node name="PauseButton" type="TextureButton" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0.686275 )
 margin_left = 1784.0
 margin_top = -104.0
@@ -288,6 +342,21 @@ custom_constants/shadow_offset_y = 5
 custom_fonts/font = SubResource( 6 )
 text = "Game
 Over"
+align = 1
+valign = 1
+
+[node name="Score" type="Label" parent="."]
+visible = false
+margin_left = 1528.0
+margin_top = -80.0
+margin_right = 1753.0
+margin_bottom = -21.0
+custom_colors/font_color = Color( 0.929412, 0.960784, 0.972549, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+custom_fonts/font = SubResource( 21 )
+text = "00000"
 align = 1
 valign = 1
 
