@@ -63,7 +63,6 @@ height = 46.0
 
 [sub_resource type="Animation" id=2]
 resource_name = "MovVertical"
-length = 0.5
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:position")
@@ -72,8 +71,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 0.5, 0.5 ),
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 2, 2 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -20 ) ]
 }
@@ -96,7 +95,7 @@ tracks/0/keys = {
 [node name="EsbirroNivelTres" type="KinematicBody2D"]
 position = Vector2( 891, 484 )
 collision_layer = 2
-collision_mask = 5
+collision_mask = 4
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true

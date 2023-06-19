@@ -1,5 +1,7 @@
 extends "res://scripts/Level.gd"
 
+export var song: AudioStream
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -9,6 +11,10 @@ var palabra1 = [0,0,0,0,0,0,0,0]
 var palabra2 = [0,0,0,0,0,0,0,0]
 var palabra3 = [0,0,0,0,0,0,0,0]
 var palabra4 = [0,0,0,0,0,0,0,0]
+var palabra5 = [0,0,0,0,0,0,0,0]
+var palabra6 = [0,0,0,0,0,0,0,0]
+var palabra7 = [0,0,0,0,0,0,0,0]
+
 var palabra = 0
 
 enum TipoNave {
@@ -25,6 +31,9 @@ func armoCodigo():
 	palabra2=[4,3,5,4,5,6,6,1]
 	palabra3=[6,5,4,1,4,3,1,3]
 	palabra4=[5,5,5,4,4,2,6,2]
+	palabra5=[4,5,2,3,1,1,5,2]
+	palabra6=[3,2,6,1,3,3,5,5]
+	palabra7=[2,1,2,3,6,5,6,5]
 
 func seteaBarra():
 	palabra += 1
@@ -45,6 +54,18 @@ func seteaBarra():
 			for i in 8:
 				guardaNodo(i,palabra4[i])
 			continue
+		5:
+			for i in 8:
+				guardaNodo(i,palabra5[i])
+			continue
+		6:
+			for i in 8:
+				guardaNodo(i,palabra6[i])
+			continue
+		7:
+			for i in 8:
+				guardaNodo(i,palabra7[i])
+			continue
 	yield(get_tree().create_timer(1.0), "timeout")
 	enviaGrupoEnemigos()
 
@@ -52,6 +73,8 @@ func seteaBarra():
 func _ready():
 	set_player()
 	armoCodigo()
+	set_music(song)
+	$Historial.hide()
 	$AnimationPlayer.play("main")
 	pass # Replace with function body.
 
@@ -63,18 +86,11 @@ func enviaGrupoEnemigos():
 	randomize()
 	var filaResultado = rng.randi_range(1,9)
 	for j in 8:
-		posicion=150
+		posicion=200
 		for i in 9:
 			if(i==filaResultado):
 				esCorrecto = true
-				if(palabra==1):
-					tipo = palabra1[j]
-				elif(palabra==2):
-					tipo = palabra2[j]
-				elif(palabra==3):
-					tipo=palabra3[j]
-				else:
-					tipo = palabra4[j]
+				tipo = buscaNodo(j)
 			else:
 				esCorrecto = false
 				tipo = rng.randi_range(1,6)
@@ -102,3 +118,37 @@ func guardaNodo(nodo,tipo):
 			$Barra.seteaNodo(nodo,TipoNave.CINCO)
 		6:
 			$Barra.seteaNodo(nodo,TipoNave.SEIS)
+
+func game_over(): #gestionar game over de victoria
+	#Puntaje
+	puntajeTotal -= (110 - $Player.health)
+	print(puntajeTotal)
+	#Musica
+	$Music.volume_db -= 25
+	$Sounds.stream = jingle_win
+	$Sounds.play()
+	#Musica
+	yield(get_tree().create_timer(3.0), "timeout")
+	#Menu
+	#Seteo El puntaje
+	$PauseMenu.show_you_win()
+	$Player.blow()
+	yield(get_tree().create_timer(2.0), "timeout")
+	$Music.volume_db += 25
+
+func buscaNodo(i):
+	match palabra:
+		1:
+			return palabra1[i]
+		2:
+			return palabra2[i]
+		3:
+			return palabra3[i]
+		4:
+			return palabra4[i]
+		5:
+			return palabra5[i]
+		6:
+			return palabra6[i]
+		7:
+			return palabra7[i]
