@@ -13,7 +13,7 @@ var esCorrecto
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	velocidad = 2
+	velocidad = 3
 	vidas = 1
 	rotation_degrees = 180
 	$AnimationPlayer.play("MovVertical")

@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://PruebaNivelTres.gd" type="Script" id=2]
+[ext_resource path="res://assets/music/547884_EnV---Pearlescent.mp3" type="AudioStream" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "main"
+length = 79.0
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 3, 13, 24, 33, 44, 55, 66, 78.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "seteaBarra"
+}, {
+"args": [  ],
+"method": "seteaBarra"
+}, {
+"args": [  ],
+"method": "seteaBarra"
+}, {
+"args": [  ],
+"method": "seteaBarra"
+}, {
+"args": [  ],
+"method": "seteaBarra"
+}, {
+"args": [  ],
+"method": "seteaBarra"
+}, {
+"args": [  ],
+"method": "seteaBarra"
+}, {
+"args": [  ],
+"method": "game_over"
+} ]
+}
+
+[node name="Level3" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+song = ExtResource( 3 )
+
+[node name="LevelUI" parent="." index="5"]
+music_name = "Pearlescent"
+author_name = "enV"
+
+[node name="Barra" parent="." index="9"]
+position = Vector2( 806, 20 )
+
+[node name="Historial" parent="." index="10"]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="12"]
+anims/main = SubResource( 1 )
