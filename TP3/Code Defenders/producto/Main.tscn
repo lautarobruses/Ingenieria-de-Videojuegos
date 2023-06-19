@@ -38,6 +38,7 @@ visible = false
 
 [node name="MainSong" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+bus = "Music"
 script = ExtResource( 8 )
 main_song = ExtResource( 6 )
 song1 = ExtResource( 9 )

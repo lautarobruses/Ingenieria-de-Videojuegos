@@ -21,15 +21,20 @@ script/source = "extends \"res://scripts/BasicMenu.gd\"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
+
+func to_decibels(value):
+	var scaledValue = (value - 0) / (100 - 0)  # Escala normalizada (0 a 1)
+	var decibels = -80 + (scaledValue * (6 - (-80)))  # Escala en decibeles
+	return decibels
 
 func _on_MusicSlider_value_changed(value):
-	var volume = value / 100.0
-	AudioServer.set_bus_volume_db(0, volume) # Ajusta el volumen de la música
+	var volume = to_decibels(value)
+	AudioServer.set_bus_volume_db(1, volume) # Ajusta el volumen de la música
 
 func _on_SoundSlider_value_changed(value):
-	var volume = value / 100.0
-	AudioServer.set_bus_volume_db(1, volume) # Ajusta el volumen del sonido
+	var volume = to_decibels(value)
+	AudioServer.set_bus_volume_db(2, volume) # Ajusta el volumen del sonido
 "
 
 [sub_resource type="Shader" id=5]

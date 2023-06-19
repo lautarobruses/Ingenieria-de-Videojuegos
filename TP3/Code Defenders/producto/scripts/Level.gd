@@ -83,7 +83,7 @@ func _on_BossHealthBar_boss_dead(): #VICTORIA
 	$Sounds.stream = jingle_win
 	$Sounds.play()
 	#Musica
-	yield(get_tree().create_timer(3.0), "timeout")
+	yield(get_tree().create_timer(6.0), "timeout")
 	#Menu
 	#Seteo El puntaje
 	$PauseMenu.show_you_win()
