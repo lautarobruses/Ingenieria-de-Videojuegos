@@ -24,3 +24,31 @@ func save_game():
 	save_game.open(SAVE_PATH, File.WRITE)
 	save_game.store_line(to_json(saveDict))
 	save_game.close()
+
+func setNivelUno(puntaje):
+	if (puntaje > saveDict["PuntajeNivel1"]):
+		saveDict["PuntajeNivel1"]=puntaje
+
+func setNivelDos(puntaje):
+	if(puntaje > saveDict["PuntajeNivel2"]):
+		saveDict["PuntajeNivel2"]=puntaje
+
+func setNivelTres(puntaje):
+	if(puntaje > saveDict["PuntajeNivel3"]):
+		saveDict["PuntajeNivel3"]=puntaje
+
+func setNivelCuatro(puntaje):
+	if(puntaje > saveDict["PuntajeNivel4"]):
+		saveDict["PuntajeNivel4"]=puntaje
+	
+func getPuntajeNivelUno():
+	return saveDict["PuntajeNivel1"]
+	
+func getPuntajeNivelDos():
+	return saveDict["PuntajeNivel2"]
+
+func getPuntajeNivelTres():
+	return saveDict["PuntajeNivel3"]
+	
+func getPuntajeNivelCuatro():
+	return saveDict["PuntajeNivel4"]

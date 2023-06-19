@@ -378,7 +378,8 @@ script = ExtResource( 11 )
 modulate = Color( 0, 0, 0, 0.588235 )
 show_behind_parent = true
 light_mask = 0
-margin_right = 1920.0
+margin_left = 1.0
+margin_right = 1942.0
 margin_bottom = 1080.0
 color = Color( 0, 0, 0, 1 )
 

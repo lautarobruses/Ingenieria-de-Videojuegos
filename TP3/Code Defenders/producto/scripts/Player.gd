@@ -37,7 +37,8 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("shoot"):
 			shoot()
 		if Input.is_action_just_pressed("special_shoot"):
-			emit_signal("disparoEspecial")
+			if(fase==1):
+				emit_signal("disparoEspecial")
 		if Input.is_action_just_pressed("delete_component"):
 			emit_signal("sueltaPieza")
 

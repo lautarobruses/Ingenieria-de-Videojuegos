@@ -6,6 +6,7 @@ var carousel_items = [1,2,3,4,5]
 var current_index = 0
 
 func _ready():
+	Persistencia.load_game() #Cargo los puntajes viejos
 	pass
 
 func change_level_name(level_name_node):

@@ -60,6 +60,7 @@ func sumaPuntaje(puntaje):
 
 func _on_pause():
 	$PauseMenu.show_pause()
+	#Seteo el puntaje
 	get_tree().paused = true
 
 func _on_PauseMenu_play():
@@ -70,6 +71,7 @@ func _on_HealthBar_player_dead(): #DERROTA
 	$Player.blow()
 	$LevelUI.game_over()
 	yield(get_tree().create_timer(3), "timeout")
+	#Seteo el puntaje
 	$PauseMenu.show_game_over()
 
 func _on_BossHealthBar_boss_dead(): #VICTORIA
@@ -83,6 +85,7 @@ func _on_BossHealthBar_boss_dead(): #VICTORIA
 	#Musica
 	yield(get_tree().create_timer(3.0), "timeout")
 	#Menu
+	#Seteo El puntaje
 	$PauseMenu.show_you_win()
 	$Player.blow()
 	yield(get_tree().create_timer(2.0), "timeout")

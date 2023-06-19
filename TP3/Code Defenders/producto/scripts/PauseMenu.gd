@@ -24,9 +24,13 @@ func show_you_win():
 	$RetryButton.show()
 	show()
 	stars_condition()
+	#Aca tengo que preguntar si el puntaje obtenido es mayor al puntaje guardado
+	#lo piso
+	#persistencia.save()
 	
 func stars_condition(): 
 	var cant_estrellas = 1
+	#Como se determinan las estrellas???
 	
 	#Silver Stars
 	$AnimationPlayer.play("Silver Stars")
