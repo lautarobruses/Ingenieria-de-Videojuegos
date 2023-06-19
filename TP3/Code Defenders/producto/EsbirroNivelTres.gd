@@ -3,17 +3,17 @@ extends KinematicBody2D
 var vidas
 var velocidad
 var golpes = 0
-var puntaje = 10
 var damage = 5
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 var tipoNave
 var UltAnimacion
+var esCorrecto
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	velocidad = 3
+	velocidad = 2
 	vidas = 1
 	rotation_degrees = 180
 	$AnimationPlayer.play("MovVertical")
@@ -48,7 +48,10 @@ func setTipoNave(tipo):
 func hitted(damage):
 	golpes += 1
 	if golpes == vidas:
-		get_parent().sumaPuntaje(puntaje)
+		if(esCorrecto):
+			get_parent().sumaPuntaje(20)
+		else:
+			get_parent().sumaPuntaje(-20)
 		#$turbo.hide()
 		play("explosion")
 		$CollisionShape2D.disabled = true
@@ -62,3 +65,6 @@ func _on_AnimatedSprite_animation_finished():
 	if UltAnimacion == "explosion":
 		queue_free()
 	pass # Replace with function body.
+
+func SetEsCorrecto(es):
+	esCorrecto = es

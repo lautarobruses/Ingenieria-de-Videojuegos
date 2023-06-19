@@ -1,14 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://PruebaNivelTres.gd" type="Script" id=1]
 [ext_resource path="res://HealthBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Escenas/BarraPalabraActual.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://LevelUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/music/623104_Bossfight---Milky-Ways.mp3" type="AudioStream" id=6]
+[ext_resource path="res://Background.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "main"
-length = 20.0
+length = 72.0
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -16,11 +18,26 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 1.9 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 2, 16, 30, 44.1, 58, 72 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
-"method": "enviaGrupoEnemigos"
+"method": "seteaBarra"
+}, {
+"args": [  ],
+"method": "seteaBarra"
+}, {
+"args": [  ],
+"method": "seteaBarra"
+}, {
+"args": [  ],
+"method": "seteaBarra"
+}, {
+"args": [  ],
+"method": "seteaBarra"
+}, {
+"args": [  ],
+"method": "game_over"
 } ]
 }
 
@@ -38,3 +55,8 @@ anims/main = SubResource( 1 )
 [node name="HealthBar" parent="." instance=ExtResource( 2 )]
 
 [node name="LevelUI" parent="." instance=ExtResource( 5 )]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="Background" parent="." instance=ExtResource( 7 )]
