@@ -47,15 +47,21 @@ tracks/0/keys = {
 script = ExtResource( 2 )
 song = ExtResource( 3 )
 
-[node name="LevelUI" parent="." index="5"]
+[node name="LevelUI" parent="." index="4"]
 music_name = "Pearlescent"
 author_name = "enV"
 
-[node name="Barra" parent="." index="9"]
+[node name="Barra" parent="." index="8"]
 position = Vector2( 806, 20 )
 
-[node name="Historial" parent="." index="10"]
+[node name="Historial" parent="." index="9"]
 visible = false
+
+[node name="Music" parent="." index="10"]
+bus = "Master"
+
+[node name="Sounds" parent="." index="11"]
+bus = "Master"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="12"]
 anims/main = SubResource( 1 )
