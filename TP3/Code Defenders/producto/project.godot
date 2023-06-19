@@ -111,6 +111,7 @@ enter={
 [locale]
 
 locale_filter=[ 0, [ "en", "es" ] ]
+translations=PoolStringArray( "res://assets/other/translations/text.en.translation", "res://assets/other/translations/text.es.translation" )
 
 [physics]
 

@@ -28,11 +28,6 @@ func set_music(song):
 	$Music.stream = song
 	$Music.play()
 
-func game_over(): #gestionar game over de victoria
-	puntajeTotal -= (110 - $Player.health)
-	print(puntajeTotal)
-#	get_tree().quit()
-
 func fase_esbirros():
 	$Player.fase = 0
 	for i in cantNaveTres:

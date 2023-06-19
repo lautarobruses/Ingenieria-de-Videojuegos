@@ -13,15 +13,15 @@ func change_level_name(level_name_node):
 	var level_name: String
 	
 	if current_index == 0:
-		level_name = "Codigos Bloque"
+		level_name = tr("LEVEL1_TITLE")
 	elif current_index == 1:
-		level_name = "Codigos Singulares"
+		level_name = tr("LEVEL2_TITLE")
 	elif current_index == 2:
-		level_name = "Codigos Univocos"
+		level_name = tr("LEVEL3_TITLE")
 	elif current_index == 3:
-		level_name = "Codigos Intantaneos"
+		level_name = tr("LEVEL4_TITLE")
 	elif current_index == 4:
-		level_name = "Proximamente"
+		level_name = tr("LEVEL_SOON_TITLE")
 	
 	level_name_node.set_text(level_name)
 

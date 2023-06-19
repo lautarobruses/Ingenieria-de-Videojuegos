@@ -1,0 +1,21 @@
+﻿keys;en;es
+MAIN_START;start;comenzar
+MAIN_CONTROLS;controls;controles
+MAIN_SETTINGS;settings;ajustes
+MAIN_SONGS;songs;canciones
+MAIN_QUIT;quit;salir
+CONTROLS_SHOT;shot;disparo
+CONTROLS_SPECIAL_SHOT;special shot;disparo\nespecial
+CONTROLS_DISCARD_COMP;discard component;descartar\ncomponente
+CONTROLS_MOVEMENT;movement;movimiento
+SETTINGS_MUSIC;music;musica
+SETTINGS_SOUND;sound;sonido
+SETTINGS_LANGUAGES;languages;idiomas
+LEVEL1_TITLE;block codes;codigos bloque
+LEVEL2_TITLE;singular codes;codigos singulares
+LEVEL3_TITLE;unique codes;codigos univocos
+LEVEL4_TITLE;instant codes;codigos instantaneos
+LEVEL_SOON_TITLE;soon…;proximamente
+PAUSE_MENU_PAUSE;pause;pausa
+PAUSE_MENU_GAMEOVER;game over;fin del juego
+PAUSE_MENU_YOUWIN;you win;victoria

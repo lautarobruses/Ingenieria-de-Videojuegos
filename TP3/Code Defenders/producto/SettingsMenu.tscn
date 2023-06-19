@@ -35,6 +35,12 @@ func _on_MusicSlider_value_changed(value):
 func _on_SoundSlider_value_changed(value):
 	var volume = to_decibels(value)
 	AudioServer.set_bus_volume_db(2, volume) # Ajusta el volumen del sonido
+
+func _on_SpainButton_pressed():
+	TranslationServer.set_locale(\"es\")
+
+func _on_EnglandButton_pressed():
+	TranslationServer.set_locale(\"en\")
 "
 
 [sub_resource type="Shader" id=5]
@@ -121,7 +127,7 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
 custom_constants/shadow_offset_x = 5
 custom_constants/shadow_offset_y = 5
 custom_fonts/font = SubResource( 8 )
-text = "Settings"
+text = "MAIN_SETTINGS"
 align = 1
 valign = 1
 clip_text = true
@@ -158,13 +164,13 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
 custom_constants/shadow_offset_x = 5
 custom_constants/shadow_offset_y = 5
 custom_fonts/font = SubResource( 7 )
-text = "Music"
+text = "SETTINGS_MUSIC"
 
 [node name="MusicSlider" type="HSlider" parent="Container"]
-margin_left = 398.0
-margin_top = 116.0
-margin_right = 858.0
-margin_bottom = 181.0
+margin_left = 414.0
+margin_top = 112.0
+margin_right = 874.0
+margin_bottom = 177.0
 rect_pivot_offset = Vector2( 24, 35 )
 custom_icons/grabber_disabled = ExtResource( 1 )
 custom_icons/grabber_highlight = ExtResource( 1 )
@@ -177,7 +183,7 @@ rounded = true
 
 [node name="Sound" type="Label" parent="Container"]
 margin_left = 222.0
-margin_top = 329.0
+margin_top = 328.0
 margin_right = 379.0
 margin_bottom = 369.0
 rect_pivot_offset = Vector2( -757, -148 )
@@ -186,13 +192,13 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
 custom_constants/shadow_offset_x = 5
 custom_constants/shadow_offset_y = 5
 custom_fonts/font = SubResource( 7 )
-text = "Sound"
+text = "SETTINGS_SOUND"
 
 [node name="SoundSlider" type="HSlider" parent="Container"]
-margin_left = 398.0
-margin_top = 318.0
-margin_right = 848.0
-margin_bottom = 383.0
+margin_left = 414.0
+margin_top = 312.0
+margin_right = 874.0
+margin_bottom = 377.0
 custom_icons/grabber_disabled = ExtResource( 1 )
 custom_icons/grabber_highlight = ExtResource( 1 )
 custom_icons/grabber = ExtResource( 1 )
@@ -223,7 +229,7 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
 custom_constants/shadow_offset_x = 5
 custom_constants/shadow_offset_y = 5
 custom_fonts/font = SubResource( 7 )
-text = "Languages"
+text = "SETTINGS_LANGUAGES"
 
 [node name="SpainButton" type="TextureButton" parent="Container"]
 margin_left = 542.0
@@ -232,6 +238,7 @@ margin_right = 743.0
 margin_bottom = 688.0
 rect_scale = Vector2( 0.6, 0.6 )
 toggle_mode = true
+pressed = true
 group = SubResource( 16 )
 texture_normal = ExtResource( 13 )
 texture_pressed = ExtResource( 12 )
@@ -243,7 +250,6 @@ margin_right = 911.0
 margin_bottom = 688.0
 rect_scale = Vector2( 0.6, 0.6 )
 toggle_mode = true
-pressed = true
 group = SubResource( 16 )
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 11 )
@@ -251,3 +257,5 @@ texture_pressed = ExtResource( 11 )
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="value_changed" from="Container/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
 [connection signal="value_changed" from="Container/SoundSlider" to="." method="_on_SoundSlider_value_changed"]
+[connection signal="pressed" from="Container/SpainButton" to="." method="_on_SpainButton_pressed"]
+[connection signal="pressed" from="Container/EnglandButton" to="." method="_on_EnglandButton_pressed"]

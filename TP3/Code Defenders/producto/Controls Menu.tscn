@@ -79,7 +79,7 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
 custom_constants/shadow_offset_x = 5
 custom_constants/shadow_offset_y = 5
 custom_fonts/font = SubResource( 7 )
-text = "Controls"
+text = "MAIN_CONTROLS"
 align = 1
 valign = 1
 clip_text = true
@@ -145,7 +145,7 @@ custom_fonts/font = SubResource( 8 )
 text = "C"
 
 [node name="ArrowsCaps" type="Sprite" parent="Container"]
-position = Vector2( 652, 484 )
+position = Vector2( 695.6, 488.5 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 5 )
 
@@ -160,19 +160,21 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
 custom_constants/shadow_offset_x = 5
 custom_constants/shadow_offset_y = 5
 custom_fonts/font = SubResource( 11 )
-text = "Shot"
+text = "CONTROLS_SHOT"
 
 [node name="Movement" type="Label" parent="Container"]
-margin_left = 524.0
-margin_top = 324.0
-margin_right = 786.0
-margin_bottom = 364.0
+margin_left = 430.0
+margin_top = 328.0
+margin_right = 959.0
+margin_bottom = 368.0
 custom_colors/font_color = Color( 0.929412, 0.960784, 0.972549, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
 custom_constants/shadow_offset_x = 5
 custom_constants/shadow_offset_y = 5
 custom_fonts/font = SubResource( 11 )
-text = "Movement"
+text = "CONTROLS_MOVEMENT"
+align = 1
+valign = 1
 
 [node name="Special shot" type="Label" parent="Container"]
 margin_left = 180.8
@@ -185,8 +187,7 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
 custom_constants/shadow_offset_x = 5
 custom_constants/shadow_offset_y = 5
 custom_fonts/font = SubResource( 11 )
-text = "Special 
-shot"
+text = "CONTROLS_SPECIAL_SHOT"
 
 [node name="Special shot2" type="Label" parent="Container"]
 margin_left = 180.8
@@ -199,11 +200,10 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
 custom_constants/shadow_offset_x = 5
 custom_constants/shadow_offset_y = 5
 custom_fonts/font = SubResource( 11 )
-text = "Discard
-component"
+text = "CONTROLS_DISCARD_COMP"
 
 [node name="Ship" type="Sprite" parent="Container"]
-position = Vector2( 652, 156 )
+position = Vector2( 694, 205 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 7 )
 

@@ -7,19 +7,19 @@ func _ready():
 	pass # Replace with function body.
 
 func show_pause():
-	$Title.text = "Pause"
+	$Title.text = tr("PAUSE_MENU_PAUSE")
 	$PlayButton.show()
 	$RetryButton.hide()
 	show()
 	
 func show_game_over():
-	$Title.text = "Game Over"
+	$Title.text = tr("PAUSE_MENU_GAMEOVER")
 	$PlayButton.hide()
 	$RetryButton.show()
 	show()
 
 func show_you_win():
-	$Title.text = "You win"
+	$Title.text = tr("PAUSE_MENU_YOUWIN")
 	$PlayButton.hide()
 	$RetryButton.show()
 	show()

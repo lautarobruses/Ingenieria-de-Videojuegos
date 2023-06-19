@@ -172,7 +172,7 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
 custom_constants/shadow_offset_x = 5
 custom_constants/shadow_offset_y = 5
 custom_fonts/font = SubResource( 10 )
-text = "Codigos Bloque"
+text = "LEVEL1_TITLE"
 align = 1
 valign = 1
 clip_text = true
@@ -237,7 +237,7 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
 custom_constants/shadow_offset_x = 5
 custom_constants/shadow_offset_y = 5
 custom_fonts/font = SubResource( 10 )
-text = "Codigos Bloque"
+text = "LEVEL1_TITLE"
 align = 1
 valign = 1
 
