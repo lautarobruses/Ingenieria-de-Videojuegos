@@ -91,6 +91,7 @@ margin_right = 1910.0
 margin_bottom = 280.0
 rect_scale = Vector2( 0.75, 0.75 )
 focus_mode = 0
+shortcut_in_tooltip = false
 shortcut = SubResource( 9 )
 texture_normal = ExtResource( 4 )
 texture_hover = ExtResource( 8 )
