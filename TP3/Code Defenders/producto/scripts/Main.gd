@@ -64,5 +64,3 @@ func _on_play_song(song):
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
 		Persistencia.save_game()
-
-

@@ -8,7 +8,6 @@ var current_index = 0
 func _ready():
 	Persistencia.load_game() #Cargo los puntajes viejos
 	set_configuration_level($WindowContainer/PreviousWindow/PStar1,$WindowContainer/PreviousWindow/PStar2,$WindowContainer/PreviousWindow/PStar3)
-	
 
 func change_level_name(level_name_node):
 	var level_name: String
@@ -56,6 +55,8 @@ func set_configuration_level(estrella1,estrella2,estrella3):
 			estrella2.play("gold")
 		else:
 			estrella1.play("gold")
+			estrella2.play("silver")
+			estrella3.play("silver")
 	elif current_index == 1:
 		puntaje = Persistencia.getPuntajeNivelDos()
 		estrella1.play("empty")
@@ -73,6 +74,8 @@ func set_configuration_level(estrella1,estrella2,estrella3):
 			estrella2.play("gold")
 		else:
 			estrella1.play("gold")
+			estrella2.play("silver")
+			estrella3.play("silver")
 	elif current_index == 3:
 		puntaje = Persistencia.getPuntajeNivelCuatro()
 		estrella1.play("empty")
