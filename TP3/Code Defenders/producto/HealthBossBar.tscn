@@ -85,8 +85,10 @@ margin_bottom = 125.001
 texture = ExtResource( 2 )
 
 [node name="BossName" type="Label" parent="TextureRect"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = -0.0866667
+anchor_top = -0.0199996
+anchor_right = 1.09333
+anchor_bottom = 0.98
 margin_left = 8.0
 margin_top = 6.0
 margin_right = -7.0
@@ -96,7 +98,7 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
 custom_constants/shadow_offset_x = 3
 custom_constants/shadow_offset_y = 3
 custom_fonts/font = SubResource( 4 )
-text = "BOSS BLOCK"
+text = "LEVEL_BOSS_NAME "
 align = 1
 valign = 1
 __meta__ = {

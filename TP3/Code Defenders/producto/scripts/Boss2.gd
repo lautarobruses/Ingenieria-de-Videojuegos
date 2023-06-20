@@ -7,6 +7,7 @@ var blast = preload("res://Blast.tscn")
 
 export (int) var health = 10
 export (int) var damage = 45
+export (int) var laser_damage = 25
 
 var rotation_speed = 0.5
 
@@ -36,7 +37,9 @@ func emerge():
 	$AnimationPlayer.queue("Shoot From Center")
 
 func first_phase():
-	pass
+	$AnimationPlayer.play("Change side")
+	$AnimationPlayer.queue("Move L-Center")
+	$AnimationPlayer.queue("Laser Charge-Active")
 
 func second_phase():
 	pass
@@ -62,11 +65,30 @@ func shoot_from_center():
 	
 	var new_projectile = projectile.instance()
 	# Ajusta la posición inicial y velocidad del proyectil
-	new_projectile.position = $CenterPosition.position
+	new_projectile.position = position
 	new_projectile.shoot_direction(angle)
 	
 	# Agrega el proyectil al árbol de escena
 	get_parent().add_child(new_projectile)
+
+func charge_laser():
+	$LaserBeam.visible = true
+	$LaserBeam/LaserBeam1.set_deferred("disabled", true)
+	$LaserBeam/LaserBeam1.set_deferred("disabled", true)
+	$LaserBeam/LaserBeam1/AnimatedSpriteLaser1.play("charging")
+	$LaserBeam/LaserBeam2/AnimatedSpriteLaser2.play("charging")
+
+func activate_laser():
+	$LaserBeam/LaserBeam1.set_deferred("disabled", false)
+	$LaserBeam/LaserBeam1.set_deferred("disabled", false)
+	$LaserBeam/LaserBeam1/AnimatedSpriteLaser1.play("active")
+	$LaserBeam/LaserBeam2/AnimatedSpriteLaser2.play("active")
+	
+func disabled_laser():
+	$LaserBeam/LaserBeam1.set_deferred("disabled", true)
+	$LaserBeam/LaserBeam1.set_deferred("disabled", true)
+	$LaserBeam/LaserBeam1/AnimatedSpriteLaser1.play("disable")
+	$LaserBeam/LaserBeam2/AnimatedSpriteLaser2.play("disable")
 
 func hitted(damage_):
 	if (damage_ != null):
@@ -78,8 +100,15 @@ func damage_boss(damage_hitted):
 func set_shooting_speed(time):
 	$ShootTimer.wait_time = time
 
+func set_rotation_speed(speed):
+	rotation_speed = speed
+
 func _on_ShootTimer_timeout():
 	shoot_from_center()
 	
 func _on_Shield_broken():
 	emit_signal("broken_shield")
+
+func _on_LaserBeam_body_entered(body):
+	if body.has_method("hitted"):
+		body.hitted(laser_damage)

@@ -16,6 +16,7 @@ LEVEL2_TITLE;non-singular codes;codigos no singulares
 LEVEL3_TITLE;unique codes;codigos univocos
 LEVEL4_TITLE;instant codes;codigos instantaneos
 LEVEL_INFO;Information;Informacion
+LEVEL_BOSS_NAME;mothership;nave nodriza
 LEVEL1_CONTENT;This mothership has a shield that can only be successfully hit by projectiles whose components are included in the shield's configuration. HINT: The color of the shield reflects its configuration.;"Esta nave nodriza posee un escudo que solo podra ser impactado con exito por proyectiles cuyos componentes esten incluidos en la configuracion del escudo.
 PISTA: El color del escudo refleja su configuracion."
 LEVEL2_CONTENT;This mothership has a shield, which, in addition to having the aforementioned technologies, can only be successfully hit by projectiles with unique configurations. HINT: The bottom of the screen will display a history of successfully hit special projectiles.;Esta nave nodriza posee un escudo, que ademas de poseer las tecnologias anteriores, solo podra ser impactado con exito por proyectiles cuya configuracion no se repita. PISTA: En la parte inferior de la pantalla se mostrara un historial de los proyectiles especiales que hayan impactado con exito.

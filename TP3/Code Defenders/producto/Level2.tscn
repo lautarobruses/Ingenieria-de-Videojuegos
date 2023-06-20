@@ -29,7 +29,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 15, 31, 44, 75.1, 89, 105.1, 118 ),
+"times": PoolRealArray( 0, 15, 31, 42.5, 75.1, 89, 105.1, 118 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -64,11 +64,14 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 10 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 10, 40 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "emerge"
+}, {
+"args": [  ],
+"method": "first_phase"
 } ]
 }
 
@@ -80,6 +83,7 @@ song = null
 "anims/main 2" = SubResource( 1 )
 
 [node name="Boss2" parent="." index="4" instance=ExtResource( 4 )]
+visible = false
 position = Vector2( -519, 548 )
 
 [node name="LevelUI" parent="." index="6"]
