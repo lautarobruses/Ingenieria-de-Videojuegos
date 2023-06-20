@@ -57,7 +57,7 @@ tracks/1/keys = {
 "method": "fin_fase_esbirros"
 }, {
 "args": [  ],
-"method": "game_over"
+"method": "_on_HealthBar_player_dead"
 } ]
 }
 tracks/2/type = "method"

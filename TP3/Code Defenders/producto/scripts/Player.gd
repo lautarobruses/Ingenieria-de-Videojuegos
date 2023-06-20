@@ -101,8 +101,9 @@ func damage_player(damage):
 	invulnerability = true
 
 func hitted(damage):
-	damage_player(damage)
-	$CollisionPolygon2D.set_deferred("disabled", true)
+	if invulnerability == false:
+		damage_player(damage)
+		$CollisionPolygon2D.set_deferred("disabled", true)
 
 func freeze():
 	isFrozen = true
