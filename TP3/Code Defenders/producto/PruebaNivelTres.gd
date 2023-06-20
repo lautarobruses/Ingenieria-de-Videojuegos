@@ -123,19 +123,22 @@ func guardaNodo(nodo,tipo):
 func game_over(): #gestionar game over de victoria
 	#Puntaje
 	puntajeTotal -= (110 - $Player.health)
-	Persistencia.setNivelTres(puntajeTotal)
-	#Musica
-	$Music.volume_db -= 25
-	$Sounds.stream = jingle_win
-	$Sounds.play()
-	#Musica
-	yield(get_tree().create_timer(3.0), "timeout")
-	#Menu
-	#Seteo El puntaje
-	$PauseMenu.show_you_win(3,puntajeTotal)
-	$Player.blow()
-	yield(get_tree().create_timer(2.0), "timeout")
-	$Music.volume_db += 25
+	if(puntajeTotal > 200):
+		Persistencia.setNivelTres(puntajeTotal)
+		#Musica
+		$Music.volume_db -= 25
+		$Sounds.stream = jingle_win
+		$Sounds.play()
+		#Musica
+		yield(get_tree().create_timer(3.0), "timeout")
+		#Menu
+		#Seteo El puntaje
+		$PauseMenu.show_you_win(3,puntajeTotal)
+		$Player.blow()
+		yield(get_tree().create_timer(2.0), "timeout")
+		$Music.volume_db += 25
+	else:
+		_on_HealthBar_player_dead()
 
 func buscaNodo(i):
 	match palabra:
