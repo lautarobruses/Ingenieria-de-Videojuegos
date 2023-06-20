@@ -34,12 +34,13 @@ func stop():
 func emerge():
 	$AnimationPlayer.play("Emerge")
 	$AnimationPlayer.queue("Move R-Center")
-	$AnimationPlayer.queue("Shoot From Center")
+	$AnimationPlayer.queue("Shoot From Center (Low)")
 
 func first_phase():
 	$AnimationPlayer.play("Change side")
 	$AnimationPlayer.queue("Move L-Center")
 	$AnimationPlayer.queue("Laser Charge-Active")
+	$AnimationPlayer.queue("Shoot From Center (Medium)")
 
 func second_phase():
 	pass
