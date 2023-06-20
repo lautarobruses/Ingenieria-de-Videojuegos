@@ -13,6 +13,7 @@ func _on_level_menu():
 	$Transition.fade_in()
 	$MainMenu.visible = false
 	$LevelMenu.visible = true
+	Persistencia.load_game()
 	$Transition.fade_out()
 
 func _on_controls_menu():
