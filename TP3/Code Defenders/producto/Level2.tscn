@@ -29,8 +29,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 15, 31, 42.5, 75, 89, 105.1, 118 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 1.9, 15, 31, 42.5, 75, 88, 105.1, 123.2, 163.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "fase_esbirros"
@@ -55,6 +55,9 @@ tracks/1/keys = {
 }, {
 "args": [  ],
 "method": "fin_fase_esbirros"
+}, {
+"args": [  ],
+"method": "_on_HealthBar_player_dead"
 } ]
 }
 tracks/2/type = "method"
@@ -64,14 +67,20 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 10, 40 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 10, 40, 88, 123.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "emerge"
 }, {
 "args": [  ],
 "method": "first_phase"
+}, {
+"args": [  ],
+"method": "second_phase"
+}, {
+"args": [  ],
+"method": "third_phase"
 } ]
 }
 
@@ -85,7 +94,8 @@ song = null
 [node name="Boss2" parent="." index="4" instance=ExtResource( 4 )]
 visible = false
 position = Vector2( -519, 548 )
-health = 100
+health = 500
+damage = 35
 
 [node name="LevelUI" parent="." index="6"]
 music_name = "Bitsplosion"
@@ -93,7 +103,7 @@ author_name = "JACK-Zer0!"
 
 [node name="BossHealthBar" parent="." index="8"]
 target_node = NodePath("../Boss2")
-max_value = 2000
+max_value = 500
 
 [node name="Music" parent="." index="12"]
 stream = ExtResource( 2 )

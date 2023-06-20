@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Boss.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/img/Bosses/Boss2.png" type="Texture" id=2]
@@ -344,6 +344,141 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 )
 }
 
+[sub_resource type="Animation" id=26]
+resource_name = "Laser Charge-Active + Shoot (High)"
+length = 35.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.6, 8.6, 12.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 960, 540 ), Vector2( 768, 540 ), Vector2( 1024, 540 ), Vector2( 960, 540 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4, 1.4, 2.6, 7.5, 7.6, 8.6, 9.8, 14.8, 17, 25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "charge_laser"
+}, {
+"args": [ 1.25 ],
+"method": "set_rotation_speed"
+}, {
+"args": [  ],
+"method": "activate_laser"
+}, {
+"args": [  ],
+"method": "disabled_laser"
+}, {
+"args": [  ],
+"method": "charge_laser"
+}, {
+"args": [ 1.0 ],
+"method": "set_rotation_speed"
+}, {
+"args": [  ],
+"method": "activate_laser"
+}, {
+"args": [  ],
+"method": "disabled_laser"
+}, {
+"args": [ 0.05 ],
+"method": "set_shooting_speed"
+}, {
+"args": [ 3.0 ],
+"method": "set_rotation_speed"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("ShootTimer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 7.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ -1 ],
+"method": "start"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("LaserBeam:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.4, 14.8, 15.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("Sound")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.36,
+"start_offset": 0.25,
+"stream": ExtResource( 6 )
+}, {
+"end_offset": 47.5521,
+"start_offset": 0.0,
+"stream": ExtResource( 8 )
+}, {
+"end_offset": 0.36,
+"start_offset": 0.25,
+"stream": ExtResource( 6 )
+}, {
+"end_offset": 47.5255,
+"start_offset": 0.0,
+"stream": ExtResource( 8 )
+} ],
+"times": PoolRealArray( 0.4, 2.6, 7.6, 9.8 )
+}
+tracks/6/type = "audio"
+tracks/6/path = NodePath("Music")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = false
+tracks/6/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 125.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
 [sub_resource type="Animation" id=17]
 resource_name = "Move Center-L"
 length = 3.0
@@ -524,6 +659,88 @@ tracks/4/keys = {
 "values": [ false, false ]
 }
 
+[sub_resource type="Animation" id=25]
+resource_name = "Shoot From Center (High)"
+length = 15.0
+tracks/0/type = "method"
+tracks/0/path = NodePath("ShootTimer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5, 7, 8, 12.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [ -1 ],
+"method": "start"
+}, {
+"args": [  ],
+"method": "stop"
+}, {
+"args": [ -1 ],
+"method": "start"
+}, {
+"args": [  ],
+"method": "stop"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 13, 14.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 960, 540 ), Vector2( 960, 540 ), Vector2( -350, 540 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 14.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("Music")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 90.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.5, 7.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 0.075 ],
+"method": "set_shooting_speed"
+}, {
+"args": [ 0.05 ],
+"method": "set_shooting_speed"
+} ]
+}
+
 [sub_resource type="Animation" id=6]
 resource_name = "Shoot From Center (Low)"
 length = 15.0
@@ -574,25 +791,13 @@ tracks/2/keys = {
 "update": 1,
 "values": [ false, true ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("CenterPosition:position")
+tracks/3/type = "audio"
+tracks/3/path = NodePath("Music")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = false
 tracks/3/keys = {
-"times": PoolRealArray( 0, 13 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
-}
-tracks/4/type = "audio"
-tracks/4/path = NodePath("Music")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = false
-tracks/4/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 16.0,
@@ -600,13 +805,13 @@ tracks/4/keys = {
 } ],
 "times": PoolRealArray( 0 )
 }
-tracks/5/type = "method"
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
 "times": PoolRealArray( 0.5, 7.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
@@ -779,10 +984,10 @@ animations = [ {
 extents = Vector2( 130, 175 )
 
 [node name="Boss2" instance=ExtResource( 1 )]
-modulate = Color( 0.556863, 0.556863, 0.556863, 1 )
 position = Vector2( 960, 540 )
-rotation = -1.5708
-scale = Vector2( 0.3, 0.3 )
+rotation = 1.5708
+scale = Vector2( 0.8, 0.8 )
+z_index = 1
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 3 )
@@ -795,9 +1000,11 @@ __meta__ = {
 anims/Defeated = SubResource( 3 )
 anims/Emerge = SubResource( 4 )
 "anims/Laser Charge-Active" = SubResource( 16 )
+"anims/Laser Charge-Active + Shoot (High)" = SubResource( 26 )
 "anims/Move Center-L" = SubResource( 17 )
 "anims/Move L-Center" = SubResource( 19 )
 "anims/Move R-Center" = SubResource( 5 )
+"anims/Shoot From Center (High)" = SubResource( 25 )
 "anims/Shoot From Center (Low)" = SubResource( 6 )
 "anims/Shoot From Center (Medium)" = SubResource( 24 )
 
@@ -806,9 +1013,8 @@ visible = false
 shape = SubResource( 1 )
 
 [node name="Shield" parent="." index="2"]
-visible = false
 scale = Vector2( 3, 3 )
-energy = 1
+energy = 3
 nivel = 2
 
 [node name="Sprite" parent="." index="3"]
@@ -835,6 +1041,7 @@ rotation = 1.5708
 scale = Vector2( 1.05592, 1.25876 )
 frames = SubResource( 11 )
 animation = "charging"
+frame = 1
 playing = true
 
 [node name="LaserBeam2" type="CollisionShape2D" parent="LaserBeam" index="1"]
@@ -849,18 +1056,15 @@ rotation = 1.5708
 scale = Vector2( 1.06907, 1.25876 )
 frames = SubResource( 11 )
 animation = "charging"
-frame = 1
 playing = true
 
-[node name="CenterPosition" type="Position2D" parent="." index="5"]
-
-[node name="ShootTimer" type="Timer" parent="." index="6"]
+[node name="ShootTimer" type="Timer" parent="." index="5"]
 wait_time = 0.25
 
-[node name="Music" parent="." index="7"]
+[node name="Music" parent="." index="6"]
 stream = ExtResource( 4 )
 
-[node name="Sound" type="AudioStreamPlayer" parent="." index="8"]
+[node name="Sound" type="AudioStreamPlayer" parent="." index="7"]
 stream = ExtResource( 8 )
 bus = "SFX"
 

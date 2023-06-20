@@ -43,10 +43,12 @@ func first_phase():
 	$AnimationPlayer.queue("Shoot From Center (Medium)")
 
 func second_phase():
-	pass
+	$AnimationPlayer.play("Move R-Center")
+	$AnimationPlayer.queue("Shoot From Center (High)")
 
 func third_phase():
-	pass
+	$AnimationPlayer.play("Move L-Center")
+	$AnimationPlayer.queue("Laser Charge-Active + Shoot (High)")
 
 func defeated():
 	var rectangle_shape = $BlastSpawnArea/CollisionShape2D.get_shape()
@@ -65,9 +67,12 @@ func shoot_from_center():
 	var angle = deg2rad(rand_range(0, 360))
 	
 	var new_projectile = projectile.instance()
+	var new_projectile2 = projectile.instance()
 	# Ajusta la posición inicial y velocidad del proyectil
 	new_projectile.position = position
+	new_projectile2.position = position
 	new_projectile.shoot_direction(angle)
+	new_projectile2.shoot_direction(-angle)
 	
 	# Agrega el proyectil al árbol de escena
 	get_parent().add_child(new_projectile)
