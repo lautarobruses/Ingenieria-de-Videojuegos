@@ -89,6 +89,7 @@ animations = [ {
 } ]
 
 [node name="Componente" type="Area2D"]
+collision_layer = 64
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
