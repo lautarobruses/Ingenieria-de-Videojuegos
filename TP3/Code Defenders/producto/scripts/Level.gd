@@ -55,11 +55,15 @@ func sumaPuntaje(puntaje):
 
 func _on_pause():
 	$PauseMenu.show_pause()
+	$Player.hide()
+	$Player.freeze()
 	#Seteo el puntaje
 	get_tree().paused = true
 
 func _on_PauseMenu_play():
 	$PauseMenu.hide()
+	$Player.show()
+	$Player.unfreeze()
 	get_tree().paused = false
 
 func _on_HealthBar_player_dead(): #DERROTA

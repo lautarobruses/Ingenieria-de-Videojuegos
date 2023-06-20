@@ -16,10 +16,11 @@ LEVEL2_TITLE;singular codes;codigos singulares
 LEVEL3_TITLE;unique codes;codigos univocos
 LEVEL4_TITLE;instant codes;codigos instantaneos
 LEVEL_INFO;Information;Informacion
-LEVEL1_CONTENT;;
-LEVEL2_CONTENT;;
-LEVEL3_CONTENT;;
-LEVEL4_CONTENT;;
+LEVEL1_CONTENT;This mothership has a shield that can only be successfully hit by projectiles whose components are included in the shield's configuration. HINT: The color of the shield reflects its configuration.;"Esta nave nodriza posee un escudo que solo podra ser impactado con exito por proyectiles cuyos componentes esten incluidos en la configuracion del escudo.
+PISTA: El color del escudo refleja su configuracion."
+LEVEL2_CONTENT;This mothership has a shield, which, in addition to having the aforementioned technologies, can only be successfully hit by projectiles with unique configurations. HINT: The bottom of the screen will display a history of successfully hit special projectiles.;Esta nave nodriza posee un escudo, que ademas de poseer las tecnologias anteriores, solo podra ser impactado con exito por proyectiles cuya configuracion no se repita. PISTA: En la parte inferior de la pantalla se mostrara un historial de los proyectiles especiales que hayan impactado con exito.
+LEVEL3_CONTENT;The final mothership has ordered their personal army to destroy you. You must defeat their waves by destroying ONLY the army row that matches the assigned configuration.;El jefe final ha ordenado a su ejercito personal que te destruya. Deberas vencer sus oleadas destruyendo SOLO la fila del ejercito que coincida con la configuracion que se te asigne.
+LEVEL4_CONTENT;The final mothership, in addition to having advanced technology that includes the previous ones, has a shield that can only be successfully hit by projectiles whose configuration does not match the beginning of any configuration of another special projectile that has been successfully impacted before. HINT: A special projectile can be constructed from a configuration with empty spaces.;La nave nodriza madre, ademas de poseer una tecnologia avanzada que incluye a las anteriores, posee un escudo que solo podra ser impactado con exito por proyectiles cuya configuracion no coincida con el principio de cualquier configuracion de otro proyectil especial que haya impactado con exito anteriormente. PISTA: Un proyectil especial puede construirse a partir de una configuracion con espacios vacios.
 LEVEL_SOON_TITLE;soon…;proximamente
 PAUSE_MENU_PAUSE;pause;pausa
 PAUSE_MENU_GAMEOVER;game over;fin del juego

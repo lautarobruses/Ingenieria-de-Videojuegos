@@ -24,6 +24,22 @@ func change_level_name(level_name_node):
 	
 	level_name_node.set_text(level_name)
 
+func change_level_info(level_name_node):
+	var level_info: String
+	
+	if current_index == 0:
+		level_info = tr("LEVEL1_CONTENT")
+	elif current_index == 1:
+		level_info = tr("LEVEL2_CONTENT")
+	elif current_index == 2:
+		level_info = tr("LEVEL3_CONTENT")
+	elif current_index == 3:
+		level_info = tr("LEVEL4_CONTENT")
+	elif current_index == 4:
+		level_info = "nada que ver aqui"
+	
+	level_name_node.set_text(level_info)
+
 func set_configuration_level(action):
 	
 	#ACA TENGO QUE ESTABLECER LA INFORMACION DE LAS ESTRELLAS Y
@@ -39,62 +55,64 @@ func set_configuration_level(action):
 		pass
 
 func animate_buttons():
-	$InfoButton.visible = false
-	$PlayButton.visible = false
-	$CloseButton.visible = false
+	$WindowContainer/InfoButton.visible = false
+	$WindowContainer/PlayButton.visible = false
+	$WindowContainer/CloseButton.visible = false
 	
-	$PreviousWindow/PInfoSprite.visible = true
-	$PreviousWindow/PPlaySprite.visible = true
-	$PreviousWindow/PCloseSprite.visible = true
+	$WindowContainer/PreviousWindow/PInfoSprite.visible = true
+	$WindowContainer/PreviousWindow/PPlaySprite.visible = true
+	$WindowContainer/PreviousWindow/PCloseSprite.visible = true
 	
-	$NextWindow/NInfoSprite.visible = true
-	$NextWindow/NPlaySprite.visible = true
-	$NextWindow/NCloseSprite.visible = true
+	$WindowContainer/NextWindow/NInfoSprite.visible = true
+	$WindowContainer/NextWindow/NPlaySprite.visible = true
+	$WindowContainer/NextWindow/NCloseSprite.visible = true
 	yield(get_tree().create_timer(1.0), "timeout")
-	$InfoButton.visible = true
-	$PlayButton.visible = true
-	$CloseButton.visible = true
+	$WindowContainer/InfoButton.visible = true
+	$WindowContainer/PlayButton.visible = true
+	$WindowContainer/CloseButton.visible = true
 	
-	$PreviousWindow/PInfoSprite.visible = false
-	$PreviousWindow/PPlaySprite.visible = false
-	$PreviousWindow/PCloseSprite.visible = false
+	$WindowContainer/PreviousWindow/PInfoSprite.visible = false
+	$WindowContainer/PreviousWindow/PPlaySprite.visible = false
+	$WindowContainer/PreviousWindow/PCloseSprite.visible = false
 	
-	$NextWindow/NInfoSprite.visible = false
-	$NextWindow/NPlaySprite.visible = false
-	$NextWindow/NCloseSprite.visible = false
+	$WindowContainer/NextWindow/NInfoSprite.visible = false
+	$WindowContainer/NextWindow/NPlaySprite.visible = false
+	$WindowContainer/NextWindow/NCloseSprite.visible = false
 
 	if current_index == 4: #Proximamente
-		$InfoButton.disabled = true
-		$PlayButton.disabled = true
+		$WindowContainer/InfoButton.disabled = true
+		$WindowContainer/PlayButton.disabled = true
 	else:
-		$InfoButton.disabled = false
-		$PlayButton.disabled = false
+		$WindowContainer/InfoButton.disabled = false
+		$WindowContainer/PlayButton.disabled = false
 
 func _on_BackwardButton_pressed():
 	current_index -= 1
 	if current_index < 0:
 		current_index = carousel_items.size() - 1
 	
-	$BackwardButton.disabled = true
-	change_level_name($NextWindow/NextLevelName)
+	$WindowContainer/BackwardButton.disabled = true
+	change_level_name($WindowContainer/NextWindow/NextLevelName)
+	change_level_info($WindowDialog/Content)
 	animate_buttons()
 	set_configuration_level("Backward")
 	$AnimationPlayer.play("Slide Window Forward")
 	yield(get_tree().create_timer(1.0), "timeout")
-	$BackwardButton.disabled = false
+	$WindowContainer/BackwardButton.disabled = false
 
 func _on_ForwardButton_pressed():
 	current_index += 1
 	if current_index >= carousel_items.size():
 		current_index = 0
 	
-	$ForwardButton.disabled = true
-	change_level_name($PreviousWindow/PreviousLevelName)
+	$WindowContainer/ForwardButton.disabled = true
+	change_level_name($WindowContainer/PreviousWindow/PreviousLevelName)
+	change_level_info($WindowDialog/Content)
 	animate_buttons()
 	set_configuration_level("Forward")
 	$AnimationPlayer.play("Slide Window Backward")
 	yield(get_tree().create_timer(1.0), "timeout")
-	$ForwardButton.disabled = false
+	$WindowContainer/ForwardButton.disabled = false
 
 func _on_InfoButton_pressed():
 	show_dialog()
@@ -123,4 +141,7 @@ func _on_CloseButton_pressed():
 	emit_signal("main_menu")
 
 func _on_AcceptButton_pressed():
+	hide_dialog()
+
+func _on_WindowDialog_hide():
 	hide_dialog()

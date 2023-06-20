@@ -7,21 +7,21 @@ func _ready():
 	pass # Replace with function body.
 
 func show_pause():
-	$Title.text = tr("PAUSE_MENU_PAUSE")
-	$PlayButton.show()
-	$RetryButton.hide()
+	$WindowContainer/Title.text = tr("PAUSE_MENU_PAUSE")
+	$WindowContainer/PlayButton.show()
+	$WindowContainer/RetryButton.hide()
 	show()
 	
 func show_game_over():
-	$Title.text = tr("PAUSE_MENU_GAMEOVER")
-	$PlayButton.hide()
-	$RetryButton.show()
+	$WindowContainer/Title.text = tr("PAUSE_MENU_GAMEOVER")
+	$WindowContainer/PlayButton.hide()
+	$WindowContainer/RetryButton.show()
 	show()
 
 func show_you_win():
-	$Title.text = tr("PAUSE_MENU_YOUWIN")
-	$PlayButton.hide()
-	$RetryButton.show()
+	$WindowContainer/Title.text = tr("PAUSE_MENU_YOUWIN")
+	$WindowContainer/PlayButton.hide()
+	$WindowContainer/RetryButton.show()
 	show()
 	stars_condition()
 	#Aca tengo que preguntar si el puntaje obtenido es mayor al puntaje guardado
@@ -45,11 +45,21 @@ func stars_condition():
 	yield(get_tree().create_timer(2.5), "timeout") 
 	#COMPLETAR LOGICA DE ESTRELLAS DORADAS
 
+func show_dialog():
+	$WindowContainer.hide()
+	$ColorRect.hide()
+	$WindowDialog.popup()
+
+func hide_dialog():
+	$WindowDialog.hide()
+	$WindowContainer.show()
+	$ColorRect.show()
+
 func _on_PlayButton_pressed():
 	emit_signal("play")
 
 func _on_InfoButton_pressed():
-	pass # Replace with function body.
+	show_dialog()
 
 func _on_MenuButton_pressed():
 	get_tree().change_scene("res://Main.tscn")
@@ -57,3 +67,9 @@ func _on_MenuButton_pressed():
 
 func _on_RetryButton_pressed():
 	emit_signal("retry")
+
+func _on_AcceptButton_pressed():
+	hide_dialog()
+
+func _on_WindowDialog_hide():
+	hide_dialog()

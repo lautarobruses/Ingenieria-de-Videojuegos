@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://assets/img/Pause Menu/Window.png" type="Texture" id=1]
 [ext_resource path="res://assets/img/Pause Menu/Play_BTN.png" type="Texture" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://assets/img/Level Menu/Star_02.png" type="Texture" id=14]
 [ext_resource path="res://assets/sounds/Victory/silver_star.wav" type="AudioStream" id=15]
 [ext_resource path="res://assets/sounds/Victory/golden_star.wav" type="AudioStream" id=16]
+[ext_resource path="res://assets/img/Main Menu/Button.png" type="Texture" id=17]
+[ext_resource path="res://assets/img/Level Menu/Info_window.png" type="Texture" id=18]
 
 [sub_resource type="Animation" id=23]
 resource_name = "1 Golden Star"
@@ -35,7 +37,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("PStar1:animation")
+tracks/1/path = NodePath("WindowContainer/PStar1:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -47,7 +49,7 @@ tracks/1/keys = {
 "values": [ "silver", "gold" ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("PStar1:scale")
+tracks/2/path = NodePath("WindowContainer/PStar1:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -85,7 +87,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.7, 0.701 )
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("PStar1:animation")
+tracks/1/path = NodePath("WindowContainer/PStar1:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -97,7 +99,7 @@ tracks/1/keys = {
 "values": [ "silver", "gold" ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("PStar1:scale")
+tracks/2/path = NodePath("WindowContainer/PStar1:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -109,7 +111,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0.8, 0.8 ), Vector2( 0, 0 ), Vector2( 0.8, 0.8 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("PStar2:animation")
+tracks/3/path = NodePath("WindowContainer/PStar2:animation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -121,7 +123,7 @@ tracks/3/keys = {
 "values": [ "silver", "gold" ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("PStar2:scale")
+tracks/4/path = NodePath("WindowContainer/PStar2:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -159,7 +161,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.7, 1.4 )
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("PStar1:animation")
+tracks/1/path = NodePath("WindowContainer/PStar1:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -171,7 +173,7 @@ tracks/1/keys = {
 "values": [ "silver", "gold" ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("PStar1:scale")
+tracks/2/path = NodePath("WindowContainer/PStar1:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -183,7 +185,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0.8, 0.8 ), Vector2( 0, 0 ), Vector2( 0.8, 0.8 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("PStar2:animation")
+tracks/3/path = NodePath("WindowContainer/PStar2:animation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -195,7 +197,7 @@ tracks/3/keys = {
 "values": [ "silver", "gold" ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("PStar2:scale")
+tracks/4/path = NodePath("WindowContainer/PStar2:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -207,7 +209,7 @@ tracks/4/keys = {
 "values": [ Vector2( 0.8, 0.8 ), Vector2( 0, 0 ), Vector2( 0.8, 0.8 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("PStar3:animation")
+tracks/5/path = NodePath("WindowContainer/PStar3:animation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -219,7 +221,7 @@ tracks/5/keys = {
 "values": [ "silver", "gold" ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("PStar3:scale")
+tracks/6/path = NodePath("WindowContainer/PStar3:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -235,7 +237,7 @@ tracks/6/keys = {
 resource_name = "Silver Stars"
 length = 1.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("PStar1:animation")
+tracks/0/path = NodePath("WindowContainer/PStar1:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -247,7 +249,7 @@ tracks/0/keys = {
 "values": [ "empty", "empty", "silver" ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("PStar2:animation")
+tracks/1/path = NodePath("WindowContainer/PStar2:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -259,7 +261,7 @@ tracks/1/keys = {
 "values": [ "empty", "empty", "silver" ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("PStar3:animation")
+tracks/2/path = NodePath("WindowContainer/PStar3:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -293,7 +295,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0.2, 0.6, 1 )
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("PStar1:scale")
+tracks/4/path = NodePath("WindowContainer/PStar1:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -305,7 +307,7 @@ tracks/4/keys = {
 "values": [ Vector2( 0.8, 0.8 ), Vector2( 0, 0 ), Vector2( 0.8, 0.8 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("PStar2:scale")
+tracks/5/path = NodePath("WindowContainer/PStar2:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -317,7 +319,7 @@ tracks/5/keys = {
 "values": [ Vector2( 0.8, 0.8 ), Vector2( 0, 0 ), Vector2( 0.8, 0.8 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("PStar3:scale")
+tracks/6/path = NodePath("WindowContainer/PStar3:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -364,6 +366,30 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="DynamicFont" id=26]
+size = 32
+use_filter = true
+font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxTexture" id=27]
+texture = ExtResource( 18 )
+region_rect = Rect2( 0, 0, 385, 501 )
+
+[sub_resource type="DynamicFont" id=28]
+size = 32
+use_filter = true
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=29]
+size = 12
+use_filter = true
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=30]
+size = 64
+use_filter = true
+font_data = ExtResource( 8 )
+
 [node name="PauseMenu" type="Node2D"]
 z_index = 10
 script = ExtResource( 11 )
@@ -379,11 +405,14 @@ modulate = Color( 0, 0, 0, 0.588235 )
 show_behind_parent = true
 light_mask = 0
 margin_left = 1.0
-margin_right = 1942.0
+margin_right = 1920.0
 margin_bottom = 1080.0
 color = Color( 0, 0, 0, 1 )
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="WindowContainer" type="Node2D" parent="."]
+z_index = 5
+
+[node name="TextureRect" type="TextureRect" parent="WindowContainer"]
 margin_left = 560.0
 margin_top = 88.0
 margin_right = 1500.0
@@ -391,7 +420,7 @@ margin_bottom = 1168.0
 rect_scale = Vector2( 0.85, 0.85 )
 texture = ExtResource( 1 )
 
-[node name="PlayButton" type="TextureButton" parent="."]
+[node name="PlayButton" type="TextureButton" parent="WindowContainer"]
 margin_left = 872.0
 margin_top = 704.0
 margin_right = 1082.0
@@ -401,7 +430,7 @@ shortcut = SubResource( 8 )
 texture_normal = ExtResource( 2 )
 texture_hover = ExtResource( 3 )
 
-[node name="RetryButton" type="TextureButton" parent="."]
+[node name="RetryButton" type="TextureButton" parent="WindowContainer"]
 visible = false
 margin_left = 872.0
 margin_top = 704.0
@@ -412,7 +441,7 @@ shortcut = SubResource( 8 )
 texture_normal = ExtResource( 13 )
 texture_hover = ExtResource( 12 )
 
-[node name="InfoButton" type="TextureButton" parent="."]
+[node name="InfoButton" type="TextureButton" parent="WindowContainer"]
 margin_left = 640.0
 margin_top = 736.0
 margin_right = 850.0
@@ -421,7 +450,7 @@ rect_scale = Vector2( 0.75, 0.75 )
 texture_normal = ExtResource( 7 )
 texture_hover = ExtResource( 5 )
 
-[node name="MenuButton" type="TextureButton" parent="."]
+[node name="MenuButton" type="TextureButton" parent="WindowContainer"]
 margin_left = 1112.0
 margin_top = 736.0
 margin_right = 1322.0
@@ -431,7 +460,7 @@ shortcut = SubResource( 10 )
 texture_normal = ExtResource( 6 )
 texture_hover = ExtResource( 4 )
 
-[node name="Title" type="Label" parent="."]
+[node name="Title" type="Label" parent="WindowContainer"]
 margin_left = 680.0
 margin_top = 112.0
 margin_right = 1234.0
@@ -444,28 +473,95 @@ custom_fonts/font = SubResource( 1 )
 text = "Title"
 align = 1
 
-[node name="PStar1" type="AnimatedSprite" parent="."]
+[node name="PStar1" type="AnimatedSprite" parent="WindowContainer"]
 position = Vector2( 728, 496 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 2 )
-animation = "silver"
+animation = "empty"
 
-[node name="PStar2" type="AnimatedSprite" parent="."]
+[node name="PStar2" type="AnimatedSprite" parent="WindowContainer"]
 position = Vector2( 960, 376 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 2 )
-animation = "silver"
+animation = "empty"
 
-[node name="PStar3" type="AnimatedSprite" parent="."]
+[node name="PStar3" type="AnimatedSprite" parent="WindowContainer"]
 position = Vector2( 1192, 496 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 2 )
-animation = "silver"
+animation = "empty"
+
+[node name="WindowDialog" type="WindowDialog" parent="."]
+light_mask = 0
+use_parent_material = true
+margin_left = 496.0
+margin_top = 224.0
+margin_right = 960.0
+margin_bottom = 588.0
+rect_scale = Vector2( 2, 2 )
+custom_colors/title_color = Color( 1, 1, 1, 1 )
+custom_constants/title_height = -75
+custom_fonts/title_font = SubResource( 26 )
+custom_styles/panel = SubResource( 27 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Info" type="Label" parent="WindowDialog"]
+anchor_right = 1.0
+margin_top = 8.0
+margin_bottom = 48.0
+custom_colors/font_color = Color( 0.929412, 0.960784, 0.972549, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+custom_fonts/font = SubResource( 28 )
+text = "LEVEL_INFO"
+align = 1
+valign = 1
+
+[node name="Content" type="Label" parent="WindowDialog"]
+margin_left = 40.0
+margin_top = 64.0
+margin_right = 424.0
+margin_bottom = 277.0
+custom_colors/font_color = Color( 0.929412, 0.960784, 0.972549, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 0
+custom_fonts/font = SubResource( 29 )
+text = "La nave nodriza madre, ademas de poseer una tecnologia avanzada que incluye a las anteriores, posee un escudo que solo podra ser impactado con exito por proyectiles cuya configuracion no coincida con el prefijo de algun proyectil especial que haya impactado anteriormente.
+PISTA: Un proyectil especial puede construirse a partir de una configuracion con espacios vacios."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="AcceptButton" type="Button" parent="WindowDialog"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -296.0
+margin_top = -132.0
+margin_right = 295.0
+margin_bottom = 34.0
+rect_scale = Vector2( 0.25, 0.25 )
+rect_pivot_offset = Vector2( 295, 82.5 )
+custom_colors/font_color = Color( 0.929412, 0.960784, 0.972549, 1 )
+custom_colors/font_color_hover = Color( 1, 0.815686, 0.305882, 1 )
+custom_fonts/font = SubResource( 30 )
+text = "Accept"
+icon = ExtResource( 17 )
+flat = true
+icon_align = 1
 
 [node name="Sounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
+bus = "SFX"
 
-[connection signal="pressed" from="PlayButton" to="." method="_on_PlayButton_pressed"]
-[connection signal="pressed" from="RetryButton" to="." method="_on_RetryButton_pressed"]
-[connection signal="pressed" from="InfoButton" to="." method="_on_InfoButton_pressed"]
-[connection signal="pressed" from="MenuButton" to="." method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="WindowContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="WindowContainer/RetryButton" to="." method="_on_RetryButton_pressed"]
+[connection signal="pressed" from="WindowContainer/InfoButton" to="." method="_on_InfoButton_pressed"]
+[connection signal="pressed" from="WindowContainer/MenuButton" to="." method="_on_MenuButton_pressed"]
+[connection signal="popup_hide" from="WindowDialog" to="." method="_on_WindowDialog_hide"]
+[connection signal="pressed" from="WindowDialog/AcceptButton" to="." method="_on_AcceptButton_pressed"]
