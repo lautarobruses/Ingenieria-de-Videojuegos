@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+signal sueltaPieza
+signal disparoEspecial
+
 export (int) var health = 110
 
 const MASS = 1
@@ -24,9 +27,6 @@ var invulnerability: bool = false
 var isFrozen = true
 
 var fase #fase=0 en fase esbirros ; fase=1 en fase nave madre
-
-signal sueltaPieza
-signal disparoEspecial
 
 func _ready():
 	screen_size = get_viewport_rect().size

@@ -1,8 +1,8 @@
 extends Area2D
 
-var puntajeDeLevantar = 300
-var timer
 signal levantaSimbolo
+
+var puntajeDeLevantar = 300
 
 func _ready():
 	$AnimationPlayer.play("rebote")

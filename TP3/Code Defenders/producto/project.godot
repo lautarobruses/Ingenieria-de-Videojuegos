@@ -107,6 +107,7 @@ enter={
 2d_physics/layer_4="Enemies Projectile"
 2d_physics/layer_5="Shield"
 2d_physics/layer_6="Special Projectile"
+2d_physics/layer_7="Componente"
 
 [locale]
 
