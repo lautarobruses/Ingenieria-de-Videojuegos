@@ -65,7 +65,6 @@ func shoot():
 
 func _on_esperaDisparo_timeout():
 	shoot()
-	pass
 
 func play(animacion):
 	$nave.play(animacion)
