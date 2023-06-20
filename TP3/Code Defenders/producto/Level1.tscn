@@ -97,7 +97,6 @@ anims/main = SubResource( 1 )
 [node name="Boss1" parent="." index="3" instance=ExtResource( 1 )]
 visible = false
 position = Vector2( 1280, 350 )
-health = 2000
 
 [node name="LevelUI" parent="." index="6"]
 music_name = "Milky Ways"
@@ -105,7 +104,6 @@ author_name = "Bossfight"
 
 [node name="BossHealthBar" parent="." index="8"]
 target_node = NodePath("../Boss1")
-max_value = 2000
 
 [node name="Music" parent="." index="12"]
 stream = ExtResource( 2 )
