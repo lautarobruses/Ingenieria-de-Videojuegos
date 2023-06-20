@@ -38,17 +38,14 @@ func init(posicion_nave,tipo):
 			self.connect("levantaSimbolo",get_parent().get_node("Barra"),"_on_ParteNaveSeis_levantaSimbolo")
 			continue
 
-func bodyEntered(body):
+func bodyEntered(_body):
 	emit_signal("levantaSimbolo")
 	get_parent().sumaPuntaje(puntajeDeLevantar)
 	queue_free()
-	pass # Replace with function body.
 
 func _on_timer_timeout():
 	$AnimationPlayer.play("salida")
 
-
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if (anim_name == "salida"):
 		queue_free()
-	pass # Replace with function body.

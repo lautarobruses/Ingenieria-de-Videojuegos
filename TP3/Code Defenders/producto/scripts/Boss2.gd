@@ -59,14 +59,12 @@ func defeated():
 
 func shoot_from_center():
 	var angle = deg2rad(rand_range(0, 360))
-	var direction = Vector2(cos(angle), sin(angle))
-
-	var new_projectile = projectile.instance()
 	
+	var new_projectile = projectile.instance()
 	# Ajusta la posición inicial y velocidad del proyectil
 	new_projectile.position = $CenterPosition.position
 	new_projectile.shoot_direction(angle)
-
+	
 	# Agrega el proyectil al árbol de escena
 	get_parent().add_child(new_projectile)
 

@@ -38,7 +38,7 @@ func _physics_process(delta):
 	else:
 		var target_position = (objetivo - position).normalized()
 		look_at(objetivo)
-		var collision = move_and_collide(target_position * velocidad)
+		move_and_collide(target_position * velocidad)
 
 func espera():
 	$turbo.hide()
@@ -71,7 +71,7 @@ func play(animacion):
 	$nave.play(animacion)
 	UltAnimacion = animacion
 
-func hitted(damage):
+func hitted(_damage):
 	golpes += 1
 	if golpes == vidas:
 		get_parent().sumaPuntaje(puntaje)

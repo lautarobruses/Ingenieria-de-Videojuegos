@@ -79,6 +79,7 @@ func _on_HealthBar_player_dead(): #DERROTA
 	$PauseMenu.show_game_over()
 
 func _on_BossHealthBar_boss_dead(): #VICTORIA
+	$Player.freeze()
 	#Puntaje
 	puntajeTotal -= (110 - $Player.health)
 	guardaPuntaje()

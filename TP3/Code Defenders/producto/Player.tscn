@@ -48,6 +48,18 @@ tracks/2/keys = {
 "method": "unfreeze"
 } ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionPolygon2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -311,7 +323,7 @@ animations = [ {
 } ]
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 336.178, 540 )
+position = Vector2( 960, 540 )
 rotation = 3.14159
 scale = Vector2( 1.25, 1.25 )
 z_index = 1
@@ -344,12 +356,4 @@ position = Vector2( -16, 0 )
 wait_time = 1.5
 one_shot = true
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_mask = 0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-rotation = -1.5708
-polygon = PoolVector2Array( -14, -26, 14, -26, 19, -13, 19, 5, 34, 11, 34, 15, 19, 19, 10, 15, 6, 26, -6, 26, -10, 15, -18, 19, -34, 15, -34, 11, -19, 5, -19, -13 )
-
 [connection signal="timeout" from="InvulnerableTimer" to="." method="_on_InvulnerableTimer_timeout"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_collision"]

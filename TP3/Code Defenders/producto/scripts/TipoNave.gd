@@ -16,7 +16,7 @@ var objetivo
 var target_position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _physics_process(_delta):
 	if (salir == 0):
 		objetivo = player.position
 	else:
@@ -28,7 +28,7 @@ func _physics_process(delta):
 		if collision.collider.has_method("hitted"):
 			collision.collider.hitted(damage)
 
-func hitted(damage):
+func hitted(_damage):
 	golpes += 1
 	if golpes == vidas:
 		get_parent().sumaPuntaje(puntaje)

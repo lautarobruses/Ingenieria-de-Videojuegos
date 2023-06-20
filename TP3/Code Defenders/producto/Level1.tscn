@@ -110,8 +110,5 @@ max_value = 2000
 [node name="Music" parent="." index="12"]
 stream = ExtResource( 2 )
 
-[node name="Music" parent="." index="12"]
-stream = ExtResource( 2 )
-
 [connection signal="broken_shield" from="Boss1" to="." method="_on_Boss1_broken_shield"]
 [connection signal="dead" from="BossHealthBar" to="." method="_on_BossHealthBar_dead"]
