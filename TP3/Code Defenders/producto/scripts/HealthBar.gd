@@ -9,7 +9,6 @@ onready var target = get_node(target_node)
 export (bool) var isEnable
 
 func _ready():
-#	hide()
 	pass
 
 func _process(_delta):

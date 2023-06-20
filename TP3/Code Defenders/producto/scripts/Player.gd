@@ -69,10 +69,10 @@ func move(delta):
 	if invulnerability == true:
 		$AnimatedSprite.animation = "invulnerable"
 	else:
+		$AnimatedSprite.animation = "default"
 		if speed == 0:
 			motion = Vector2()
-			$AnimatedSprite.animation = "default"
-
+		
 	var collision = move_and_collide(motion)
 	if collision && collision.collider.damage != null:
 		hitted(collision.collider.damage)

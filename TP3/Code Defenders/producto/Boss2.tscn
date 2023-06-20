@@ -625,7 +625,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.7, 7, 8, 21.1 ),
+"times": PoolRealArray( 0.7, 7, 8, 20 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
 "args": [ -1 ],
@@ -643,15 +643,15 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:position")
-tracks/1/interp = 2
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 7, 10, 13.1, 16.1, 18.9, 21.1 ),
+"times": PoolRealArray( 0, 7, 10, 13.1, 16.1, 18.9, 22 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 960, 540 ), Vector2( 960, 540 ), Vector2( 1536, 540 ), Vector2( 960, 540 ), Vector2( 768, 540 ), Vector2( 960, 540 ), Vector2( 2320, 540 ) ]
+"values": [ Vector2( 960, 540 ), Vector2( 960, 540 ), Vector2( 1536, 540 ), Vector2( 960, 540 ), Vector2( 512, 540 ), Vector2( 960, 540 ), Vector2( 2320, 540 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CollisionShape2D:disabled")
@@ -665,27 +665,13 @@ tracks/2/keys = {
 "update": 1,
 "values": [ false, true ]
 }
-tracks/3/type = "audio"
-tracks/3/path = NodePath("Music")
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 53.0,
-"stream": ExtResource( 4 )
-} ],
-"times": PoolRealArray( 0 )
-}
-tracks/4/type = "method"
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = false
-tracks/4/keys = {
 "times": PoolRealArray( 0.5, 7.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
@@ -695,6 +681,20 @@ tracks/4/keys = {
 "args": [ 0.1 ],
 "method": "set_shooting_speed"
 } ]
+}
+tracks/4/type = "audio"
+tracks/4/path = NodePath("Music")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 53.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="CircleShape2D" id=1]
@@ -770,10 +770,9 @@ animations = [ {
 extents = Vector2( 130, 175 )
 
 [node name="Boss2" instance=ExtResource( 1 )]
-modulate = Color( 0.556863, 0.556863, 0.556863, 1 )
-position = Vector2( 960, 540 )
+position = Vector2( 2320, 540 )
 rotation = -1.5708
-scale = Vector2( 0.3, 0.3 )
+scale = Vector2( 0.8, 0.8 )
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 3 )
@@ -795,6 +794,7 @@ anims/Emerge = SubResource( 4 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 visible = false
 shape = SubResource( 1 )
+disabled = true
 
 [node name="Shield" parent="." index="2"]
 visible = false
@@ -810,7 +810,6 @@ texture = ExtResource( 2 )
 
 [node name="LaserBeam" type="Area2D" parent="." index="4"]
 visible = false
-modulate = Color( 1, 1, 1, 0 )
 collision_layer = 8
 collision_mask = 5
 monitorable = false

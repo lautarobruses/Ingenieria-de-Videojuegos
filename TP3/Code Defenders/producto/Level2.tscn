@@ -85,6 +85,7 @@ song = null
 [node name="Boss2" parent="." index="4" instance=ExtResource( 4 )]
 visible = false
 position = Vector2( -519, 548 )
+health = 100
 
 [node name="LevelUI" parent="." index="6"]
 music_name = "Bitsplosion"
