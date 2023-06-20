@@ -9,11 +9,15 @@ var player = preload("res://Player.tscn")
 var naveUno = preload("res://Escenas/NaveUno.tscn")
 var naveDos = preload("res://Escenas/NaveDos.tscn")
 var naveTres = preload("res://Escenas/NaveTres.tscn")
+var naveCinco = preload("res://Escenas/NaveCinco.tscn")
+var naveSeis = preload("res://Escenas/NaveSeis.tscn")
 
 var nivel
-var cantNaveUno = 5
-var cantNaveDos = 3
-var cantNaveTres = 2
+var cantNaveUno
+var cantNaveDos
+var cantNaveTres
+var cantNaveCinco
+var cantNaveSeis
 
 var puntajeTotal = 0
 
@@ -45,6 +49,16 @@ func fase_esbirros():
 	for i in cantNaveUno:
 		yield(get_tree().create_timer(1), "timeout")
 		var nuevoEnemigo = naveUno.instance()
+		nuevoEnemigo.position = posicionRandom()
+		add_child(nuevoEnemigo)
+	for i in cantNaveCinco:
+		yield(get_tree().create_timer(1), "timeout")
+		var nuevoEnemigo = naveCinco.instance()
+		nuevoEnemigo.position = posicionRandom()
+		add_child(nuevoEnemigo)
+	for i in cantNaveSeis:
+		yield(get_tree().create_timer(1), "timeout")
+		var nuevoEnemigo = naveSeis.instance()
 		nuevoEnemigo.position = posicionRandom()
 		add_child(nuevoEnemigo)
 	
@@ -116,3 +130,18 @@ func guardaPuntaje():
 			Persistencia.setNivelTres(puntajeTotal)
 		4:
 			Persistencia.setNivelCuatro(puntajeTotal)
+			
+func setEnemigos():
+	match nivel:
+		1:
+			cantNaveUno = 5
+			cantNaveSeis = 2
+			cantNaveTres = 2
+			cantNaveCinco = 0
+			cantNaveDos = 0
+		2:
+			cantNaveCinco = 2
+			cantNaveUno = 4
+			cantNaveDos = 4
+			cantNaveTres = 0
+			cantNaveSeis = 0

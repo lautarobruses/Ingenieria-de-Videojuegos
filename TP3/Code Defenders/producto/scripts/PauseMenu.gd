@@ -32,7 +32,12 @@ func show_you_win(nivel,puntos):
 			else:
 				stars_condition(1)
 		2:
-			pass
+			if(puntos>4000):
+				stars_condition(3)
+			elif(puntos>2000):
+				stars_condition(2)
+			else:
+				stars_condition(1)
 		3:
 			if(puntos==1120):
 				stars_condition(3)
