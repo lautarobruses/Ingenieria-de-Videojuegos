@@ -18,20 +18,33 @@ func show_game_over():
 	$WindowContainer/RetryButton.show()
 	show()
 
-func show_you_win():
+func show_you_win(nivel,puntos):
 	$WindowContainer/Title.text = tr("PAUSE_MENU_YOUWIN")
 	$WindowContainer/PlayButton.hide()
 	$WindowContainer/RetryButton.show()
 	show()
-	stars_condition()
-	#Aca tengo que preguntar si el puntaje obtenido es mayor al puntaje guardado
-	#lo piso
-	#persistencia.save()
+	match nivel:
+		1:
+			if(puntos>6000):
+				stars_condition(3)
+			elif(puntos>4000):
+				stars_condition(2)
+			else:
+				stars_condition(1)
+		2:
+			pass
+		3:
+			if(puntos==1120):
+				stars_condition(3)
+			elif(puntos>=700):
+				stars_condition(2)
+			else:
+				stars_condition(1)
+		4:
+			pass
 	
-func stars_condition(): 
-	var cant_estrellas = 1
-	#Como se determinan las estrellas???
 	
+func stars_condition(cant_estrellas): 
 	#Silver Stars
 	$AnimationPlayer.play("Silver Stars")
 	yield(get_tree().create_timer(1.5), "timeout")
@@ -43,7 +56,6 @@ func stars_condition():
 	elif (cant_estrellas == 3):
 		$AnimationPlayer.play("3 Golden Star")
 	yield(get_tree().create_timer(2.5), "timeout") 
-	#COMPLETAR LOGICA DE ESTRELLAS DORADAS
 
 func show_dialog():
 	$WindowContainer.hide()

@@ -49,7 +49,7 @@ polygon = PoolVector2Array( -85.0908, -213.243, -33.8967, -226.96, 4.03823, -178
 [node name="Shield" parent="." index="2"]
 visible = false
 scale = Vector2( 2.479, 1.935 )
-energy = 1
+energy = 3
 nivel = 1
 
 [node name="Sprite" parent="." index="3"]

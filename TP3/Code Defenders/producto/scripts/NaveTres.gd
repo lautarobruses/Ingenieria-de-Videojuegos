@@ -4,7 +4,7 @@ onready var parte = preload("res://Escenas/PremioNaveTres.tscn")
 # setear vidas de la nave
 # setear las conexiones
 # var b = "text"
-
+var damage = 10
 
 func _ready():
 	vidas = 2

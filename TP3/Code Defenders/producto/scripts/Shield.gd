@@ -37,7 +37,7 @@ func _physics_process(_delta):
 		if is_hitted:
 			$AnimationPlayer.play("hitted")
 			
-			yield(get_tree().create_timer(2.0), "timeout")
+			#yield(get_tree().create_timer(2.0), "timeout")
 			is_hitted = false
 		elif is_broken:
 			break_shield()
@@ -75,7 +75,7 @@ func animate():
 		$AnimationPlayer.play("color_comp6")
 	
 	is_animated = true
-	yield(get_tree().create_timer(5.0), "timeout")
+	#yield(get_tree().create_timer(5.0), "timeout")
 	is_animated = false
 	
 	color_configuration.append(current_color)
@@ -104,7 +104,6 @@ func break_shield():
 
 func special_condition(configuration):
 	var cumpleCondicion = false
-	
 	if(nivel==1):  
 		cumpleCondicion = esCodigoBloque(configuration)
 	elif(nivel==2):  
@@ -119,15 +118,14 @@ func special_condition(configuration):
 		calculate_damage()
 	else:
 		$ProjectileReflected.play()
+		pass
 
 func esCodigoBloque(configuration):
 	var salida = false
 	if !configuration.empty():
-			var j = 0
-			while(j<8 and configuration[j]!=0 and salida==false):
-				if (configuration[j]==1):
-					salida = true
-				j=+1
+		for comp in configuration:
+			if (comp==1):
+				salida = true
 	return salida
 
 func esNoSingular(configuration):

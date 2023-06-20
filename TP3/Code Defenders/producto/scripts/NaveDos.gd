@@ -2,7 +2,7 @@ extends TipoNaveSimple
 
 onready var parte = preload("res://Escenas/PremioNaveDos.tscn")
 func _ready():
-	velocidad = 1
+	velocidad = 3
 	vidas = 3
 	$turbo.play("normal")
 	play("normal")
