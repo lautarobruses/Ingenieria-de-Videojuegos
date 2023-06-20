@@ -40,13 +40,11 @@ func change_level_info(level_name_node):
 	
 	level_name_node.set_text(level_info)
 
-func set_configuration_level(action):
-	
+func set_configuration_level(star1, star2, star3):
 	#ACA TENGO QUE ESTABLECER LA INFORMACION DE LAS ESTRELLAS Y
 	#LOS LINKS DE INFOBUTTON Y PLAYBUTTON
 	if current_index == 0:
-		if action == "Forward":
-			pass
+		pass
 	elif current_index == 1:
 		pass
 	elif current_index == 2:
@@ -95,7 +93,7 @@ func _on_BackwardButton_pressed():
 	change_level_name($WindowContainer/NextWindow/NextLevelName)
 	change_level_info($WindowDialog/Content)
 	animate_buttons()
-	set_configuration_level("Backward")
+	set_configuration_level($WindowContainer/NextWindow/NStar1,$WindowContainer/NextWindow/NStar2,$WindowContainer/NextWindow/NStar3)
 	$AnimationPlayer.play("Slide Window Forward")
 	yield(get_tree().create_timer(1.0), "timeout")
 	$WindowContainer/BackwardButton.disabled = false
@@ -109,7 +107,7 @@ func _on_ForwardButton_pressed():
 	change_level_name($WindowContainer/PreviousWindow/PreviousLevelName)
 	change_level_info($WindowDialog/Content)
 	animate_buttons()
-	set_configuration_level("Forward")
+	set_configuration_level($WindowContainer/PreviousWindow/PStar1,$WindowContainer/PreviousWindow/PStar2,$WindowContainer/PreviousWindow/PStar3)
 	$AnimationPlayer.play("Slide Window Backward")
 	yield(get_tree().create_timer(1.0), "timeout")
 	$WindowContainer/ForwardButton.disabled = false

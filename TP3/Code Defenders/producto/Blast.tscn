@@ -253,6 +253,7 @@ animations = [ {
 
 [node name="Blast" type="Node2D"]
 scale = Vector2( 0.25, 0.25 )
+z_index = 5
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

@@ -4,7 +4,9 @@ signal broken_shield
 
 var projectile = preload("res://Boss_Projectile.tscn")
 var blast = preload("res://Blast.tscn")
+
 onready var player = get_node("../Player")
+
 export (int) var health = 10
 export (int) var damage = 45
 
@@ -18,7 +20,6 @@ func _ready():
 	
 func _physics_process(_delta):
 	if (follow_target):
-		print(player.global_position)
 		look_at(player.global_position)
 
 func start():

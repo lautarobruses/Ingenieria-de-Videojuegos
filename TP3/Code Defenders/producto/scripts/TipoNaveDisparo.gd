@@ -13,7 +13,7 @@ var random_target_pos : Vector2 = Vector2(450,300)
 var disparo = preload("res://Escenas/disparoEnemigo.tscn")
 onready var player = get_node("../Player")
 
-var salirDeLaPantalla = 0;
+var salir = 0;
 var objetivo
 var parado=0
 var moviendo=0
@@ -21,7 +21,7 @@ var UltAnimacion
 #var parte = preload("res://ParteNaveTres.tscn")
 
 func _physics_process(delta):
-	if (salirDeLaPantalla == 0):
+	if (salir == 0):
 		if $TiempoParado.time_left == 0:
 			if moviendo == 0:
 				$TiempoMovimiento.start()
@@ -80,7 +80,7 @@ func hitted(damage):
 		$CollisionShape2D.disabled = true
 
 func salirDeLaPantalla():
-	salirDeLaPantalla=1
+	salir = 1
 	velocidad = 7
 	if (position.distance_to(Vector2(2000,-40)) < position.distance_to(Vector2(2000,1080))):
 		objetivo = Vector2(2000,-40)

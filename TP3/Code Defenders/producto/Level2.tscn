@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/music/1029200_Bitsplosion.mp3" type="AudioStream" id=2]
 [ext_resource path="res://scripts/Level2.gd" type="Script" id=3]
+[ext_resource path="res://Boss2.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "main 2"
@@ -21,6 +22,55 @@ tracks/0/keys = {
 } ],
 "times": PoolRealArray( 0 )
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 15, 31, 44, 75.1, 89, 105.1, 118 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "fase_esbirros"
+}, {
+"args": [  ],
+"method": "fin_fase_esbirros"
+}, {
+"args": [  ],
+"method": "fase_esbirros"
+}, {
+"args": [  ],
+"method": "fin_fase_esbirros"
+}, {
+"args": [  ],
+"method": "fase_esbirros"
+}, {
+"args": [  ],
+"method": "fin_fase_esbirros"
+}, {
+"args": [  ],
+"method": "fase_esbirros"
+}, {
+"args": [  ],
+"method": "fin_fase_esbirros"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("Boss2")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 10 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "emerge"
+} ]
+}
 
 [node name="Level2" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
@@ -29,9 +79,19 @@ song = null
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
 "anims/main 2" = SubResource( 1 )
 
-[node name="Music" parent="." index="5"]
-stream = ExtResource( 2 )
+[node name="Boss2" parent="." index="4" instance=ExtResource( 4 )]
+position = Vector2( -519, 548 )
 
 [node name="LevelUI" parent="." index="6"]
 music_name = "Bitsplosion"
 author_name = "JACK-Zer0!"
+
+[node name="BossHealthBar" parent="." index="8"]
+target_node = NodePath("../Boss2")
+max_value = 2000
+
+[node name="Music" parent="." index="12"]
+stream = ExtResource( 2 )
+
+[connection signal="broken_shield" from="Boss2" to="." method="_on_Boss2_broken_shield"]
+[connection signal="dead" from="BossHealthBar" to="." method="_on_BossHealthBar_dead"]

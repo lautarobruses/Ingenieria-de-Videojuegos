@@ -10,7 +10,6 @@ func start(pos, dir):
 	velocity = Vector2(-speed, 0).rotated(dir)
 	$AnimatedSprite.animation = "shoot"
 
-	
 func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
 	if collision:

@@ -16,6 +16,10 @@ func shoot_h():
 	velocity = Vector2(-speed, 0).rotated(rotation)
 	$AnimatedSprite.animation = "shooted"
 
+func shoot_direction(rotation):
+	velocity = Vector2(-speed, 0).rotated(rotation)
+	$AnimatedSprite.animation = "shooted"
+
 func blow():
 	velocity = Vector2()
 	$AnimatedSprite.animation = "blow"

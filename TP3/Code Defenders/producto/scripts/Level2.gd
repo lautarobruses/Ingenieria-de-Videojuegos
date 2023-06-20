@@ -4,11 +4,21 @@ export var song: AudioStream
 
 var boss1 = preload("res://Boss1.tscn")
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-#	start_level()
+	start_level()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func start_level():
+	set_player()
+	set_boss()
+	$AnimationPlayer.play("main 2")
+	set_music(song)
+
+func set_boss():
+	$Boss2.start()
+
+func _on_Boss2_broken_shield():
+	$BossHealthBar.start()
+
+func _on_BossHealthBar_dead():
+	$Boss2.stop()

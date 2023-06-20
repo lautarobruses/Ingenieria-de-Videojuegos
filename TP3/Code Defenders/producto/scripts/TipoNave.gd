@@ -9,7 +9,7 @@ var vidas
 var damage = 10
 var golpes = 0
 var UltAnimacion
-var salirDeLaPantalla = 0;
+var salir = 0;
 
 onready var player = get_node("../Player")
 var objetivo
@@ -17,7 +17,7 @@ var target_position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if (salirDeLaPantalla == 0):
+	if (salir == 0):
 		objetivo = player.position
 	else:
 		velocidad = 7
@@ -25,8 +25,8 @@ func _physics_process(delta):
 	look_at(objetivo)
 	var collision = move_and_collide(target_position * velocidad)
 	if collision:
-		if collision.collider.has_method("on_player_get_hit"):
-			collision.collider.on_player_get_hit()
+		if collision.collider.has_method("hitted"):
+			collision.collider.hitted(damage)
 
 func hitted(damage):
 	golpes += 1
@@ -41,7 +41,7 @@ func play(animacion):
 	UltAnimacion = animacion
 	
 func salirDeLaPantalla():
-	salirDeLaPantalla=1
+	salir = 1
 	if (position.distance_to(Vector2(2000,-40)) < position.distance_to(Vector2(2000,1080))):
 		objetivo = Vector2(2000,-40)
 	else:

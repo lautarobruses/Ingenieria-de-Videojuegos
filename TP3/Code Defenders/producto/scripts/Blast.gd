@@ -7,4 +7,4 @@ func _process(_delta):
 	if $AnimatedSprite.is_playing():
 		return
 		
-		queue_free()
+	queue_free()

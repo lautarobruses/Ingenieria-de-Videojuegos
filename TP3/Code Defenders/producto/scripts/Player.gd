@@ -84,6 +84,11 @@ func move(delta):
 		target_angle = atan2(motion.x, motion.y) + PI/2
 		rotation = -target_angle
 
+func _on_collision(body):
+	print(body)
+	if body.damage != null:
+		hitted(body.damage)
+
 func shoot():
 	var p = projectile.instance()
 	p.start($ProjectilePosition.global_position, rotation)

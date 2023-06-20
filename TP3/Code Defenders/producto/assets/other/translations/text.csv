@@ -12,7 +12,7 @@ SETTINGS_MUSIC;music;musica
 SETTINGS_SOUND;sound;sonido
 SETTINGS_LANGUAGES;languages;idiomas
 LEVEL1_TITLE;block codes;codigos bloque
-LEVEL2_TITLE;singular codes;codigos singulares
+LEVEL2_TITLE;non-singular codes;codigos no singulares
 LEVEL3_TITLE;unique codes;codigos univocos
 LEVEL4_TITLE;instant codes;codigos instantaneos
 LEVEL_INFO;Information;Informacion

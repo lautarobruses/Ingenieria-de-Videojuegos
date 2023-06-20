@@ -456,6 +456,7 @@ margin_top = 736.0
 margin_right = 1322.0
 margin_bottom = 946.0
 rect_scale = Vector2( 0.75, 0.75 )
+shortcut_in_tooltip = false
 shortcut = SubResource( 10 )
 texture_normal = ExtResource( 6 )
 texture_hover = ExtResource( 4 )
