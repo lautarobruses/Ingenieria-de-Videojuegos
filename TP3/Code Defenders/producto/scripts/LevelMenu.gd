@@ -44,7 +44,7 @@ func change_level_info(level_name_node):
 func set_configuration_level(estrella1,estrella2,estrella3):
 	var puntaje
 
-	if current_index == 0:
+	if current_index == 0: #NivelUno
 		puntaje = Persistencia.getPuntajeNivelUno()
 		if(puntaje>6000):
 			estrella1.play("gold")
@@ -53,17 +53,34 @@ func set_configuration_level(estrella1,estrella2,estrella3):
 		elif(puntaje>4000):
 			estrella1.play("gold")
 			estrella2.play("gold")
-		else:
+		elif(puntaje>2000):
 			estrella1.play("gold")
+<<<<<<< Updated upstream
 			estrella2.play("silver")
 			estrella3.play("silver")
 	elif current_index == 1:
+=======
+		else:
+			estrella1.play("empty")
+			estrella2.play("empty")
+			estrella3.play("empty")
+	elif current_index == 1: #NivelDos
+>>>>>>> Stashed changes
 		puntaje = Persistencia.getPuntajeNivelDos()
-		estrella1.play("empty")
-		estrella2.play("empty")
-		estrella3.play("empty")
-		#Logica de estrellas del nivel Dos
-	elif current_index == 2:
+		if(puntaje>4000):
+			estrella1.play("gold")
+			estrella2.play("gold")
+			estrella3.play("gold")
+		elif(puntaje>3000):
+			estrella1.play("gold")
+			estrella2.play("gold")
+		elif(puntaje>2000):
+			estrella1.play("gold")
+		else:
+			estrella1.play("empty")
+			estrella2.play("empty")
+			estrella3.play("empty")
+	elif current_index == 2: #NivelTres
 		puntaje = Persistencia.getPuntajeNivelTres()
 		if(puntaje==1120):
 			estrella1.play("gold")
@@ -72,10 +89,17 @@ func set_configuration_level(estrella1,estrella2,estrella3):
 		elif(puntaje>=700):
 			estrella1.play("gold")
 			estrella2.play("gold")
-		else:
+		elif(puntaje>=400):
 			estrella1.play("gold")
+<<<<<<< Updated upstream
 			estrella2.play("silver")
 			estrella3.play("silver")
+=======
+		else:
+			estrella1.play("empty")
+			estrella2.play("empty")
+			estrella3.play("empty")
+>>>>>>> Stashed changes
 	elif current_index == 3:
 		puntaje = Persistencia.getPuntajeNivelCuatro()
 		estrella1.play("empty")
