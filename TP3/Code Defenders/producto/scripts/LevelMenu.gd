@@ -47,65 +47,57 @@ func set_configuration_level(estrella1,estrella2,estrella3):
 	if current_index == 0: #NivelUno
 		puntaje = Persistencia.getPuntajeNivelUno()
 		if(puntaje>6000):
-			estrella1.play("gold")
-			estrella2.play("gold")
-			estrella3.play("gold")
+			tres_estrellas_dorada(estrella1,estrella2,estrella3)
 		elif(puntaje>4000):
-			estrella1.play("gold")
-			estrella2.play("gold")
+			dos_estrellas_dorada(estrella1,estrella2,estrella3)
 		elif(puntaje>2000):
-			estrella1.play("gold")
-<<<<<<< Updated upstream
-			estrella2.play("silver")
-			estrella3.play("silver")
-	elif current_index == 1:
-=======
+			una_estrellas_dorada(estrella1,estrella2,estrella3)
 		else:
-			estrella1.play("empty")
-			estrella2.play("empty")
-			estrella3.play("empty")
+			cero_estrellas(estrella1,estrella2,estrella3)
 	elif current_index == 1: #NivelDos
->>>>>>> Stashed changes
 		puntaje = Persistencia.getPuntajeNivelDos()
 		if(puntaje>4000):
-			estrella1.play("gold")
-			estrella2.play("gold")
-			estrella3.play("gold")
+			tres_estrellas_dorada(estrella1,estrella2,estrella3)
 		elif(puntaje>3000):
-			estrella1.play("gold")
-			estrella2.play("gold")
+			dos_estrellas_dorada(estrella1,estrella2,estrella3)
 		elif(puntaje>2000):
-			estrella1.play("gold")
+			una_estrellas_dorada(estrella1,estrella2,estrella3)
 		else:
-			estrella1.play("empty")
-			estrella2.play("empty")
-			estrella3.play("empty")
+			cero_estrellas(estrella1,estrella2,estrella3)
 	elif current_index == 2: #NivelTres
 		puntaje = Persistencia.getPuntajeNivelTres()
 		if(puntaje==1120):
-			estrella1.play("gold")
-			estrella2.play("gold")
-			estrella3.play("gold")
+			tres_estrellas_dorada(estrella1,estrella2,estrella3)
 		elif(puntaje>=700):
-			estrella1.play("gold")
-			estrella2.play("gold")
+			dos_estrellas_dorada(estrella1,estrella2,estrella3)
 		elif(puntaje>=400):
-			estrella1.play("gold")
-<<<<<<< Updated upstream
-			estrella2.play("silver")
-			estrella3.play("silver")
-=======
+			una_estrellas_dorada(estrella1,estrella2,estrella3)
 		else:
-			estrella1.play("empty")
-			estrella2.play("empty")
-			estrella3.play("empty")
->>>>>>> Stashed changes
+			cero_estrellas(estrella1,estrella2,estrella3)
 	elif current_index == 3:
 		puntaje = Persistencia.getPuntajeNivelCuatro()
-		estrella1.play("empty")
-		estrella2.play("empty")
-		estrella3.play("empty")
+		cero_estrellas(estrella1,estrella2,estrella3)
 		#Logica de estrellas del nivel Cuatro
+
+func cero_estrellas(estrella1,estrella2,estrella3):
+	estrella1.play("empty")
+	estrella2.play("empty")
+	estrella3.play("empty")
+
+func una_estrellas_dorada(estrella1,estrella2,estrella3):
+	estrella1.play("gold")
+	estrella2.play("silver")
+	estrella3.play("silver")
+
+func dos_estrellas_dorada(estrella1,estrella2,estrella3):
+	estrella1.play("gold")
+	estrella2.play("gold")
+	estrella3.play("silver")
+
+func tres_estrellas_dorada(estrella1,estrella2,estrella3):
+	estrella1.play("gold")
+	estrella2.play("gold")
+	estrella3.play("gold")
 
 func animate_buttons():
 	$WindowContainer/InfoButton.visible = false
@@ -132,7 +124,7 @@ func animate_buttons():
 	$WindowContainer/NextWindow/NPlaySprite.visible = false
 	$WindowContainer/NextWindow/NCloseSprite.visible = false
 
-	if current_index == 4: #Proximamente
+	if current_index == 4 or current_index == 3: #Proximamente
 		$WindowContainer/InfoButton.disabled = true
 		$WindowContainer/PlayButton.disabled = true
 	else:
@@ -178,6 +170,7 @@ func _on_PlayButton_pressed():
 	elif current_index == 2:
 		get_tree().change_scene("res://Level3.tscn")
 	elif current_index == 3:
+		#PENDIENTE
 		pass
 
 func show_dialog():
