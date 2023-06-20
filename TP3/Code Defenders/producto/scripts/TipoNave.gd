@@ -1,7 +1,6 @@
 extends KinematicBody2D
 class_name TipoNaveSimple
 
-#register_class<TipoNave>
 var puntaje = 100
 
 var velocidad = 1
@@ -15,7 +14,6 @@ onready var player = get_node("../Player")
 var objetivo
 var target_position
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
 	if (salir == 0):
 		objetivo = player.position

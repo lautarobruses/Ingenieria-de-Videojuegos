@@ -1,0 +1,112 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/img/Componentes/PremioNaveCuatro.png" type="Texture" id=1]
+[ext_resource path="res://assets/img/Componentes/PremioNaveSeis.png" type="Texture" id=2]
+[ext_resource path="res://assets/img/Componentes/PremioNaveCinco.png" type="Texture" id=3]
+[ext_resource path="res://assets/img/Componentes/PremioNaveUno.png" type="Texture" id=4]
+[ext_resource path="res://assets/img/Componentes/PremioNaveTres.png" type="Texture" id=5]
+[ext_resource path="res://assets/img/Componentes/PremioNaveDos.png" type="Texture" id=6]
+[ext_resource path="res://scripts/Componente.gd" type="Script" id=7]
+
+[sub_resource type="Animation" id=3]
+resource_name = "rebote"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -10 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "salida"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 22, 12 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "4",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "5",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "6",
+"speed": 5.0
+} ]
+
+[node name="Componente" type="Area2D"]
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/rebote = SubResource( 3 )
+anims/salida = SubResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 5, 4 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -1.15794 )
+z_index = 1
+frames = SubResource( 5 )
+animation = "1"
+playing = true
+
+[connection signal="body_entered" from="." to="." method="_on_Componente_body_entered"]

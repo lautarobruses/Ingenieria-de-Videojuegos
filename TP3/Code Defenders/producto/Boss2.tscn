@@ -1041,7 +1041,6 @@ rotation = 1.5708
 scale = Vector2( 1.05592, 1.25876 )
 frames = SubResource( 11 )
 animation = "charging"
-frame = 1
 playing = true
 
 [node name="LaserBeam2" type="CollisionShape2D" parent="LaserBeam" index="1"]
@@ -1056,6 +1055,7 @@ rotation = 1.5708
 scale = Vector2( 1.06907, 1.25876 )
 frames = SubResource( 11 )
 animation = "charging"
+frame = 1
 playing = true
 
 [node name="ShootTimer" type="Timer" parent="." index="5"]
