@@ -33,10 +33,12 @@ func set_music(song):
 func fase_esbirros():
 	$Player.fase = 0
 	for i in cantNaveTres:
+		yield(get_tree().create_timer(1), "timeout")
 		var nuevoEnemigo = naveTres.instance()
 		nuevoEnemigo.position = posicionRandom()
 		add_child(nuevoEnemigo)
 	for i in cantNaveDos:
+		yield(get_tree().create_timer(1), "timeout")
 		var nuevoEnemigo = naveDos.instance()
 		nuevoEnemigo.position = posicionRandom()
 		add_child(nuevoEnemigo)

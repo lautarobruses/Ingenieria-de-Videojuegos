@@ -149,7 +149,7 @@ func _on_PlayButton_pressed():
 	elif current_index == 1:
 		get_tree().change_scene("res://Level2.tscn")
 	elif current_index == 2:
-		pass
+		get_tree().change_scene("res://Level3.tscn")
 	elif current_index == 3:
 		pass
 
