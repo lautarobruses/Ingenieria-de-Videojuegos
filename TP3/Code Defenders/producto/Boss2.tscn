@@ -283,11 +283,14 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 2.2, 7.9 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 1, 2.2, 7.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "charge_laser"
+}, {
+"args": [ 1.25 ],
+"method": "set_rotation_speed"
 }, {
 "args": [  ],
 "method": "activate_laser"
@@ -331,7 +334,7 @@ tracks/5/path = NodePath("Music")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
-tracks/5/enabled = true
+tracks/5/enabled = false
 tracks/5/keys = {
 "clips": [ {
 "end_offset": 0.0,
@@ -672,14 +675,20 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.5, 7.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0.5, 7.5, 8, 22 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
 "args": [ 0.15 ],
 "method": "set_shooting_speed"
 }, {
 "args": [ 0.1 ],
 "method": "set_shooting_speed"
+}, {
+"args": [ 0.75 ],
+"method": "set_rotation_speed"
+}, {
+"args": [ 0.5 ],
+"method": "set_rotation_speed"
 } ]
 }
 tracks/4/type = "audio"
@@ -687,7 +696,7 @@ tracks/4/path = NodePath("Music")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/keys = {
 "clips": [ {
 "end_offset": 0.0,
@@ -770,9 +779,10 @@ animations = [ {
 extents = Vector2( 130, 175 )
 
 [node name="Boss2" instance=ExtResource( 1 )]
-position = Vector2( 2320, 540 )
+modulate = Color( 0.556863, 0.556863, 0.556863, 1 )
+position = Vector2( 960, 540 )
 rotation = -1.5708
-scale = Vector2( 0.8, 0.8 )
+scale = Vector2( 0.3, 0.3 )
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 3 )
@@ -794,7 +804,6 @@ anims/Emerge = SubResource( 4 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 visible = false
 shape = SubResource( 1 )
-disabled = true
 
 [node name="Shield" parent="." index="2"]
 visible = false

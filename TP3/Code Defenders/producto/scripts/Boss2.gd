@@ -75,19 +75,19 @@ func shoot_from_center():
 func charge_laser():
 	$LaserBeam.visible = true
 	$LaserBeam/LaserBeam1.set_deferred("disabled", true)
-	$LaserBeam/LaserBeam1.set_deferred("disabled", true)
+	$LaserBeam/LaserBeam2.set_deferred("disabled", true)
 	$LaserBeam/LaserBeam1/AnimatedSpriteLaser1.play("charging")
 	$LaserBeam/LaserBeam2/AnimatedSpriteLaser2.play("charging")
 
 func activate_laser():
 	$LaserBeam/LaserBeam1.set_deferred("disabled", false)
-	$LaserBeam/LaserBeam1.set_deferred("disabled", false)
+	$LaserBeam/LaserBeam2.set_deferred("disabled", false)
 	$LaserBeam/LaserBeam1/AnimatedSpriteLaser1.play("active")
 	$LaserBeam/LaserBeam2/AnimatedSpriteLaser2.play("active")
 	
 func disabled_laser():
 	$LaserBeam/LaserBeam1.set_deferred("disabled", true)
-	$LaserBeam/LaserBeam1.set_deferred("disabled", true)
+	$LaserBeam/LaserBeam2.set_deferred("disabled", true)
 	$LaserBeam/LaserBeam1/AnimatedSpriteLaser1.play("disable")
 	$LaserBeam/LaserBeam2/AnimatedSpriteLaser2.play("disable")
 
@@ -111,5 +111,6 @@ func _on_Shield_broken():
 	emit_signal("broken_shield")
 
 func _on_LaserBeam_body_entered(body):
+	print("entro al laser")
 	if body.has_method("hitted"):
 		body.hitted(laser_damage)
