@@ -7,7 +7,6 @@ var current_index = 0
 
 func _ready():
 	Persistencia.load_game() #Cargo los puntajes viejos
-	pass
 
 func change_level_name(level_name_node):
 	var level_name: String
@@ -98,7 +97,7 @@ func _on_ForwardButton_pressed():
 	$ForwardButton.disabled = false
 
 func _on_InfoButton_pressed():
-	pass # Replace with function body.
+	show_dialog()
 
 func _on_PlayButton_pressed():
 	if current_index == 0:
@@ -110,6 +109,18 @@ func _on_PlayButton_pressed():
 	elif current_index == 3:
 		pass
 
+func show_dialog():
+	#PERSONALIZAR
+	$WindowContainer.hide()
+	$WindowDialog.popup()
+
+func hide_dialog():
+	$WindowDialog.hide()
+	$WindowContainer.show()
+
 func _on_CloseButton_pressed():
 	self.visible = false
 	emit_signal("main_menu")
+
+func _on_AcceptButton_pressed():
+	hide_dialog()

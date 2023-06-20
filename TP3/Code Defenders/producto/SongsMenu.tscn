@@ -397,16 +397,19 @@ __meta__ = {
 }
 
 [node name="Atention" type="Label" parent="WindowDialog"]
-margin_left = 64.0
-margin_top = 16.0
-margin_right = 288.0
-margin_bottom = 56.0
+margin_left = -24.0
+margin_top = 12.0
+margin_right = 378.0
+margin_bottom = 52.0
+rect_pivot_offset = Vector2( 201, 20 )
 custom_colors/font_color = Color( 0.929412, 0.960784, 0.972549, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
 custom_constants/shadow_offset_x = 3
 custom_constants/shadow_offset_y = 3
 custom_fonts/font = SubResource( 4 )
-text = "Atention"
+text = "SONGS_ATENTION"
+align = 1
+valign = 1
 
 [node name="Content" type="Label" parent="WindowDialog"]
 margin_left = 32.0
@@ -418,7 +421,7 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
 custom_fonts/font = SubResource( 13 )
-text = "You are about to be redirected to an external site"
+text = "SONGS_CONTENT"
 align = 1
 valign = 1
 autowrap = true
@@ -436,7 +439,7 @@ rect_scale = Vector2( 0.2, 0.2 )
 custom_colors/font_color = Color( 0.929412, 0.960784, 0.972549, 1 )
 custom_colors/font_color_hover = Color( 1, 0.815686, 0.305882, 1 )
 custom_fonts/font = SubResource( 12 )
-text = "Accept"
+text = "BTN_ACCEPT"
 icon = ExtResource( 12 )
 flat = true
 icon_align = 1
@@ -454,7 +457,7 @@ rect_scale = Vector2( 0.2, 0.2 )
 custom_colors/font_color = Color( 0.929412, 0.960784, 0.972549, 1 )
 custom_colors/font_color_hover = Color( 1, 0.815686, 0.305882, 1 )
 custom_fonts/font = SubResource( 12 )
-text = "Cancel"
+text = "BTN_CANCEL"
 icon = ExtResource( 12 )
 flat = true
 icon_align = 1
