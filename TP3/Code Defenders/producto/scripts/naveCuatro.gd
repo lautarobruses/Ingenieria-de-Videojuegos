@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal destruyeLaser
+
 onready var componente = preload("res://Componente.tscn")
 var laser = preload("res://Escenas/Laser.tscn")
 
@@ -10,12 +12,11 @@ var velocidad = 2
 var player_position
 var target_position
 var golpes = 0
-
+var damage = 10
 var laser1
 var parado=0
 var moviendo=0
 var puntaje = 500
-signal destruyeLaser
 var weight = 0.05
 var UltAnimacion
 var exploto = 0

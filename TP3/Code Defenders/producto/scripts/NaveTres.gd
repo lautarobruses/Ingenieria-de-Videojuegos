@@ -2,8 +2,6 @@ extends TipoNaveDisparo
 
 onready var componente = preload("res://Componente.tscn")
 
-var damage = 10
-
 func _ready():
 	vidas = 2
 	play("normal")

@@ -1,8 +1,8 @@
 extends KinematicBody2D
 class_name disparo
 
-export (int) var speed
-export (int) var damage
+export (int) var speed = 500
+export (int) var damage = 10
 var velocity = Vector2()
 
 func start(pos,dir):

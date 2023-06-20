@@ -110,4 +110,10 @@ frames = SubResource( 5 )
 animation = "1"
 playing = true
 
+[node name="SalidaTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_Componente_body_entered"]
+[connection signal="timeout" from="SalidaTimer" to="." method="_on_SalidaTimer_timeout"]

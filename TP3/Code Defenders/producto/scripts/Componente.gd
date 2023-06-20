@@ -4,10 +4,8 @@ signal levantaSimbolo
 
 var puntajeDeLevantar = 300
 
-func _ready():
+func ready():
 	$AnimationPlayer.play("rebote")
-	yield(get_tree().create_timer(4.0), "timeout")
-	salida()
 
 func init(posicion_nave, tipo):
 	position = posicion_nave
@@ -37,12 +35,12 @@ func init(posicion_nave, tipo):
 			self.connect("levantaSimbolo",get_parent().get_node("Barra"),"_on_ParteNaveSeis_levantaSimbolo")
 			continue
 
-func salida():
-	$AnimationPlayer.play("salida")
-	yield(get_tree().create_timer(1), "timeout")
-	queue_free()
-
 func _on_Componente_body_entered(body):
 	emit_signal("levantaSimbolo")
 	get_parent().sumaPuntaje(puntajeDeLevantar)
+	queue_free()
+
+func _on_SalidaTimer_timeout():
+	$AnimationPlayer.play("salida")
+	yield(get_tree().create_timer(1), "timeout")
 	queue_free()

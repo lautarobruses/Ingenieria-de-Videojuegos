@@ -4,6 +4,7 @@ class_name TipoNaveDisparo
 const MAX_SPEED = 350
 const CENTER = Vector2(450,300)
 var velocidad = 1
+var damage = 10
 var vidas
 var golpes = 0
 

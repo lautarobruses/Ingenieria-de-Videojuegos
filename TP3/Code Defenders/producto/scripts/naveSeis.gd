@@ -13,7 +13,5 @@ func _on_nave_animation_finished():
 		new_componente.init(position, 6)
 		queue_free()
 
-
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
-	pass # Replace with function body.
