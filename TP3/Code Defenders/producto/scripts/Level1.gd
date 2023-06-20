@@ -11,6 +11,7 @@ func _ready():
 func start_level():
 	set_player()
 	set_boss()
+	setNivel(1)
 	$AnimationPlayer.play("main")
 	set_music(song)
 

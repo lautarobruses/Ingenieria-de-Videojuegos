@@ -6,7 +6,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "main"
-length = 79.0
+length = 82.0
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -14,7 +14,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 3, 13, 24, 33, 44, 55, 66, 78.1 ),
+"times": PoolRealArray( 3, 13, 24, 33, 44, 55, 66, 82 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],

@@ -49,7 +49,7 @@ disabled = true
 
 [node name="Shield" parent="." index="2"]
 scale = Vector2( 2.479, 1.935 )
-energy = 1
+energy = 3
 nivel = 1
 
 [node name="Sprite" parent="." index="3"]

@@ -19,3 +19,6 @@ func _on_PauseButton_pressed():
 	
 func game_over():
 	$AnimationPlayer.play("Game Over")
+
+func setScore(puntos):
+	$Score.text = str(puntos)

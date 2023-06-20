@@ -3,6 +3,7 @@ class_name disparo
 
 var speed = 600
 var velocity = Vector2()
+var damage = 10
 
 func start(pos,dir):
 	rotation = dir

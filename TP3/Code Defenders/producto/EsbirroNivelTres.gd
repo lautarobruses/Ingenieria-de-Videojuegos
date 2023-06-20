@@ -3,7 +3,7 @@ extends KinematicBody2D
 var vidas
 var velocidad
 var golpes = 0
-var damage = 5
+var damage = 10
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"

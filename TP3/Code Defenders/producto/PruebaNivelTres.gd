@@ -74,6 +74,7 @@ func _ready():
 	set_player()
 	armoCodigo()
 	set_music(song)
+	setNivel(3)
 	$Historial.hide()
 	$AnimationPlayer.play("main")
 	pass # Replace with function body.
@@ -122,7 +123,7 @@ func guardaNodo(nodo,tipo):
 func game_over(): #gestionar game over de victoria
 	#Puntaje
 	puntajeTotal -= (110 - $Player.health)
-	print(puntajeTotal)
+	Persistencia.setNivelTres(puntajeTotal)
 	#Musica
 	$Music.volume_db -= 25
 	$Sounds.stream = jingle_win
@@ -131,7 +132,7 @@ func game_over(): #gestionar game over de victoria
 	yield(get_tree().create_timer(3.0), "timeout")
 	#Menu
 	#Seteo El puntaje
-	$PauseMenu.show_you_win()
+	$PauseMenu.show_you_win(puntajeTotal)
 	$Player.blow()
 	yield(get_tree().create_timer(2.0), "timeout")
 	$Music.volume_db += 25

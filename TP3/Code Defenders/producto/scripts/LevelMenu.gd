@@ -7,6 +7,8 @@ var current_index = 0
 
 func _ready():
 	Persistencia.load_game() #Cargo los puntajes viejos
+	set_configuration_level($WindowContainer/PreviousWindow/PStar1,$WindowContainer/PreviousWindow/PStar2,$WindowContainer/PreviousWindow/PStar3)
+	
 
 func change_level_name(level_name_node):
 	var level_name: String
@@ -40,17 +42,43 @@ func change_level_info(level_name_node):
 	
 	level_name_node.set_text(level_info)
 
-func set_configuration_level(star1, star2, star3):
-	#ACA TENGO QUE ESTABLECER LA INFORMACION DE LAS ESTRELLAS Y
-	#LOS LINKS DE INFOBUTTON Y PLAYBUTTON
+func set_configuration_level(estrella1,estrella2,estrella3):
+	var puntaje
+
 	if current_index == 0:
-		pass
+		puntaje = Persistencia.getPuntajeNivelUno()
+		if(puntaje>6000):
+			estrella1.play("gold")
+			estrella2.play("gold")
+			estrella3.play("gold")
+		elif(puntaje>4000):
+			estrella1.play("gold")
+			estrella2.play("gold")
+		else:
+			estrella1.play("gold")
 	elif current_index == 1:
-		pass
+		puntaje = Persistencia.getPuntajeNivelDos()
+		estrella1.play("empty")
+		estrella2.play("empty")
+		estrella3.play("empty")
+		#Logica de estrellas del nivel Dos
 	elif current_index == 2:
-		pass
+		puntaje = Persistencia.getPuntajeNivelTres()
+		if(puntaje==1120):
+			estrella1.play("gold")
+			estrella2.play("gold")
+			estrella3.play("gold")
+		elif(puntaje>=700):
+			estrella1.play("gold")
+			estrella2.play("gold")
+		else:
+			estrella1.play("gold")
 	elif current_index == 3:
-		pass
+		puntaje = Persistencia.getPuntajeNivelCuatro()
+		estrella1.play("empty")
+		estrella2.play("empty")
+		estrella3.play("empty")
+		#Logica de estrellas del nivel Cuatro
 
 func animate_buttons():
 	$WindowContainer/InfoButton.visible = false
