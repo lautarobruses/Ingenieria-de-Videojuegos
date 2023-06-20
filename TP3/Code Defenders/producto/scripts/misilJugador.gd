@@ -15,8 +15,8 @@ func _physics_process(delta):
 	if collision:
 #		velocity = velocity.bounce(collision.normal)
 		queue_free()
-		if collision.collider.has_method("hit"):
-			collision.collider.hit()
+		if collision.collider.has_method("hitted"):
+			collision.collider.hitted(damage)
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()

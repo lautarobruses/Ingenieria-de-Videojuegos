@@ -37,7 +37,7 @@ func _physics_process(_delta):
 		if is_hitted:
 			$AnimationPlayer.play("hitted")
 			
-			#yield(get_tree().create_timer(2.0), "timeout")
+			yield(get_tree().create_timer(2.0), "timeout")
 			is_hitted = false
 		elif is_broken:
 			break_shield()
@@ -75,7 +75,7 @@ func animate():
 		$AnimationPlayer.play("color_comp6")
 	
 	is_animated = true
-	#yield(get_tree().create_timer(5.0), "timeout")
+	yield(get_tree().create_timer(5.0), "timeout")
 	is_animated = false
 	
 	color_configuration.append(current_color)
@@ -124,7 +124,7 @@ func esCodigoBloque(configuration):
 	var salida = false
 	if !configuration.empty():
 		for comp in configuration:
-			if (comp==1):
+			if (comp==1 or comp==2 or comp==3):
 				salida = true
 	return salida
 

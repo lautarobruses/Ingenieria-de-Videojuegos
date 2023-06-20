@@ -45,7 +45,9 @@ func bodyEntered(_body):
 
 func _on_timer_timeout():
 	$AnimationPlayer.play("salida")
+	yield(get_tree().create_timer(1), "timeout")
+	queue_free()
 
-func _on_AnimationPlayer_animation_finished(anim_name):
-	if (anim_name == "salida"):
-		queue_free()
+#func _on_AnimationPlayer_animation_finished(anim_name):
+#	if (anim_name == "salida"):
+#		queue_free()

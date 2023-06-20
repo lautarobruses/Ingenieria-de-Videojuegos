@@ -62,6 +62,7 @@ height = 68.0
 
 [node name="naveSeis" type="KinematicBody2D"]
 position = Vector2( 166, 524 )
+z_index = 2
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 1 )
