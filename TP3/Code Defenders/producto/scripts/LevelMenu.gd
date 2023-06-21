@@ -2,6 +2,11 @@ extends Control
 
 signal main_menu
 
+var estrellasN1 = [6000, 4000, 2000]
+var estrellasN2 = [4000, 3000, 2000]
+var estrellasN3 = [1120, 700, 400]
+var estrellasN4 = [0, 0, 0]
+
 var carousel_items = [1,2,3,4,5]
 var current_index = 0
 
@@ -46,31 +51,31 @@ func set_configuration_level(estrella1,estrella2,estrella3):
 
 	if current_index == 0: #NivelUno
 		puntaje = Persistencia.getPuntajeNivelUno()
-		if(puntaje>6000):
+		if(puntaje >= estrellasN1[0]):
 			tres_estrellas_dorada(estrella1,estrella2,estrella3)
-		elif(puntaje>4000):
+		elif(puntaje >= estrellasN1[1]):
 			dos_estrellas_dorada(estrella1,estrella2,estrella3)
-		elif(puntaje>2000):
+		elif(puntaje >= estrellasN1[2]):
 			una_estrellas_dorada(estrella1,estrella2,estrella3)
 		else:
 			cero_estrellas(estrella1,estrella2,estrella3)
 	elif current_index == 1: #NivelDos
 		puntaje = Persistencia.getPuntajeNivelDos()
-		if(puntaje>4000):
+		if(puntaje >= estrellasN2[0]):
 			tres_estrellas_dorada(estrella1,estrella2,estrella3)
-		elif(puntaje>3000):
+		elif(puntaje >= estrellasN2[1]):
 			dos_estrellas_dorada(estrella1,estrella2,estrella3)
-		elif(puntaje>2000):
+		elif(puntaje >= estrellasN2[2]):
 			una_estrellas_dorada(estrella1,estrella2,estrella3)
 		else:
 			cero_estrellas(estrella1,estrella2,estrella3)
 	elif current_index == 2: #NivelTres
 		puntaje = Persistencia.getPuntajeNivelTres()
-		if(puntaje==1120):
+		if(puntaje >= estrellasN3[0]):
 			tres_estrellas_dorada(estrella1,estrella2,estrella3)
-		elif(puntaje>=700):
+		elif(puntaje >= estrellasN3[1]):
 			dos_estrellas_dorada(estrella1,estrella2,estrella3)
-		elif(puntaje>=400):
+		elif(puntaje >= estrellasN3[2]):
 			una_estrellas_dorada(estrella1,estrella2,estrella3)
 		else:
 			cero_estrellas(estrella1,estrella2,estrella3)

@@ -61,7 +61,7 @@ func fase_esbirros():
 		var nuevoEnemigo = naveSeis.instance()
 		nuevoEnemigo.position = posicionRandom()
 		add_child(nuevoEnemigo)
-	
+
 func fin_fase_esbirros():
 	$Player.fase = 1
 	for i in self.get_children():
@@ -74,10 +74,9 @@ func sumaPuntaje(puntaje):
 	ui.setScore(puntajeTotal)
 
 func _on_pause():
-	$PauseMenu.show_pause()
+	$PauseMenu.show_pause(nivel)
 	$Player.hide()
 	$Player.freeze()
-	#Seteo el puntaje
 	get_tree().paused = true
 
 func _on_PauseMenu_play():
