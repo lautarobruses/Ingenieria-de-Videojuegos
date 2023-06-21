@@ -24,7 +24,7 @@ var puntajeTotal = 0
 func posicionRandom():
 	randomize()
 	posicionSalida.offset = randi()
-	return posicionSalida.position	
+	return posicionSalida.position
 
 func set_player():
 	$Player.start()

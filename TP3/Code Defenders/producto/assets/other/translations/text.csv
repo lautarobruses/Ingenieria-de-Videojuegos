@@ -5,8 +5,8 @@ MAIN_SETTINGS;settings;ajustes
 MAIN_SONGS;songs;canciones
 MAIN_QUIT;quit;salir
 CONTROLS_SHOT;shot;disparo
-CONTROLS_SPECIAL_SHOT;special shot;disparo\nespecial
-CONTROLS_DISCARD_COMP;discard component;descartar\ncomponente
+CONTROLS_SPECIAL_SHOT;special\nshot;disparo\nespecial
+CONTROLS_DISCARD_COMP;discard\ncomponent;descartar\ncomponente
 CONTROLS_MOVEMENT;movement;movimiento
 SETTINGS_MUSIC;music;musica
 SETTINGS_SOUND;sound;sonido
