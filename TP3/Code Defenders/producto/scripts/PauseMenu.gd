@@ -7,8 +7,8 @@ onready var estrella1 = $WindowContainer/PStar1
 onready var estrella2 = $WindowContainer/PStar2
 onready var estrella3 = $WindowContainer/PStar3
 
-var estrellasN1 = [6000, 4000, 2000]
-var estrellasN2 = [4000, 3000, 2000]
+var estrellasN1 = [10000, 7500, 4000]
+var estrellasN2 = [6000, 4000, 3000]
 var estrellasN3 = [1120, 700, 400]
 var estrellasN4 = [0, 0, 0]
 
