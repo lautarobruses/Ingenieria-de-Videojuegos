@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://EsbirroNivelTres.gd" type="Script" id=1]
+[ext_resource path="res://scripts/EsbirroNivelTres.gd" type="Script" id=1]
 [ext_resource path="res://assets/img/Naves/naveUno.png" type="Texture" id=2]
 [ext_resource path="res://assets/img/Naves/Ship2.png" type="Texture" id=3]
 [ext_resource path="res://assets/img/Explosion/Explosion1_1.png" type="Texture" id=4]
