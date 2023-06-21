@@ -72,23 +72,23 @@ func show_you_win(nivel,puntos):
 	show()
 	match nivel:
 		1:
-			if(puntos>6000):
+			if(puntos >= estrellasN1[0]):
 				stars_condition(3)
-			elif(puntos>4000):
+			elif(puntos >= estrellasN1[1]):
 				stars_condition(2)
 			else:
 				stars_condition(1)
 		2:
-			if(puntos>4000):
+			if(puntos >= estrellasN1[0]):
 				stars_condition(3)
-			elif(puntos>2000):
+			elif(puntos >= estrellasN2[1]):
 				stars_condition(2)
 			else:
 				stars_condition(1)
 		3:
-			if(puntos==1120):
+			if(puntos >= estrellasN3[0]):
 				stars_condition(3)
-			elif(puntos>=700):
+			elif(puntos >= estrellasN3[1]):
 				stars_condition(2)
 			else:
 				stars_condition(1)
