@@ -9,8 +9,8 @@ var player = preload("res://Player.tscn")
 var naveUno = preload("res://Escenas/NaveUno.tscn")
 var naveDos = preload("res://Escenas/NaveDos.tscn")
 var naveTres = preload("res://Escenas/NaveTres.tscn")
-var naveCinco = preload("res://Escenas/NaveCinco.tscn")
-var naveSeis = preload("res://Escenas/NaveSeis.tscn")
+var naveCinco = preload("res://Escenas/naveCinco.tscn")
+var naveSeis = preload("res://Escenas/naveSeis.tscn")
 
 var nivel
 var cantNaveUno
