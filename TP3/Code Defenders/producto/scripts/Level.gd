@@ -18,7 +18,7 @@ var cantNaveDos
 var cantNaveTres
 var cantNaveCinco
 var cantNaveSeis
-
+var winning = false
 var puntajeTotal = 0
 
 func posicionRandom():
@@ -86,15 +86,17 @@ func _on_PauseMenu_play():
 	get_tree().paused = false
 
 func _on_HealthBar_player_dead(): #DERROTA
-	$Player.blow()
-	$LevelUI.game_over()
-	if(nivel!=3):
-		$BossHealthBar.hide()
-	yield(get_tree().create_timer(3), "timeout")
-	#Seteo el puntaje
-	$PauseMenu.show_game_over()
+	if (winning == false):
+		$Player.blow()
+		$LevelUI.game_over()
+		if(nivel!=3):
+			$BossHealthBar.hide()
+		yield(get_tree().create_timer(3), "timeout")
+		#Seteo el puntaje
+		$PauseMenu.show_game_over()
 
 func _on_BossHealthBar_boss_dead(): #VICTORIA
+	winning = true
 	$Player.freeze()
 	#Puntaje
 	puntajeTotal -= (110 - $Player.health)
