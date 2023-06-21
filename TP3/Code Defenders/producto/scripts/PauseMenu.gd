@@ -94,8 +94,7 @@ func show_you_win(nivel,puntos):
 				stars_condition(1)
 		4:
 			pass
-	
-	
+
 func stars_condition(cant_estrellas): 
 	#Silver Stars
 	$AnimationPlayer.play("Silver Stars")
