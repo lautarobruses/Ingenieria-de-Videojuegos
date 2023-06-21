@@ -28,10 +28,10 @@ var palabra3 = [0,0,0,0,0,0,0,0]
 
 func _ready():
 	if(nivel==1):  
-		current_configuration = [3,6]
+		current_configuration = [0,3,6]
 		color_configuration = [3,6]
 	elif(nivel==2):  
-		current_configuration = [1,2]
+		current_configuration = [0,1,2]
 		color_configuration = [1,2]
 	elif(nivel==3):
 		pass
@@ -127,10 +127,11 @@ func special_condition(configuration):
 		return false
 
 func esCodigoBloque(configuration):
-	if not configuration.empty():
+	print(configuration)
+	if !configuration.empty():
 		for comp in configuration:
 #			if (comp==1 or comp==2 or comp==3):
-			if (not current_configuration.has(comp)):
+			if (current_configuration.has(comp) == false):
 				return false
 	return true
 
