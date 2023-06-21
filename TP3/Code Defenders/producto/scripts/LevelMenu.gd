@@ -37,7 +37,7 @@ func change_level_info(level_name_node):
 	elif current_index == 3:
 		level_info = tr("LEVEL4_CONTENT")
 	elif current_index == 4:
-		level_info = "nada que ver aqui"
+		pass
 	
 	level_name_node.set_text(level_info)
 

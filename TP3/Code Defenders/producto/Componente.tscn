@@ -88,7 +88,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Componente" type="Area2D"]
+[node name="Componente" type="Area2D" groups=["Componentes"]]
 collision_layer = 64
 script = ExtResource( 7 )
 __meta__ = {

@@ -9,7 +9,6 @@ var saveDict = {
 		"PuntajeNivel4" : 0
 	}
 
-
 func load_game():
 	var save_game = File.new()
 	if not save_game.file_exists(SAVE_PATH):

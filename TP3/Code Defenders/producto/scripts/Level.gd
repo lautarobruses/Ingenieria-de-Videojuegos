@@ -67,6 +67,7 @@ func fin_fase_esbirros():
 	for i in self.get_children():
 		if(i.has_method("salirDeLaPantalla")):
 			i.salirDeLaPantalla()
+	get_tree().call_group("Componentes", "queue_free")
 
 func sumaPuntaje(puntaje):
 	puntajeTotal+=puntaje
@@ -99,8 +100,9 @@ func _on_BossHealthBar_boss_dead(): #VICTORIA
 	winning = true
 	$Player.freeze()
 	#Puntaje
-	puntajeTotal -= (110 - $Player.health)
+	puntajeTotal -= (1100 - $Player.health * 10)
 	guardaPuntaje()
+	Persistencia.save_game()
 	#Musica
 	$Music.volume_db -= 25
 	$Sounds.stream = jingle_win

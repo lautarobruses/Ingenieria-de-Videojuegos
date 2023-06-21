@@ -2,10 +2,8 @@ extends "res://scripts/Level.gd"
 
 export var song: AudioStream
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var naveEsbirro = preload("res://EsbirroNivelTres.tscn")
+
 var rng = RandomNumberGenerator.new()
 var palabra1 = [0,0,0,0,0,0,0,0]
 var palabra2 = [0,0,0,0,0,0,0,0]
@@ -77,8 +75,6 @@ func _ready():
 	setNivel(3)
 	$Historial.hide()
 	$AnimationPlayer.play("main")
-	pass # Replace with function body.
-
 
 func enviaGrupoEnemigos():
 	var posicion
@@ -125,6 +121,7 @@ func game_over(): #gestionar game over de victoria
 	puntajeTotal -= (110 - $Player.health)
 	if(puntajeTotal > 200):
 		Persistencia.setNivelTres(puntajeTotal)
+		Persistencia.save_game()
 		#Musica
 		$Music.volume_db -= 25
 		$Sounds.stream = jingle_win
