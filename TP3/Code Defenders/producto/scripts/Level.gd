@@ -106,13 +106,10 @@ func _on_BossHealthBar_boss_dead(): #VICTORIA
 	#Musica
 	yield(get_tree().create_timer(6.0), "timeout")
 	#Menu
-	#Seteo El puntaje
 	$PauseMenu.show_you_win(nivel,puntajeTotal)
 	$Player.blow()
 	yield(get_tree().create_timer(2.0), "timeout")
 	$Music.volume_db += 25
-	
-	##GESTION DE ESTRELLAS
 
 func _on_PauseMenu_retry():
 	get_tree().reload_current_scene()

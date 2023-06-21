@@ -35,7 +35,7 @@ func init(posicion_nave, tipo):
 			self.connect("levantaSimbolo",get_parent().get_node("Barra"),"_on_ParteNaveSeis_levantaSimbolo")
 			continue
 
-func _on_Componente_body_entered(body):
+func _on_Componente_body_entered(_body):
 	emit_signal("levantaSimbolo")
 	get_parent().sumaPuntaje(puntajeDeLevantar)
 	queue_free()

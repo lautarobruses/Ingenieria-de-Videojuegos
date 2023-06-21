@@ -15,7 +15,6 @@ const SHIP_COMPONENTS = [1,2,3,4,5,6]
 export (int) var energy
 export (int) var nivel
 
-
 var current_configuration = [] #Controla las mecanicas del escudo
 var color_configuration = [] #Controla los colores del escudo
 var is_animated = false
@@ -28,15 +27,21 @@ var palabra2 = [0,0,0,0,0,0,0,0]
 var palabra3 = [0,0,0,0,0,0,0,0]
 
 func _ready():
-	current_configuration = [1]
-	color_configuration = [1,2]
-#	init_configuration(3)
+	if(nivel==1):  
+		current_configuration = [3,6]
+		color_configuration = [3,6]
+	elif(nivel==2):  
+		current_configuration = [1,2]
+		color_configuration = [1,2]
+	elif(nivel==3):
+		pass
+	else:
+		pass
 
 func _physics_process(_delta):
 	if !is_over:
 		if is_hitted:
 			$AnimationPlayer.play("hitted")
-			
 			yield(get_tree().create_timer(2.0), "timeout")
 			is_hitted = false
 		elif is_broken:
@@ -116,17 +121,18 @@ func special_condition(configuration):
 	if cumpleCondicion:
 		historial.setGolpe(configuration)
 		calculate_damage()
+		return true
 	else:
 		$ProjectileReflected.play()
-		pass
+		return false
 
 func esCodigoBloque(configuration):
-	var salida = false
-	if !configuration.empty():
+	if not configuration.empty():
 		for comp in configuration:
-			if (comp==1 or comp==2 or comp==3):
-				salida = true
-	return salida
+#			if (comp==1 or comp==2 or comp==3):
+			if (not current_configuration.has(comp)):
+				return false
+	return true
 
 func esNoSingular(configuration):
 	var salida = false

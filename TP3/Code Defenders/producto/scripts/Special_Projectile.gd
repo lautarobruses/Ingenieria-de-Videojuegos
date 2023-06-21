@@ -1,7 +1,5 @@
 extends KinematicBody2D
 
-#onready var target = get_node("../Boss")
-
 const ROTATION_SPEED = 10.0
 
 export (int) var speed
@@ -24,9 +22,10 @@ func setConfiguration(config):
 func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
 	if collision:
-		blow(true)
 		if collision.collider.has_method("special_condition"):
-			collision.collider.special_condition(configuration)
+			var hit = collision.collider.special_condition(configuration)
+			print(hit)
+			blow(hit)
 	
 	$Component1.rotation += ROTATION_SPEED * delta
 	$Component2.rotation += ROTATION_SPEED * delta
@@ -50,14 +49,6 @@ func set_components(config):
 			$Component5.visible = true
 		elif component == 6:
 			$Component6.visible = true
-
-#func add_component(new_component):
-#	configuration.append(new_component)
-#	pass
-
-#func delete_component(component):
-#	configuration.pop_back(component)
-#	pass
 
 func hit(shield_configuration):
 	for components in configuration:
